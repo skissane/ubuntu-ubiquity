@@ -1,4 +1,4 @@
-ubiquity (2.21.63.2) UNRELEASED; urgency=high
+ubiquity (2.21.63.2) xenial; urgency=high
 
   [ Shih-Yuan Lee (FourDollars) ]
   * Some places doesn't have the location information. (LP: #1584417)
@@ -6,8 +6,10 @@ ubiquity (2.21.63.2) UNRELEASED; urgency=high
   [ Dimitri John Ledkov ]
   * Fix substitution variables syntax from $() -> ${} in
     translations. (LP: #1603926)
+  * Automatic update of included source packages: console-setup
+    1.108ubuntu15.2, partman-base 187ubuntu2.1.
 
- -- Mathieu Trudel-Lapierre <cyphermox@ubuntu.com>  Tue, 28 Jun 2016 17:13:47 -0400
+ -- Dimitri John Ledkov <xnox@ubuntu.com>  Mon, 18 Jul 2016 14:28:29 +0100
 
 ubiquity (2.21.63.1) xenial; urgency=medium
 
