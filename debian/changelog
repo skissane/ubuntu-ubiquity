@@ -5,8 +5,10 @@ ubiquity (2.21.63.3) UNRELEASED; urgency=medium
     will also avoid people skipping through this important part of the
     installer without noticing, only to find their systems not all working
     correctly. (LP: #1606393)
+  * d-i/sources.list: add xenial-updates to sources.list to pick up any SRUs
+    of d-i components that are no longer in flight.
 
- -- Mathieu Trudel-Lapierre <cyphermox@ubuntu.com>  Mon, 25 Jul 2016 18:22:28 -0400
+ -- Mathieu Trudel-Lapierre <cyphermox@ubuntu.com>  Tue, 26 Jul 2016 14:56:19 -0400
 
 ubiquity (2.21.63.2) xenial; urgency=high
 
