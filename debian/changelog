@@ -1,3 +1,13 @@
+ubiquity (2.21.63.3) UNRELEASED; urgency=medium
+
+  * ubi-prepare.py: default to disabling Secure Boot when third party drivers
+    are being installed, since it's most likely what people will want. This
+    will also avoid people skipping through this important part of the
+    installer without noticing, only to find their systems not all working
+    correctly. (LP: #1606393)
+
+ -- Mathieu Trudel-Lapierre <cyphermox@ubuntu.com>  Mon, 25 Jul 2016 18:22:28 -0400
+
 ubiquity (2.21.63.2) xenial; urgency=high
 
   [ Shih-Yuan Lee (FourDollars) ]
