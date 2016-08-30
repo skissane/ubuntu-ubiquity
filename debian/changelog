@@ -10,6 +10,10 @@ ubiquity (2.21.63.3) UNRELEASED; urgency=medium
   * Automatic update of included source packages: apt-setup
     1:0.104ubuntu4.1, base-installer 1.158ubuntu2.1, netcfg
     1.135ubuntu4.1. (LP: #1590358)
+  * bin/ubiquity-dm: wait for the DBus signals telling us that xsettings are
+    ready before continuing with preparing ubiquity-dm; this avoids starting
+    too quickly and incorrectly applying scale ratios for HiDPI screens.
+    (LP: #1560162)
 
  -- Mathieu Trudel-Lapierre <cyphermox@ubuntu.com>  Tue, 26 Jul 2016 14:56:19 -0400
 
