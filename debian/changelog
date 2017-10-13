@@ -1,3 +1,12 @@
+ubiquity (17.10.10) UNRELEASED; urgency=medium
+
+  * tests/test_misc.py: Rip out the test for 'ta' keymap. It's been regularly
+    broken just because gsettings is returning values out of order (and
+    not all of the variants show every time). We already test a few other
+    keymaps, so no need to test all of them.
+
+ -- Mathieu Trudel-Lapierre <cyphermox@ubuntu.com>  Fri, 13 Oct 2017 09:58:01 -0400
+
 ubiquity (17.10.9) artful; urgency=medium
 
   [ Sebastien Bacher ]
