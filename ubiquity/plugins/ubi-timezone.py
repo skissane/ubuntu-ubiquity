@@ -36,7 +36,7 @@ NAME = 'timezone'
 AFTER = ['partman', 'language']
 WEIGHT = 10
 
-_geoname_url = 'http://geoname-lookup.ubuntu.com/?query=%s&release=%s'
+_geoname_url = 'https://geoname-lookup.ubuntu.com/?query=%s&release=%s'
 
 
 class PageGtk(plugin.PluginUI):
