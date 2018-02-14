@@ -44,6 +44,9 @@ import debconf
 from ubiquity import misc, osextras
 from ubiquity.casper import get_casper
 
+minimal_install_rlist_path = "/usr/share/ubiquity/manifests/" + \
+                             "minimal_install_removal"
+
 
 def debconf_disconnect():
     """Disconnect from debconf. This is only to be used as a subprocess
@@ -1101,6 +1104,19 @@ class InstallBase:
             to_install = [
                 pkg for pkg in to_install
                 if get_cache_pkg(cache, pkg).is_installed]
+
+        # filter out langpacks matching unwanted application names
+        # in manual install
+        rm = set()
+        if self.db.get('ubiquity/minimal_install') == 'true':
+            if os.path.exists(minimal_install_rlist_path):
+                with open(minimal_install_rlist_path) as m_file:
+                    for line in m_file:
+                        if line.strip() != '' and \
+                                not line.startswith('#'):
+                            pkg = line.split(':')[0]
+                            rm.add(pkg.split()[0])
+        to_install = list(set(to_install) - set(rm))
 
         del cache
         record_installed(to_install)
