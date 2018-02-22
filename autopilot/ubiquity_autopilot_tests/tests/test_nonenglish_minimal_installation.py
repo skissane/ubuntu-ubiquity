@@ -1,6 +1,6 @@
 # Testing Default Install for the Ubiquity Installer
-# Author: Dan Chapman <daniel@chapman-mail.com>
-# Copyright (C) 2013
+# Author: Heber Parrucci <heber.parrucci@canonical.com>
+# Copyright (C) 2018
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 3 as
