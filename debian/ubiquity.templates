@@ -1076,7 +1076,7 @@ Description: for internal use; can be preseeded
 
 Template: ubiquity/download_updates
 Type: boolean
-Default: false
+Default: true
 Description: for internal use; download updates while installing.
 
 Template: ubiquity/text/part_auto_select_drive_label
