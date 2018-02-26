@@ -1,4 +1,4 @@
-ubiquity (18.04.2) UNRELEASED; urgency=medium
+ubiquity (18.04.2) bionic; urgency=medium
 
   [ Didier Roche ]
   * Add a minimal installation mode, which removes most programs from the
@@ -14,7 +14,7 @@ ubiquity (18.04.2) UNRELEASED; urgency=medium
     - livecd-rootfs supplies us with a manifest-minimal-remove file that has
       no blank lines and no comments, so no need for us to strip them
 
- -- Iain Lane <iain.lane@canonical.com>  Mon, 26 Feb 2018 10:42:24 +0000
+ -- Iain Lane <iain.lane@canonical.com>  Mon, 26 Feb 2018 15:16:14 +0000
 
 ubiquity (18.04.1) bionic; urgency=medium
 
