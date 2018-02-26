@@ -1110,8 +1110,8 @@ class InstallBase:
             if os.path.exists(minimal_install_rlist_path):
                 rm = set()
                 with open(minimal_install_rlist_path) as m_file:
-                    rm = [line.strip().split(':')[0] for line in m_file]
-                to_install = list(set(to_install) - set(rm))
+                    rm = {line.strip().split(':')[0] for line in m_file}
+                to_install = list(set(to_install) - rm)
 
         del cache
         record_installed(to_install)

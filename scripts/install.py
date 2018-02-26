@@ -251,7 +251,7 @@ class Install(install_misc.InstallBase):
             if os.path.exists(install_misc.minimal_install_rlist_path):
                 pkgs = set()
                 with open(install_misc.minimal_install_rlist_path) as m_file:
-                    pkgs = [line.strip().split(':')[0] for line in m_file]
+                    pkgs = {line.strip().split(':')[0] for line in m_file}
                 difference |= pkgs
 
         cache = Cache()
