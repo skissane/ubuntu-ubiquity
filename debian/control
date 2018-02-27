@@ -146,11 +146,3 @@ Depends: ${misc:Depends}, genisoimage, gnupg, apt-utils
 Description: Remaster a CD with additional oem-config functionality
  This script remasters a CD with additional packages and optional oem-config
  preseed data.
-
-Package: ubiquity-ubuntu-desktop-minimal
-Architecture: all
-Depends: ${misc:Depends},
-         ubiquity (= ${binary:Version}),
-Description: Packages to remove for minimal ubuntu desktop
- This package ships a list of packages to be removed to create a minimal
- Ubuntu Desktop installation.
