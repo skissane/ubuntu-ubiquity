@@ -262,13 +262,14 @@ class PageGtk(PageBase):
         return self.login_auto.get_active()
 
     def set_encrypt_home(self, value):
-        self.login_encrypt.set_active(value)
+        print('Ecryptfs is deprecated')
 
     def set_force_encrypt_home(self, value):
-        self.login_vbox.set_sensitive(not value)
+        print('Ecryptfs is deprecated')
 
+    # Ecryptfs is deprecated
     def get_encrypt_home(self):
-        return self.login_encrypt.get_active()
+        return False
 
     def username_error(self, msg):
         self.username_ok.hide()
@@ -652,13 +653,14 @@ class PageNoninteractive(PageBase):
         return self.auto_login
 
     def set_encrypt_home(self, value):
-        self.encrypt_home = value
+        print('Ecryptfs is deprecated')
 
     def set_force_encrypt_home(self, value):
-        self.set_encrypt_home(value)
+        print('Ecryptfs is deprecated')
 
+    # Ecrypts is deprecated
     def get_encrypt_home(self):
-        return self.encrypt_home
+        return False
 
     def username_error(self, msg):
         """The selected username was bad."""
