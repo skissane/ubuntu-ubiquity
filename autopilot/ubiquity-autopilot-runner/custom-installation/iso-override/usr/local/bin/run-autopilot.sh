@@ -31,7 +31,7 @@ fi
 echo $$>${LOCKFILE}
 
 # The following variables can be overridden with a configuration file
-TSBRANCH=lp:~heber013/ubiquity/adding-autopilot-tests-minimal-installation
+TSBRANCH=lp:ubiquity
 EXTRAPACKAGES=""
 ARTIFACTS=""
 AP_OPTS="-v"
