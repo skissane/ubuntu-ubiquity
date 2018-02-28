@@ -1,10 +1,18 @@
 ubiquity (18.04.3) UNRELEASED; urgency=medium
 
+  [ Sebastien Bacher ]
   * Remove the encrypted userdir option from the gtk installer since
     ecryptfs is going to move to universe. The keep the base code in case 
     the option is added back later using another technology.
 
- -- Sebastien Bacher <seb128@ubuntu.com>  Tue, 27 Feb 2018 15:06:34 +0100
+  [ Iain Lane ]
+  * Fix a crash in the KDE frontend - don't refer to a widget that doesn't
+    exist. Properly hide the miminal install label and checkbox. (LP:
+    #1752323)
+  * install_misc: Use the `get_casper' function to properly get the location
+    of the live media path.
+
+ -- Iain Lane <iain.lane@canonical.com>  Wed, 28 Feb 2018 15:07:35 +0000
 
 ubiquity (18.04.2) bionic; urgency=medium
 
