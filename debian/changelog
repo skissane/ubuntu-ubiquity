@@ -1,4 +1,4 @@
-ubiquity (18.04.3) UNRELEASED; urgency=medium
+ubiquity (18.04.3) bionic; urgency=medium
 
   [ Sebastien Bacher ]
   * Remove the encrypted userdir option from the gtk installer since
@@ -12,7 +12,7 @@ ubiquity (18.04.3) UNRELEASED; urgency=medium
   * install_misc: Use the `get_casper' function to properly get the location
     of the live media path.
 
- -- Iain Lane <iain.lane@canonical.com>  Wed, 28 Feb 2018 15:07:35 +0000
+ -- Iain Lane <iain.lane@canonical.com>  Wed, 28 Feb 2018 17:03:39 +0000
 
 ubiquity (18.04.2) bionic; urgency=medium
 
