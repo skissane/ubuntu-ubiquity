@@ -1,5 +1,11 @@
 ubiquity (18.04.3) UNRELEASED; urgency=medium
 
+  [ Sebastien Bacher ]
+  * Remove the encrypted userdir option from the gtk installer since
+    ecryptfs is going to move to universe. The keep the base code in case 
+    the option is added back later using another technology.
+
+  [ Iain Lane ]
   * Fix a crash in the KDE frontend - don't refer to a widget that doesn't
     exist. Properly hide the miminal install label and checkbox. (LP:
     #1752323)
