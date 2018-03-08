@@ -4,6 +4,11 @@ ubiquity (18.04.4) UNRELEASED; urgency=medium
     sensible-browser, which is used to start a browser when slideshow or
     release notes links are clicked. (LP: #1724224)
 
+  [ Sebastien Bacher ]
+  * gui/gtk/stepPrepare.ui: updated the non-free-software text to not
+    include the mention to the MP3 fluendo codecs since those have 
+    been superseeded in the recent gstreamer version.
+
  -- Mathieu Trudel-Lapierre <cyphermox@ubuntu.com>  Wed, 28 Feb 2018 14:36:54 -0500
 
 ubiquity (18.04.3) bionic; urgency=medium
