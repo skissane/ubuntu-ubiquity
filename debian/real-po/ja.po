@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: debian-installer\n"
 "Report-Msgid-Bugs-To: ubiquity@packages.debian.org\n"
-"POT-Creation-Date: 2018-03-08 17:32+0100\n"
+"POT-Creation-Date: 2018-03-08 17:50+0100\n"
 "PO-Revision-Date: 2017-09-29 16:23+0000\n"
 "Last-Translator: night1ynx <night1ynxd@gmail.com>\n"
 "Language-Team: Debian L10n Japanese <debian-l10n-japanese@lists.debian.org>\n"
@@ -1380,10 +1380,9 @@ msgstr "インストーラーに回復不能なエラーが発生しました。
 
 #. Type: text
 #. Description
-#. RELEASE is a variable substituted into this string, and may be 'Ubuntu'
 #: ../ubiquity.templates:201001
-msgid "Preparing to install ${RELEASE}"
-msgstr "${RELEASE} のインストール準備"
+msgid "Updates and other software"
+msgstr ""
 
 #. Type: text
 #. Description
@@ -2134,6 +2133,9 @@ msgstr ""
 #: ../oem-config.templates:2001
 msgid "Removing packages"
 msgstr "パッケージを削除しています"
+
+#~ msgid "Preparing to install ${RELEASE}"
+#~ msgstr "${RELEASE} のインストール準備"
 
 #~ msgid ""
 #~ "Fluendo MP3 plugin includes MPEG Layer-3 audio decoding technology "

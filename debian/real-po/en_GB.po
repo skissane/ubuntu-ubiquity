@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ubiquity\n"
 "Report-Msgid-Bugs-To: ubiquity@packages.debian.org\n"
-"POT-Creation-Date: 2018-03-08 17:32+0100\n"
+"POT-Creation-Date: 2018-03-08 17:50+0100\n"
 "PO-Revision-Date: 2017-09-29 16:12+0000\n"
 "Last-Translator: Anthony Harrington <Unknown>\n"
 "Language-Team: English (United Kingdom) <en_GB@li.org>\n"
@@ -1373,10 +1373,9 @@ msgstr "The installer encountered an unrecoverable error and will now reboot."
 
 #. Type: text
 #. Description
-#. RELEASE is a variable substituted into this string, and may be 'Ubuntu'
 #: ../ubiquity.templates:201001
-msgid "Preparing to install ${RELEASE}"
-msgstr "Preparing to install ${RELEASE}"
+msgid "Updates and other software"
+msgstr ""
 
 #. Type: text
 #. Description
@@ -2129,6 +2128,9 @@ msgstr ""
 #: ../oem-config.templates:2001
 msgid "Removing packages"
 msgstr "Removing packages"
+
+#~ msgid "Preparing to install ${RELEASE}"
+#~ msgstr "Preparing to install ${RELEASE}"
 
 #~ msgid ""
 #~ "Fluendo MP3 plugin includes MPEG Layer-3 audio decoding technology "

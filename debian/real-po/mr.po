@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: debian-installer\n"
 "Report-Msgid-Bugs-To: ubiquity@packages.debian.org\n"
-"POT-Creation-Date: 2018-03-08 17:32+0100\n"
+"POT-Creation-Date: 2018-03-08 17:50+0100\n"
 "PO-Revision-Date: 2017-02-22 05:33+0000\n"
 "Last-Translator: Vaibhav S Dalvi <Unknown>\n"
 "Language-Team: Marathi <kde-i18n-doc@kde.org>\n"
@@ -1352,10 +1352,9 @@ msgstr ""
 
 #. Type: text
 #. Description
-#. RELEASE is a variable substituted into this string, and may be 'Ubuntu'
 #: ../ubiquity.templates:201001
-msgid "Preparing to install ${RELEASE}"
-msgstr "प्रतिष्ठापनास तयार करत आहे ${RELEASE}"
+msgid "Updates and other software"
+msgstr ""
 
 #. Type: text
 #. Description
@@ -2090,6 +2089,9 @@ msgstr ""
 #: ../oem-config.templates:2001
 msgid "Removing packages"
 msgstr "पॅकेजेस काढून टाकत आहे"
+
+#~ msgid "Preparing to install ${RELEASE}"
+#~ msgstr "प्रतिष्ठापनास तयार करत आहे ${RELEASE}"
 
 #~ msgid ""
 #~ "Fluendo MP3 plugin includes MPEG Layer-3 audio decoding technology "
