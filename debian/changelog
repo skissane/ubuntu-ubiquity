@@ -1,10 +1,15 @@
 ubiquity (18.04.4) UNRELEASED; urgency=medium
 
+  [ Mathieu Trudel-Lapierre ]
   * debian/control: have ubiquity-frontend-gtk Depends: explicitly on
     sensible-browser, which is used to start a browser when slideshow or
     release notes links are clicked. (LP: #1724224)
 
- -- Mathieu Trudel-Lapierre <cyphermox@ubuntu.com>  Wed, 28 Feb 2018 14:36:54 -0500
+  [ Didier Roche ]
+  * Telemetry info dumped as log file:
+    dump installation telemetry info for optional collect later on.
+
+ -- Didier Roche <didrocks@ubuntu.com>  Tue, 06 Mar 2018 10:06:53 +0100
 
 ubiquity (18.04.3) bionic; urgency=medium
 

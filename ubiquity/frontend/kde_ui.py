@@ -41,7 +41,7 @@ import sip
 sip.setapi("QVariant", 1)
 from PyQt5 import QtCore, QtGui, QtWidgets, uic
 
-from ubiquity import filteredcommand, i18n, misc
+from ubiquity import filteredcommand, i18n, misc, telemetry
 from ubiquity.components import partman_commit, install, plugininstall
 import ubiquity.frontend.base
 from ubiquity.frontend.base import BaseFrontend
@@ -454,6 +454,8 @@ class Wizard(BaseFrontend):
                 self.get_string('ubiquity/install/title'))
             self.refresh()
 
+        telemetry.get().set_installer_type('KDE')
+
         # Start the interface
         self.set_current_page(0)
 
@@ -528,6 +530,8 @@ class Wizard(BaseFrontend):
             self._update_breadcrumbs('__install')
             self.start_slideshow()
             self.run_main_loop()
+
+            telemetry.get().done(self.db)
 
             quitText = '<qt>%s</qt>' % self.get_string("finished_label")
             rebootButtonText = self.get_string("reboot_button")
@@ -1121,6 +1125,7 @@ class Wizard(BaseFrontend):
         self.ui.content_widget.show()
         self.current_page = newPageID
         name = self.step_name(newPageID)
+        telemetry.get().add_step(name)
         syslog.syslog('switched to page %s' % name)
         if 'UBIQUITY_GREETER' in os.environ:
             if name == 'language':
@@ -1291,6 +1296,7 @@ class Wizard(BaseFrontend):
         elif finished_step == 'ubi-partman':
             # Flush changes to the database so that when the parallel db
             # starts, it does so with the most recent changes.
+            telemetry.get().add_step(telemetry.START_INSTALL_STEP_TAG)
             self.stop_debconf()
             self.start_debconf()
             self._show_progress_bar(True)
