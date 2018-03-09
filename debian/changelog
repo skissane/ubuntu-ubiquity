@@ -1,7 +1,7 @@
 ubiquity (18.04.4) UNRELEASED; urgency=medium
 
   * debian/control: have ubiquity-frontend-gtk Depends: explicitly on
-    sensible-browser, which is used to start a browser when slideshow or
+    sensible-utils, which is used to start a browser when slideshow or
     release notes links are clicked. (LP: #1724224)
 
   [ Sebastien Bacher ]
