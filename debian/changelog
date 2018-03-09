@@ -8,6 +8,9 @@ ubiquity (18.04.4) UNRELEASED; urgency=medium
   * gui/gtk/stepPrepare.ui: updated the non-free-software text to not
     include the mention to the MP3 fluendo codecs since those have 
     been superseeded in the recent gstreamer version.
+  * Rename the "Preparing to install Ubuntu" installer step to "Updates and 
+    other software" according to the design, thanks Matthew for pointing 
+    out the inconsistency
 
  -- Mathieu Trudel-Lapierre <cyphermox@ubuntu.com>  Wed, 28 Feb 2018 14:36:54 -0500
 

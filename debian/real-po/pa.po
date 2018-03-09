@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: debian-installer\n"
 "Report-Msgid-Bugs-To: ubiquity@packages.debian.org\n"
-"POT-Creation-Date: 2018-03-08 17:32+0100\n"
+"POT-Creation-Date: 2018-03-08 17:50+0100\n"
 "PO-Revision-Date: 2016-09-02 01:16+0000\n"
 "Last-Translator: Pirthi <pirthi.d@gmail.com>\n"
 "Language-Team: Punjabi/Panjabi <punjabi-users@lists.sf.net>\n"
@@ -1314,10 +1314,9 @@ msgstr ""
 
 #. Type: text
 #. Description
-#. RELEASE is a variable substituted into this string, and may be 'Ubuntu'
 #: ../ubiquity.templates:201001
-msgid "Preparing to install ${RELEASE}"
-msgstr "${RELEASE} ਇੰਸਟਾਲ ਕਰਨ ਲਈ ਤਿਆਰ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ"
+msgid "Updates and other software"
+msgstr ""
 
 #. Type: text
 #. Description
@@ -1992,3 +1991,6 @@ msgstr ""
 #: ../oem-config.templates:2001
 msgid "Removing packages"
 msgstr "ਪੈਕੇਜ ਹਟਾਏ ਜਾ ਰਹੇ ਹਨ"
+
+#~ msgid "Preparing to install ${RELEASE}"
+#~ msgstr "${RELEASE} ਇੰਸਟਾਲ ਕਰਨ ਲਈ ਤਿਆਰ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ"

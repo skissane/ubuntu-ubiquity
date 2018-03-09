@@ -1031,8 +1031,7 @@ Description: for internal use; automatically reboot when the install fails.
 
 Template: ubiquity/text/prepare_heading_label
 Type: text
-# RELEASE is a variable substituted into this string, and may be 'Ubuntu'
-_Description: Preparing to install ${RELEASE}
+_Description: Updates and other software
 
 Template: ubiquity/text/wireless_heading_label
 Type: text
