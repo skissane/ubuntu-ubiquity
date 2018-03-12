@@ -44,6 +44,8 @@ class _Telemetry():
     def __init__(self):
         self._metrics = {}
         self._steps_hist = {}
+        self._start_time = time.time()
+        self.add_step('start')
         self._dest_path = '/target/var/log/installer/telemetry'
         try:
             with open('/cdrom/.disk/info') as f:
@@ -53,7 +55,7 @@ class _Telemetry():
 
     def add_step(self, step_name):
         """Record installer step with current time"""
-        self._steps_hist[int(time.time())] = step_name
+        self._steps_hist[int(time.time() - self._start_time)] = step_name
 
     def set_installer_type(self, installer_type):
         """Record installer type"""
