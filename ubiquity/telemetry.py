@@ -28,18 +28,18 @@ import time
 from ubiquity.misc import raise_privileges
 
 START_INSTALL_STEP_TAG = 'start_install'
-_telemetry = None
 
 
 def get():
     """Return a singleton _Telemetry instance."""
-    global _telemetry
-    if _telemetry is None:
-        _telemetry = _Telemetry()
-    return _telemetry
+    if _Telemetry._telemetry is None:
+        _Telemetry._telemetry = _Telemetry()
+    return _Telemetry._telemetry
 
 
 class _Telemetry():
+
+    _telemetry = None
 
     def __init__(self):
         self._metrics = {}
