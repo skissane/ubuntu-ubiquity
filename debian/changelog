@@ -1,15 +1,22 @@
 ubiquity (18.04.4) UNRELEASED; urgency=medium
 
-  [ Mathieu Trudel-Lapierre ]
   * debian/control: have ubiquity-frontend-gtk Depends: explicitly on
-    sensible-browser, which is used to start a browser when slideshow or
+    sensible-utils, which is used to start a browser when slideshow or
     release notes links are clicked. (LP: #1724224)
 
-  [ Didier Roche ]
-  * Telemetry info dumped as log file:
-    dump installation telemetry info for optional collect later on.
+  [ Sebastien Bacher ]
+  * gui/gtk/stepPrepare.ui: updated the non-free-software text to not
+    include the mention to the MP3 fluendo codecs since those have 
+    been superseeded in the recent gstreamer version.
+  * Rename the "Preparing to install Ubuntu" installer step to "Updates and 
+    other software" according to the design, thanks Matthew for pointing 
+    out the inconsistency
 
- -- Didier Roche <didrocks@ubuntu.com>  Tue, 06 Mar 2018 10:06:53 +0100
+  [ Didier Roche ]
+  * Collect and dump telemetry info as a log file: (LP: #1755456)
+    Those installation telemetry info are for optional upload later on.
+
+ -- Mathieu Trudel-Lapierre <cyphermox@ubuntu.com>  Wed, 28 Feb 2018 14:36:54 -0500
 
 ubiquity (18.04.3) bionic; urgency=medium
 

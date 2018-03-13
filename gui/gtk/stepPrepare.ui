@@ -181,7 +181,7 @@
             <property name="spacing">6</property>
             <child>
               <object class="GtkCheckButton" id="prepare_nonfree_software">
-                <property name="label" translatable="yes">Install third-party software for graphics and Wi-Fi hardware, MP3 and other media</property>
+                <property name="label" translatable="yes">Install software for graphics, Wi-Fi hardware, and additional media playback</property>
                 <property name="use_action_appearance">False</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
@@ -232,25 +232,6 @@
                             <property name="expand">False</property>
                             <property name="fill">False</property>
                             <property name="position">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkLabel" id="prepare_foss_disclaimer_extra_label">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="label" translatable="yes">Fluendo MP3 plugin includes MPEG Layer-3 audio decoding technology licensed from Fraunhofer IIS and Technicolor SA.
-</property>
-                            <property name="wrap">True</property>
-                            <property name="xalign">0</property>
-                            <property name="yalign">2.2351741291171123e-10</property>
-                            <attributes>
-                              <attribute name="scale" value="0.83333333333333337"/>
-                            </attributes>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">False</property>
-                            <property name="position">1</property>
                           </packing>
                         </child>
                       </object>
