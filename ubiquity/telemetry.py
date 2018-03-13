@@ -23,6 +23,7 @@
 import json
 import os
 import stat
+import syslog
 import time
 
 from ubiquity.misc import raise_privileges
@@ -80,12 +81,15 @@ class _Telemetry():
         self._metrics['Steps'] = self._steps_hist
 
         target_dir = os.path.dirname(self._dest_path)
-        if not os.path.exists(target_dir):
-            os.makedirs(target_dir)
-        with open(self._dest_path, 'w') as f:
-            json.dump(self._metrics, f)
-        os.chmod(self._dest_path,
-                 stat.S_IRUSR | stat.S_IWUSR |
-                 stat.S_IRGRP | stat.S_IROTH)
+        try:
+            if not os.path.exists(target_dir):
+                os.makedirs(target_dir)
+            with open(self._dest_path, 'w') as f:
+                json.dump(self._metrics, f)
+            os.chmod(self._dest_path,
+                    stat.S_IRUSR | stat.S_IWUSR |
+                    stat.S_IRGRP | stat.S_IROTH)
+        except OSError as e:
+            syslog.syslog(syslog.LOG_ERR, "Exception while storing telemetry data: " + str(e))
 
 # vim:ai:et:sts=4:tw=80:sw=4:
