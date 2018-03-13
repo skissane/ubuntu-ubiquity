@@ -28,7 +28,7 @@ import time
 
 from ubiquity.misc import raise_privileges
 
-START_INSTALL_STEP_TAG = 'start_install'
+START_INSTALL_STAGE_TAG = 'start_install'
 
 
 def get():
@@ -44,9 +44,9 @@ class _Telemetry():
 
     def __init__(self):
         self._metrics = {}
-        self._steps_hist = {}
+        self._stages_hist = {}
         self._start_time = time.time()
-        self.add_step('start')
+        self.add_stage('start')
         self._dest_path = '/target/var/log/installer/telemetry'
         try:
             with open('/cdrom/.disk/info') as f:
@@ -54,9 +54,9 @@ class _Telemetry():
         except FileNotFoundError:
             self._metrics['Media'] = 'unknown'
 
-    def add_step(self, step_name):
-        """Record installer step with current time"""
-        self._steps_hist[int(time.time() - self._start_time)] = step_name
+    def add_stage(self, stage_name):
+        """Record installer stage with current time"""
+        self._stages_hist[int(time.time() - self._start_time)] = stage_name
 
     def set_installer_type(self, installer_type):
         """Record installer type"""
@@ -72,13 +72,13 @@ class _Telemetry():
 
         Set as installation done, add additional info and save to
         destination file"""
-        self.add_step('done')
+        self.add_stage('done')
 
         self._metrics['DownloadUpdates'] = db.get('ubiquity/download_updates')
         self._metrics['Language'] = db.get('localechooser/languagelist')
         self._metrics['Minimal'] = db.get('ubiquity/minimal_install')
         self._metrics['RestrictedAddons'] = db.get('ubiquity/use_nonfree')
-        self._metrics['Steps'] = self._steps_hist
+        self._metrics['Stages'] = self._stages_hist
 
         target_dir = os.path.dirname(self._dest_path)
         try:
@@ -87,9 +87,10 @@ class _Telemetry():
             with open(self._dest_path, 'w') as f:
                 json.dump(self._metrics, f)
             os.chmod(self._dest_path,
-                    stat.S_IRUSR | stat.S_IWUSR |
-                    stat.S_IRGRP | stat.S_IROTH)
+                     stat.S_IRUSR | stat.S_IWUSR |
+                     stat.S_IRGRP | stat.S_IROTH)
         except OSError as e:
-            syslog.syslog(syslog.LOG_ERR, "Exception while storing telemetry data: " + str(e))
+            syslog.syslog(syslog.LOG_ERR,
+                          "Exception while storing telemetry data: " + str(e))
 
 # vim:ai:et:sts=4:tw=80:sw=4:

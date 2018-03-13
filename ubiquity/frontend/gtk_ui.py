@@ -1559,7 +1559,7 @@ class Wizard(BaseFrontend):
         for i in range(len(self.pages))[index + 1:]:
             self.dot_grid.get_child_at(i, 0).set_fraction(0)
 
-        telemetry.get().add_step(name)
+        telemetry.get().add_stage(name)
         syslog.syslog('switched to page %s' % name)
 
     # Callbacks provided to components.
@@ -1651,7 +1651,7 @@ class Wizard(BaseFrontend):
 
     def switch_to_install_interface(self):
         if not self.installing:
-            telemetry.get().add_step(telemetry.START_INSTALL_STEP_TAG)
+            telemetry.get().add_stage(telemetry.START_INSTALL_STAGE_TAG)
         self.installing = True
         self.lockdown_environment()
 

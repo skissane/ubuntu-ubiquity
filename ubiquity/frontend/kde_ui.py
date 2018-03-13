@@ -1125,7 +1125,7 @@ class Wizard(BaseFrontend):
         self.ui.content_widget.show()
         self.current_page = newPageID
         name = self.step_name(newPageID)
-        telemetry.get().add_step(name)
+        telemetry.get().add_stage(name)
         syslog.syslog('switched to page %s' % name)
         if 'UBIQUITY_GREETER' in os.environ:
             if name == 'language':
@@ -1296,7 +1296,7 @@ class Wizard(BaseFrontend):
         elif finished_step == 'ubi-partman':
             # Flush changes to the database so that when the parallel db
             # starts, it does so with the most recent changes.
-            telemetry.get().add_step(telemetry.START_INSTALL_STEP_TAG)
+            telemetry.get().add_stage(telemetry.START_INSTALL_STAGE_TAG)
             self.stop_debconf()
             self.start_debconf()
             self._show_progress_bar(True)

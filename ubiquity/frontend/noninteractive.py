@@ -78,7 +78,7 @@ class Wizard(BaseFrontend):
             sys.exit(1)
 
         telemetry.get().set_installer_type('NonInteractive')
-        telemetry.get().add_step(telemetry.START_INSTALL_STEP_TAG)
+        telemetry.get().add_stage(telemetry.START_INSTALL_STAGE_TAG)
 
         for x in self.pages:
             if issubclass(x.filter_class, Plugin):

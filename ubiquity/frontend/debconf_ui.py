@@ -95,7 +95,7 @@ class Wizard(BaseFrontend):
             sys.exit(1)
 
         telemetry.get().set_installer_type('DebConf')
-        telemetry.get().add_step(telemetry.START_INSTALL_STEP_TAG)
+        telemetry.get().add_stage(telemetry.START_INSTALL_STAGE_TAG)
 
         self.pagesindex = 0
         self.pageslen = 0
