@@ -874,6 +874,7 @@ class Wizard(BaseFrontend):
         misc.drop_privileges_save()
         self.progress_mode.set_current_page(
             self.progress_pages['progress_bar'])
+        telemetry.get().add_stage('user_done')
 
         if not self.slideshow:
             self.page_mode.hide()
