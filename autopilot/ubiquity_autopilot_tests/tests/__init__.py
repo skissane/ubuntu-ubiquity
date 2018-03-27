@@ -239,7 +239,8 @@ class UbiquityAutopilotTestCase(UbiquityTestCase):
 
         :param thirdParty: Boolean, if True selects install third-party
                                     software
-        :param minimal_installation: Boolean, if True selects minimal installation option
+        :param minimal_installation: Boolean, if True selects minimal
+                                       installation option
 
         :param networkConnection: Boolean if True checks the network state box
                                     is visible and objects are correct, If

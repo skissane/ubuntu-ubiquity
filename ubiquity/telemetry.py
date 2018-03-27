@@ -66,6 +66,11 @@ class _Telemetry():
         """Record anynomized partition method"""
         self._metrics['PartitionMethod'] = method
 
+    def _db_get_bool(self, value):
+        if value == 'true':
+            return True
+        return False
+
     @raise_privileges
     def done(self, db):
         """Close telemetry collection
@@ -74,10 +79,13 @@ class _Telemetry():
         destination file"""
         self.add_stage('done')
 
-        self._metrics['DownloadUpdates'] = db.get('ubiquity/download_updates')
+        self._metrics['DownloadUpdates'] = self._db_get_bool(
+            db.get('ubiquity/download_updates'))
         self._metrics['Language'] = db.get('localechooser/languagelist')
-        self._metrics['Minimal'] = db.get('ubiquity/minimal_install')
-        self._metrics['RestrictedAddons'] = db.get('ubiquity/use_nonfree')
+        self._metrics['Minimal'] = self._db_get_bool(
+            db.get('ubiquity/minimal_install'))
+        self._metrics['RestrictedAddons'] = self._db_get_bool(
+            db.get('ubiquity/use_nonfree'))
         self._metrics['Stages'] = self._stages_hist
 
         target_dir = os.path.dirname(self._dest_path)

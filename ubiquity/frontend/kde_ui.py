@@ -607,6 +607,7 @@ class Wizard(BaseFrontend):
         return webView
 
     def start_slideshow(self):
+        telemetry.get().add_stage('user_done')
         slideshow_dir = '/usr/share/ubiquity-slideshow'
         slideshow_locale = self.slideshow_get_available_locale(slideshow_dir,
                                                                self.locale)
