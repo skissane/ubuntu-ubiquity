@@ -16,6 +16,9 @@ ubiquity (18.04.4) UNRELEASED; urgency=medium
   * Collect and dump telemetry info as a log file: (LP: #1755456)
     Those installation telemetry info are for optional upload later on.
 
+  [ Jeremy Bicha ]
+  * Update "Updates and Other Software" page to match the spec (LP: #1758082)
+
   [ Rik Mills ]
   * Mark the sddm.conf file for OEM so that it can be removed by oem-config
     if unchanged.
