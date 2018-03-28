@@ -1,5 +1,6 @@
-ubiquity (18.04.4) UNRELEASED; urgency=medium
+ubiquity (18.04.4) bionic; urgency=medium
 
+  [ Mathieu Trudel-Lapierre ]
   * debian/control: have ubiquity-frontend-gtk Depends: explicitly on
     sensible-utils, which is used to start a browser when slideshow or
     release notes links are clicked. (LP: #1724224)
@@ -16,7 +17,12 @@ ubiquity (18.04.4) UNRELEASED; urgency=medium
   * Collect and dump telemetry info as a log file: (LP: #1755456)
     Those installation telemetry info are for optional upload later on.
 
+  [ Jeremy Bicha ]
+  * Update "Updates and Other Software" page to match the spec (LP: #1758082)
+
   [ Rik Mills ]
+  * Update KDE/Qt "Updates and Other Software" page in line with GTK changes,
+    with some tweaks appropriate for Kubuntu usage in Bionic
   * Mark the sddm.conf file for OEM so that it can be removed by oem-config
     if unchanged.
 
