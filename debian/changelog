@@ -1,9 +1,11 @@
-ubiquity (18.04.4) bionic; urgency=medium
+ubiquity (18.04.4) UNRELEASED; urgency=medium
 
   [ Mathieu Trudel-Lapierre ]
   * debian/control: have ubiquity-frontend-gtk Depends: explicitly on
     sensible-utils, which is used to start a browser when slideshow or
     release notes links are clicked. (LP: #1724224)
+  * Automatic update of included source packages: netcfg 1.142ubuntu6,
+    partman-efi 71ubuntu2, user-setup 1.63ubuntu5.
 
   [ Sebastien Bacher ]
   * gui/gtk/stepPrepare.ui: updated the non-free-software text to not
