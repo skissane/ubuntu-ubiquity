@@ -1,3 +1,11 @@
+ubiquity (18.04.6) UNRELEASED; urgency=medium
+
+  * Don't block plymouth-quit-wait on the ubiquity greeter; we want ttys to
+    be able to start in parallel for debuggability of ubiquity.  Blocking
+    plymouth-quit is sufficient to ensure ordering.
+
+ -- Steve Langasek <steve.langasek@ubuntu.com>  Thu, 05 Apr 2018 01:10:34 -0700
+
 ubiquity (18.04.5) bionic; urgency=medium
 
   [ Heber Parruci ]
