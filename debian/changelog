@@ -1,12 +1,12 @@
-ubiquity (18.04.6) UNRELEASED; urgency=medium
+ubiquity (18.04.5) UNRELEASED; urgency=medium
 
+  [ Steve Langasek ]
   * Don't block plymouth-quit-wait on the ubiquity greeter; we want ttys to
     be able to start in parallel for debuggability of ubiquity.  Blocking
     plymouth-quit is sufficient to ensure ordering.
-
- -- Steve Langasek <steve.langasek@ubuntu.com>  Thu, 05 Apr 2018 01:10:34 -0700
-
-ubiquity (18.04.5) bionic; urgency=medium
+  * scripts/start-ubiquity-dm: start on vt1 now instead of vt7, consistent
+    with grub, plymouth, and gdm in 18.04.  Tested on Ubuntu Desktop with
+    both "Try" and "Install" options. (LP: #1632151)
 
   [ Heber Parruci ]
   * autopilot: Update tests to match new UI for Updates and software page.
