@@ -15,6 +15,10 @@ ubiquity (18.04.5) UNRELEASED; urgency=medium
   * debian/control: Drop gir1.2-appindicator3-0.1. A11y support
     is not using AppIndicator anymore (LP: #1760701)
 
+  [ Mathieu Trudel-Lapierre ]
+  * Automatic update of included source packages: partman-crypto
+    86ubuntu2, partman-lvm 123.
+
  -- Jean-Baptiste Lallement <jean-baptiste.lallement@ubuntu.com>  Wed, 04 Apr 2018 08:34:23 +0200
 
 ubiquity (18.04.4) bionic; urgency=medium
