@@ -1,4 +1,4 @@
-ubiquity (18.04.5) UNRELEASED; urgency=medium
+ubiquity (18.04.5) bionic; urgency=medium
 
   [ Steve Langasek ]
   * Don't block plymouth-quit-wait on the ubiquity greeter; we want ttys to
@@ -19,7 +19,7 @@ ubiquity (18.04.5) UNRELEASED; urgency=medium
   * Automatic update of included source packages: partman-crypto
     86ubuntu2, partman-lvm 123.
 
- -- Jean-Baptiste Lallement <jean-baptiste.lallement@ubuntu.com>  Wed, 04 Apr 2018 08:34:23 +0200
+ -- Mathieu Trudel-Lapierre <cyphermox@ubuntu.com>  Tue, 10 Apr 2018 11:17:42 -0400
 
 ubiquity (18.04.4) bionic; urgency=medium
 
