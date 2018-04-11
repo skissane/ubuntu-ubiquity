@@ -1,3 +1,11 @@
+ubiquity (18.04.6) UNRELEASED; urgency=medium
+
+  * If we are running ubiquity-dm on VT1, we must conflict with
+    getty@getty1.service and not rely on some other display manager to do
+    this for us.
+
+ -- Steve Langasek <steve.langasek@ubuntu.com>  Tue, 10 Apr 2018 17:14:29 -0700
+
 ubiquity (18.04.5) bionic; urgency=medium
 
   [ Steve Langasek ]
