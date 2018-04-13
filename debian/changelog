@@ -12,6 +12,9 @@ ubiquity (18.04.6) UNRELEASED; urgency=medium
   [ litianzhi ]
   * Fix untranslated "This software is subject to license" (LP: #1762097)
 
+  [ Mathieu Trudel-Lapierre ]
+  * debian/real-po/, po/: Translations import from Launchpad.
+
  -- Steve Langasek <steve.langasek@ubuntu.com>  Tue, 10 Apr 2018 17:14:29 -0700
 
 ubiquity (18.04.5) bionic; urgency=medium
