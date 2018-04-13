@@ -1493,14 +1493,10 @@ msgstr "此软件及其文档遵循许可条款。其中一些系专有的。"
 #. Type: text
 #. Description
 #: ../ubiquity.templates:228001
-#, fuzzy
-#| msgid ""
-#| "Install third-party software for graphics and Wi-Fi hardware, Flash, MP3 "
-#| "and other media"
 msgid ""
 "Install third-party software for graphics and Wi-Fi hardware and additional "
 "media formats"
-msgstr "为图形或无线硬件，以及MP3和其它媒体安装第三方软件"
+msgstr "为图形或无线硬件，以及其它媒体格式安装第三方软件"
 
 #. Type: text
 #. Description

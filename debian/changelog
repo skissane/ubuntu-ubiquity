@@ -9,6 +9,9 @@ ubiquity (18.04.6) UNRELEASED; urgency=medium
   * Drop the option to upgrade from an old release using ubiquity as it is
     crashing and leaves users in a broken state. (LP: #1756862)
 
+  [ litianzhi ]
+  * Fix untranslated "This software is subject to license" (LP: #1762097)
+
  -- Steve Langasek <steve.langasek@ubuntu.com>  Tue, 10 Apr 2018 17:14:29 -0700
 
 ubiquity (18.04.5) bionic; urgency=medium

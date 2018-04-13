@@ -1161,7 +1161,7 @@ _Description: is connected to the Internet
 Template: ubiquity/text/prepare_foss_disclaimer
 Type: text
 _Description:
- This software is subject to license terms included with its documentation. Some is proprietary. 
+ This software is subject to license terms included with its documentation. Some is proprietary.
 
 Template: ubiquity/text/prepare_nonfree_software
 Type: text
