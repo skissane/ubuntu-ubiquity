@@ -1,4 +1,4 @@
-ubiquity (18.04.6) UNRELEASED; urgency=medium
+ubiquity (18.04.6) bionic; urgency=medium
 
   [ Steve Langasek ]
   * If we are running ubiquity-dm on VT1, we must conflict with
@@ -15,7 +15,7 @@ ubiquity (18.04.6) UNRELEASED; urgency=medium
   [ Mathieu Trudel-Lapierre ]
   * debian/real-po/, po/: Translations import from Launchpad.
 
- -- Steve Langasek <steve.langasek@ubuntu.com>  Tue, 10 Apr 2018 17:14:29 -0700
+ -- Mathieu Trudel-Lapierre <cyphermox@ubuntu.com>  Fri, 13 Apr 2018 15:56:53 -0400
 
 ubiquity (18.04.5) bionic; urgency=medium
 
