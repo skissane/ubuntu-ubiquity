@@ -1,3 +1,10 @@
+ubiquity (18.04.7) bionic; urgency=medium
+
+  * The correct service name to conflict with is getty@tty1.service, not
+    getty@getty1.service.  LP: #1763739.
+
+ -- Steve Langasek <steve.langasek@ubuntu.com>  Wed, 18 Apr 2018 18:09:53 -0700
+
 ubiquity (18.04.6) bionic; urgency=medium
 
   [ Steve Langasek ]
