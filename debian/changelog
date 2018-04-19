@@ -1,4 +1,4 @@
-ubiquity (18.04.7ubuntu1) UNRELEASED; urgency=medium
+ubiquity (18.04.8) UNRELEASED; urgency=medium
 
   * Automatic update of included source packages: console-setup
     1.178ubuntu2.
