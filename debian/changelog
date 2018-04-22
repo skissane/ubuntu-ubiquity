@@ -1,3 +1,13 @@
+ubiquity (18.04.10) bionic; urgency=medium
+
+  * Following the lead of the GTK frontend, remove the encrypted home
+    directory option from the Qt installer since ecryptfs no longer has
+    support from the Ubuntu Security Team. This removes the frontend but keeps
+    the codebase for the option so it can be added back later using another
+    technology.
+
+ -- Simon Quigley <tsimonq2@ubuntu.com>  Sat, 21 Apr 2018 21:15:49 -0500
+
 ubiquity (18.04.9) bionic; urgency=medium
 
   * Detect the proper name for zram in /proc/swaps (LP: #1763611).
