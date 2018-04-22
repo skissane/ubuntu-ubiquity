@@ -4,7 +4,7 @@ ubiquity (18.04.10) bionic; urgency=medium
     directory option from the Qt installer since ecryptfs no longer has
     support from the Ubuntu Security Team. This removes the frontend but keeps
     the codebase for the option so it can be added back later using another
-    technology.
+    technology (LP: #1761396).
 
  -- Simon Quigley <tsimonq2@ubuntu.com>  Sat, 21 Apr 2018 21:15:49 -0500
 
