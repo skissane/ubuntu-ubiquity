@@ -3,6 +3,9 @@ ubiquity (18.04.10ubuntu1) UNRELEASED; urgency=medium
   [ Didier Roche ]
   * Record OEM installation mode in telemetry data. (LP: #1765693)
 
+  [ Iain Lane ]
+  * misc.py: Fall back to SUDO_UID if PKEXEC_UID is not set.
+
  -- Iain Lane <iain.lane@canonical.com>  Mon, 23 Apr 2018 17:42:27 +0100
 
 ubiquity (18.04.10) bionic; urgency=medium
