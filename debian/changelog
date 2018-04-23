@@ -5,6 +5,8 @@ ubiquity (18.04.10ubuntu1) UNRELEASED; urgency=medium
 
   [ Iain Lane ]
   * misc.py: Fall back to SUDO_UID if PKEXEC_UID is not set.
+  * ubiquity.desktop.in, misc.py: Pass through the ubuntu user's D-Bus session
+    bus, if set, so that we can communicate with it.
 
  -- Iain Lane <iain.lane@canonical.com>  Mon, 23 Apr 2018 17:42:27 +0100
 
