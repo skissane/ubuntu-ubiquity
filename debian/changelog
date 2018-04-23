@@ -1,4 +1,4 @@
-ubiquity (18.04.10) UNRELEASED; urgency=medium
+ubiquity (18.04.10) bionic; urgency=medium
 
   [ Colin Watson ]
   * Update translations from Launchpad.
@@ -17,7 +17,7 @@ ubiquity (18.04.10) UNRELEASED; urgency=medium
   [ Jean-Baptiste Lallement ]
   * Do not start gnome-initial-setup for the OEM user (LP: #1765651)
 
- -- Colin Watson <cjwatson@ubuntu.com>  Sun, 22 Apr 2018 11:20:16 +0100
+ -- Adam Conrad <adconrad@ubuntu.com>  Mon, 23 Apr 2018 04:59:24 -0600
 
 ubiquity (18.04.9) bionic; urgency=medium
 
