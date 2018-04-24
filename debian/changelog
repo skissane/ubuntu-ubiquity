@@ -1,4 +1,4 @@
-ubiquity (18.04.11) UNRELEASED; urgency=medium
+ubiquity (18.04.11) bionic; urgency=medium
 
   [ Sebastien Bacher]
   * Don't deactivate the screen-reader desktop keybinding, that was needed
@@ -16,7 +16,7 @@ ubiquity (18.04.11) UNRELEASED; urgency=medium
   * data/ubiquity.json: The separate greeter universal icon has been removed
     and the gnome-shell mode updated accordingly.
 
- -- Iain Lane <iain.lane@canonical.com>  Mon, 23 Apr 2018 17:42:27 +0100
+ -- Iain Lane <iain.lane@canonical.com>  Tue, 24 Apr 2018 16:29:35 +0100
 
 ubiquity (18.04.10) bionic; urgency=medium
 
