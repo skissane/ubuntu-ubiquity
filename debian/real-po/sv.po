@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: debian-installer\n"
 "Report-Msgid-Bugs-To: ubiquity@packages.debian.org\n"
 "POT-Creation-Date: 2018-03-28 08:52-0400\n"
-"PO-Revision-Date: 2017-09-29 16:32+0000\n"
-"Last-Translator: Launchpad Translations Administrators <Unknown>\n"
+"PO-Revision-Date: 2018-04-12 01:25+0000\n"
+"Last-Translator: Anders Pamdal <anders@pamdal.se>\n"
 "Language-Team: Swedish <debian-l10n-swedish@lists.debian.org>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2017-10-11 15:08+0000\n"
-"X-Generator: Launchpad (build 18474)\n"
+"X-Launchpad-Export-Date: 2018-04-22 09:52+0000\n"
+"X-Generator: Launchpad (build 18617)\n"
 
 #. Type: text
 #. Description
@@ -1243,10 +1243,8 @@ msgstr "Trådlös"
 #. Type: text
 #. Description
 #: ../ubiquity.templates:179001
-#, fuzzy
-#| msgid "Software selection"
 msgid "Software"
-msgstr "Programval"
+msgstr ""
 
 #. Type: text
 #. Description
@@ -1550,16 +1548,10 @@ msgstr ""
 #. Type: text
 #. Description
 #: ../ubiquity.templates:228001
-#, fuzzy
-#| msgid ""
-#| "Install third-party software for graphics and Wi-Fi hardware, Flash, MP3 "
-#| "and other media"
 msgid ""
 "Install third-party software for graphics and Wi-Fi hardware and additional "
 "media formats"
 msgstr ""
-"Installera mjukvara från tredjepart för grafik och Wi-Fi-hårdvara, Flash, "
-"MP3 och andra medier"
 
 #. Type: text
 #. Description
@@ -1582,26 +1574,20 @@ msgstr "Inte tillgängligt för att det finns ingen internetanslutning."
 #. Type: text
 #. Description
 #: ../ubiquity.templates:232001
-#, fuzzy
-#| msgid "Where would you like to install Kubuntu?"
 msgid "What apps would you like to install to start with?"
-msgstr "Var vill du installera Kubuntu?"
+msgstr ""
 
 #. Type: text
 #. Description
 #: ../ubiquity.templates:233001
-#, fuzzy
-#| msgid "Where would you like to install Kubuntu?"
 msgid "Which applications would you like to start with?"
-msgstr "Var vill du installera Kubuntu?"
+msgstr ""
 
 #. Type: text
 #. Description
 #: ../ubiquity.templates:234001
-#, fuzzy
-#| msgid "Cancel the installation."
 msgid "Minimal installation"
-msgstr "Avbryt installationen."
+msgstr "Minimal installation"
 
 #. Type: text
 #. Description
@@ -1618,10 +1604,8 @@ msgstr ""
 #. Type: text
 #. Description
 #: ../ubiquity.templates:237001
-#, fuzzy
-#| msgid "Cancel the installation."
 msgid "Normal installation"
-msgstr "Avbryt installationen."
+msgstr ""
 
 #. Type: text
 #. Description
@@ -2198,16 +2182,3 @@ msgstr ""
 #: ../oem-config.templates:2001
 msgid "Removing packages"
 msgstr "Tar bort paket"
-
-#~ msgid "Prepare"
-#~ msgstr "Förbered"
-
-#~ msgid "Preparing to install ${RELEASE}"
-#~ msgstr "Förbereder installation av ${RELEASE}"
-
-#~ msgid ""
-#~ "Fluendo MP3 plugin includes MPEG Layer-3 audio decoding technology "
-#~ "licensed from Fraunhofer IIS and Technicolor SA."
-#~ msgstr ""
-#~ "Insticksmodulen Fluendo MP3 inkluderar ljudavkodningsteknik för MPEG "
-#~ "Layer-3 licensierad från Fraunhofer IIS och Technicolor SA."

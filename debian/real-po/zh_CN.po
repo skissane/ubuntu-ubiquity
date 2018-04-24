@@ -9,15 +9,15 @@ msgstr ""
 "Project-Id-Version: debian-installer\n"
 "Report-Msgid-Bugs-To: ubiquity@packages.debian.org\n"
 "POT-Creation-Date: 2018-03-28 08:52-0400\n"
-"PO-Revision-Date: 2016-09-02 01:10+0000\n"
-"Last-Translator: 朱涛 <bill_zt@sina.com>\n"
+"PO-Revision-Date: 2018-04-15 11:56+0000\n"
+"Last-Translator: Launchpad Translations Administrators <Unknown>\n"
 "Language-Team: Chinese (simplified) <i18n-zh@googlegroups.com>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2017-10-11 15:08+0000\n"
-"X-Generator: Launchpad (build 18474)\n"
+"X-Launchpad-Export-Date: 2018-04-22 09:53+0000\n"
+"X-Generator: Launchpad (build 18617)\n"
 
 #. Type: text
 #. Description
@@ -1203,10 +1203,8 @@ msgstr "无线"
 #. Type: text
 #. Description
 #: ../ubiquity.templates:179001
-#, fuzzy
-#| msgid "Software selection"
 msgid "Software"
-msgstr "软件选择"
+msgstr "软件"
 
 #. Type: text
 #. Description
@@ -1344,7 +1342,7 @@ msgstr "安装程序遇到了一个不可修复的错误，现在将会重新启
 #. Description
 #: ../ubiquity.templates:201001
 msgid "Updates and other software"
-msgstr ""
+msgstr "更新和其他软件"
 
 #. Type: text
 #. Description
@@ -1493,14 +1491,10 @@ msgstr "此软件及其文档遵循许可条款。其中一些系专有的。"
 #. Type: text
 #. Description
 #: ../ubiquity.templates:228001
-#, fuzzy
-#| msgid ""
-#| "Install third-party software for graphics and Wi-Fi hardware, Flash, MP3 "
-#| "and other media"
 msgid ""
 "Install third-party software for graphics and Wi-Fi hardware and additional "
 "media formats"
-msgstr "为图形或无线硬件，以及MP3和其它媒体安装第三方软件"
+msgstr "为图形或无线硬件，以及其它媒体格式安装第三方软件"
 
 #. Type: text
 #. Description
@@ -1523,52 +1517,44 @@ msgstr "因无网络连接而不可用。"
 #. Type: text
 #. Description
 #: ../ubiquity.templates:232001
-#, fuzzy
-#| msgid "Where would you like to install Kubuntu?"
 msgid "What apps would you like to install to start with?"
-msgstr "您要把 Kubuntu 安装在哪？"
+msgstr "您希望先安装哪些应用？"
 
 #. Type: text
 #. Description
 #: ../ubiquity.templates:233001
-#, fuzzy
-#| msgid "Where would you like to install Kubuntu?"
 msgid "Which applications would you like to start with?"
-msgstr "您要把 Kubuntu 安装在哪？"
+msgstr "您希望先安装那个应用？"
 
 #. Type: text
 #. Description
 #: ../ubiquity.templates:234001
-#, fuzzy
-#| msgid "Cancel the installation."
 msgid "Minimal installation"
-msgstr "取消安装。"
+msgstr "最小安装"
 
 #. Type: text
 #. Description
 #: ../ubiquity.templates:235001
 msgid "Web browser and basic utilities."
-msgstr ""
+msgstr "网络浏览器和基本工具"
 
 #. Type: text
 #. Description
 #: ../ubiquity.templates:236001
 msgid "Web browser plus basic utilities and applications."
-msgstr ""
+msgstr "网络浏览器和基本的工具应用程序"
 
 #. Type: text
 #. Description
 #: ../ubiquity.templates:237001
-#, fuzzy
-#| msgid "Cancel the installation."
 msgid "Normal installation"
-msgstr "取消安装。"
+msgstr "正常安装"
 
 #. Type: text
 #. Description
 #: ../ubiquity.templates:238001
 msgid "Web browser, utilities, office software, games, and media players."
-msgstr ""
+msgstr "网络浏览器、工具、办公软件、游戏和媒体播放器。"
 
 #. Type: text
 #. Description
@@ -1577,12 +1563,13 @@ msgid ""
 "Web browser, utilities, office software, KDE PIM suite plus additional "
 "internet applications and media players."
 msgstr ""
+"网络浏览器、工具、办公软件、KDE PIM套件、额外的互联网应用和媒体播放器。"
 
 #. Type: text
 #. Description
 #: ../ubiquity.templates:240001
 msgid "Other options"
-msgstr ""
+msgstr "其他选项"
 
 #. Type: text
 #. Description
@@ -2105,16 +2092,3 @@ msgstr ""
 #: ../oem-config.templates:2001
 msgid "Removing packages"
 msgstr "正在删除软件包"
-
-#~ msgid "Prepare"
-#~ msgstr "准备"
-
-#~ msgid "Preparing to install ${RELEASE}"
-#~ msgstr "准备安装 ${RELEASE}"
-
-#~ msgid ""
-#~ "Fluendo MP3 plugin includes MPEG Layer-3 audio decoding technology "
-#~ "licensed from Fraunhofer IIS and Technicolor SA."
-#~ msgstr ""
-#~ "Fluendo MP3 插件包含 Fraunhofer IIS 和 Technicolor SA 授权的 MPEG Layer-3 "
-#~ "音频解码技术。"

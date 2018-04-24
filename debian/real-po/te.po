@@ -17,8 +17,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2017-10-11 15:08+0000\n"
-"X-Generator: Launchpad (build 18474)\n"
+"X-Launchpad-Export-Date: 2018-04-22 09:52+0000\n"
+"X-Generator: Launchpad (build 18617)\n"
 
 #. Type: text
 #. Description
@@ -1209,10 +1209,8 @@ msgstr "వైరులేని"
 #. Type: text
 #. Description
 #: ../ubiquity.templates:179001
-#, fuzzy
-#| msgid "Software selection"
 msgid "Software"
-msgstr "సాఫ్ట్‍వేర్ ఎంపిక"
+msgstr ""
 
 #. Type: text
 #. Description
@@ -1544,10 +1542,8 @@ msgstr ""
 #. Type: text
 #. Description
 #: ../ubiquity.templates:234001
-#, fuzzy
-#| msgid "Cancel the installation."
 msgid "Minimal installation"
-msgstr "స్థాపన ప్రక్రియను రద్దుచేయి."
+msgstr ""
 
 #. Type: text
 #. Description
@@ -1564,10 +1560,8 @@ msgstr ""
 #. Type: text
 #. Description
 #: ../ubiquity.templates:237001
-#, fuzzy
-#| msgid "Cancel the installation."
 msgid "Normal installation"
-msgstr "స్థాపన ప్రక్రియను రద్దుచేయి."
+msgstr ""
 
 #. Type: text
 #. Description
@@ -2107,16 +2101,3 @@ msgstr ""
 #: ../oem-config.templates:2001
 msgid "Removing packages"
 msgstr "ప్యాకేజీలు తొలగించబడుతున్నాయి"
-
-#~ msgid "Prepare"
-#~ msgstr "సిద్ధపరుచు"
-
-#~ msgid "Preparing to install ${RELEASE}"
-#~ msgstr "${RELEASE} ని స్థాపించుటకు సిద్ధపడుతోంది"
-
-#~ msgid ""
-#~ "Fluendo MP3 plugin includes MPEG Layer-3 audio decoding technology "
-#~ "licensed from Fraunhofer IIS and Technicolor SA."
-#~ msgstr ""
-#~ "ఫ్లుయెండో ఎంపీ3 చొప్పింత ఎంపెగ్ లేయర్-3 తో కూడిన ఆడియో డీకోడింగు సాంకేతికత ఫ్రాన్‌హోఫర్ IIS మరియు "
-#~ "టెక్నికలర్ SA నుండి లైసెన్సు చేయబడింది."

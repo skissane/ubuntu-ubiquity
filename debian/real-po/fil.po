@@ -15,8 +15,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2017-10-11 15:08+0000\n"
-"X-Generator: Launchpad (build 18474)\n"
+"X-Launchpad-Export-Date: 2018-04-22 09:53+0000\n"
+"X-Generator: Launchpad (build 18617)\n"
 
 #. Type: text
 #. Description
@@ -1231,10 +1231,8 @@ msgstr "Wireless"
 #. Type: text
 #. Description
 #: ../ubiquity.templates:179001
-#, fuzzy
-#| msgid "Software selection"
 msgid "Software"
-msgstr "Pagpili ng mga Programa"
+msgstr ""
 
 #. Type: text
 #. Description
@@ -1573,10 +1571,8 @@ msgstr ""
 #. Type: text
 #. Description
 #: ../ubiquity.templates:234001
-#, fuzzy
-#| msgid "Cancel the installation."
 msgid "Minimal installation"
-msgstr "Ikansel ang pag-install."
+msgstr ""
 
 #. Type: text
 #. Description
@@ -1593,10 +1589,8 @@ msgstr ""
 #. Type: text
 #. Description
 #: ../ubiquity.templates:237001
-#, fuzzy
-#| msgid "Cancel the installation."
 msgid "Normal installation"
-msgstr "Ikansel ang pag-install."
+msgstr ""
 
 #. Type: text
 #. Description
@@ -2149,9 +2143,3 @@ msgstr ""
 #: ../oem-config.templates:2001
 msgid "Removing packages"
 msgstr "Nagtatanggal ng mga pakete"
-
-#~ msgid "Prepare"
-#~ msgstr "Maghanda"
-
-#~ msgid "Preparing to install ${RELEASE}"
-#~ msgstr "Naghahandang i-install ang ${RELEASE}"

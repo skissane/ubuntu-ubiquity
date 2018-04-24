@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: debian-installer\n"
 "Report-Msgid-Bugs-To: ubiquity@packages.debian.org\n"
 "POT-Creation-Date: 2018-03-28 08:52-0400\n"
-"PO-Revision-Date: 2017-09-29 16:23+0000\n"
-"Last-Translator: night1ynx <night1ynxd@gmail.com>\n"
+"PO-Revision-Date: 2018-04-15 06:59+0000\n"
+"Last-Translator: Ikuya Awashiro <ikuya@fruitsbasket.info>\n"
 "Language-Team: Debian L10n Japanese <debian-l10n-japanese@lists.debian.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2017-10-11 15:09+0000\n"
-"X-Generator: Launchpad (build 18474)\n"
+"X-Launchpad-Export-Date: 2018-04-22 09:52+0000\n"
+"X-Generator: Launchpad (build 18617)\n"
 
 #. Type: text
 #. Description
@@ -1239,10 +1239,8 @@ msgstr "無線"
 #. Type: text
 #. Description
 #: ../ubiquity.templates:179001
-#, fuzzy
-#| msgid "Software selection"
 msgid "Software"
-msgstr "ソフトウェアセレクション"
+msgstr "ソフトウェア"
 
 #. Type: text
 #. Description
@@ -1384,7 +1382,7 @@ msgstr "インストーラーに回復不能なエラーが発生しました。
 #. Description
 #: ../ubiquity.templates:201001
 msgid "Updates and other software"
-msgstr ""
+msgstr "アップデートと他のソフトウェア"
 
 #. Type: text
 #. Description
@@ -1541,16 +1539,12 @@ msgstr ""
 #. Type: text
 #. Description
 #: ../ubiquity.templates:228001
-#, fuzzy
-#| msgid ""
-#| "Install third-party software for graphics and Wi-Fi hardware, Flash, MP3 "
-#| "and other media"
 msgid ""
 "Install third-party software for graphics and Wi-Fi hardware and additional "
 "media formats"
 msgstr ""
-"グラフィックス、Wi-Fi 機器、Flash、MP3 やその他のメディアに必要なサードパー"
-"ティーソフトウェアをインストールする"
+"グラフィックスとWi-Fiハードウェアと追加のメディアフォーマットのサードパーティ"
+"製ソフトウェアをインストールする"
 
 #. Type: text
 #. Description
@@ -1573,52 +1567,46 @@ msgstr "インターネットに接続されていないため利用できませ
 #. Type: text
 #. Description
 #: ../ubiquity.templates:232001
-#, fuzzy
-#| msgid "Where would you like to install Kubuntu?"
 msgid "What apps would you like to install to start with?"
-msgstr "Kubuntuをどこにインストールしますか?"
+msgstr "あらかじめどのアプリケーションをインストールしますか？"
 
 #. Type: text
 #. Description
 #: ../ubiquity.templates:233001
-#, fuzzy
-#| msgid "Where would you like to install Kubuntu?"
 msgid "Which applications would you like to start with?"
-msgstr "Kubuntuをどこにインストールしますか?"
+msgstr "あらかじめどちらのアプリケーションを選択しますか？"
 
 #. Type: text
 #. Description
 #: ../ubiquity.templates:234001
-#, fuzzy
-#| msgid "Cancel the installation."
 msgid "Minimal installation"
-msgstr "インストールをキャンセルします。"
+msgstr "最小インストール"
 
 #. Type: text
 #. Description
 #: ../ubiquity.templates:235001
 msgid "Web browser and basic utilities."
-msgstr ""
+msgstr "ウェブブラウザーと基本的なユーティリティ"
 
 #. Type: text
 #. Description
 #: ../ubiquity.templates:236001
 msgid "Web browser plus basic utilities and applications."
-msgstr ""
+msgstr "ウェブブラウザーに基本的なユーティリティとアプリケーション"
 
 #. Type: text
 #. Description
 #: ../ubiquity.templates:237001
-#, fuzzy
-#| msgid "Cancel the installation."
 msgid "Normal installation"
-msgstr "インストールをキャンセルします。"
+msgstr "通常のインストール"
 
 #. Type: text
 #. Description
 #: ../ubiquity.templates:238001
 msgid "Web browser, utilities, office software, games, and media players."
 msgstr ""
+"ウェブブラウザー、ユーティリティ、オフィスソフトウェア、ゲームにメディアプレ"
+"イヤー"
 
 #. Type: text
 #. Description
@@ -1627,12 +1615,14 @@ msgid ""
 "Web browser, utilities, office software, KDE PIM suite plus additional "
 "internet applications and media players."
 msgstr ""
+"ウェブブラウザー、ユーティリティ、オフィスソフトウェア、KDE PIMスイートに追加"
+"のインターネットアプリケーションとメディアプレイヤー"
 
 #. Type: text
 #. Description
 #: ../ubiquity.templates:240001
 msgid "Other options"
-msgstr ""
+msgstr "その他のオプション"
 
 #. Type: text
 #. Description
@@ -1641,7 +1631,7 @@ msgid ""
 "Installing third-party drivers requires turning off Secure Boot. To do this, "
 "you need to choose a security key now, and enter it when the system restarts."
 msgstr ""
-"サード―パーティーのドライバーをインストールするにはセキュアブートを無効にする"
+"サードパーティーのドライバーをインストールするにはセキュアブートを無効にする"
 "必要があります。これにより、ここでセキュリティキーを選び、システムが再起動す"
 "る際はそれを入力する必要があります。"
 
@@ -2184,16 +2174,3 @@ msgstr ""
 #: ../oem-config.templates:2001
 msgid "Removing packages"
 msgstr "パッケージを削除しています"
-
-#~ msgid "Prepare"
-#~ msgstr "準備"
-
-#~ msgid "Preparing to install ${RELEASE}"
-#~ msgstr "${RELEASE} のインストール準備"
-
-#~ msgid ""
-#~ "Fluendo MP3 plugin includes MPEG Layer-3 audio decoding technology "
-#~ "licensed from Fraunhofer IIS and Technicolor SA."
-#~ msgstr ""
-#~ "Fluendo MP3 プラグインには、Fraunhofer IIS and Technicolor SAからライセン"
-#~ "スされたMPEG Layer-3 音声デコード技術が含まれています。"

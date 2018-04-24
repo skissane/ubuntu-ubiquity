@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: debian-installer\n"
 "Report-Msgid-Bugs-To: ubiquity@packages.debian.org\n"
 "POT-Creation-Date: 2018-03-28 08:52-0400\n"
-"PO-Revision-Date: 2016-09-02 01:10+0000\n"
-"Last-Translator: Kim Boram <boramism@gmail.com>\n"
+"PO-Revision-Date: 2018-03-31 13:11+0000\n"
+"Last-Translator: minwook shin <Unknown>\n"
 "Language-Team: Korean <debian-l10n-korean@lists.debian.org>\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2017-10-11 15:09+0000\n"
-"X-Generator: Launchpad (build 18474)\n"
+"X-Launchpad-Export-Date: 2018-04-22 09:52+0000\n"
+"X-Generator: Launchpad (build 18617)\n"
 
 #. Type: text
 #. Description
@@ -131,37 +131,37 @@ msgstr "<a href=\"update\">설치 프로그램 업데이트</a>를 할 수 있�
 #. Description
 #: ../ubiquity.templates:16001
 msgid "Where are you?"
-msgstr "어디에 살고 계신가요?"
+msgstr "어디에 거주하고 계십니까?"
 
 #. Type: text
 #. Description
 #: ../ubiquity.templates:17001
 msgid "Keyboard layout"
-msgstr "키보드 배치"
+msgstr "키보드 레이아웃"
 
 #. Type: text
 #. Description
 #: ../ubiquity.templates:18001
 msgid "Choose your keyboard layout:"
-msgstr "키보드 배치 선택:"
+msgstr "키보드 레이아웃 선택:"
 
 #. Type: text
 #. Description
 #: ../ubiquity.templates:19001
 msgid "Type here to test your keyboard"
-msgstr "선택한 키보드 배치를 확인하려면 이 곳을 사용하십시오."
+msgstr "키보드를 테스트해보려면 이 곳을 사용하십시오"
 
 #. Type: text
 #. Description
 #: ../ubiquity.templates:20001
 msgid "Detect Keyboard Layout"
-msgstr "키보드 배치 확인"
+msgstr "키보드 레이아웃 감지"
 
 #. Type: text
 #. Description
 #: ../ubiquity.templates:21001
 msgid "Detect Keyboard Layout..."
-msgstr "키보드 배치를 확인하고 있습니다..."
+msgstr "키보드 레이아웃을 감지하고 있습니다..."
 
 #. Type: text
 #. Description
@@ -354,7 +354,7 @@ msgstr "로그인할 때 암호 입력"
 #. Description
 #: ../ubiquity.templates:51001
 msgid "Encrypt my home folder"
-msgstr "개인 폴더 암호화"
+msgstr "홈 폴더 암호화"
 
 #. Type: text
 #. Description
@@ -373,7 +373,7 @@ msgstr "파일 (${SIZE})"
 #. Description
 #: ../ubiquity.templates:54001
 msgid "Where would you like to install Kubuntu?"
-msgstr "어느 곳에 쿠분투를 설치하시겠습니까?"
+msgstr "어느 곳에 Kubuntu를 설치하시겠습니까?"
 
 #. Type: text
 #. Description
@@ -393,13 +393,13 @@ msgstr "지금 설치(_I)"
 #. Description
 #: ../ubiquity.templates:57001
 msgid "Quit the installation?"
-msgstr "설치 프로그램을 끝내시겠습니까?"
+msgstr "설치 과정을 끝내시겠습니까?"
 
 #. Type: text
 #. Description
 #: ../ubiquity.templates:58001
 msgid "Do you really want to quit the installation now?"
-msgstr "설치 프로그램을 지금 끝내시겠습니까?"
+msgstr "설치 과정을 지금 끝내시겠습니까?"
 
 #. Type: text
 #. Description
@@ -476,7 +476,7 @@ msgstr "지금 다시 시작"
 #. Description
 #: ../ubiquity.templates:71001
 msgid "Shutdown Now"
-msgstr "지금 컴퓨터 끄기"
+msgstr "지금 컴퓨터 종료"
 
 #. Type: text
 #. Description
@@ -614,7 +614,7 @@ msgstr "크기"
 #. this partition is used by data.
 #: ../ubiquity.templates:91001
 msgid "Used"
-msgstr "사용함"
+msgstr "사용됨"
 
 #. Type: text
 #. Description
@@ -665,13 +665,13 @@ msgstr "이 공간이 끝나는 지점"
 #. Description
 #: ../ubiquity.templates:99001
 msgid "Primary"
-msgstr "주 파티션"
+msgstr "주"
 
 #. Type: text
 #. Description
 #: ../ubiquity.templates:100001
 msgid "Logical"
-msgstr "논리 파티션"
+msgstr "논리"
 
 #. Type: text
 #. Description
@@ -708,7 +708,7 @@ msgstr ""
 #. Translators, this text will appear on a button, so KEEP IT SHORT
 #: ../ubiquity.templates:105001
 msgid "Go Back"
-msgstr "뒤로 이동"
+msgstr "뒤로 가기"
 
 #. Type: text
 #. Description
@@ -718,21 +718,21 @@ msgstr "뒤로 이동"
 #. Translators, this text will appear on a button, so KEEP IT SHORT
 #: ../ubiquity.templates:106001 ../ubiquity.templates:109001
 msgid "Continue"
-msgstr "계속"
+msgstr "계속하기"
 
 #. Type: text
 #. Description
 #. Translators, this text will appear on a button, so KEEP IT SHORT
 #: ../ubiquity.templates:107001
 msgid "Connect"
-msgstr "연결"
+msgstr "연결하기"
 
 #. Type: text
 #. Description
 #. Translators, this text will appear on a button, so KEEP IT SHORT
 #: ../ubiquity.templates:108001
 msgid "Stop"
-msgstr "정지"
+msgstr "멈추기"
 
 #. Type: text
 #. Description
@@ -761,7 +761,7 @@ msgstr "설치 설정을 확인하고 있습니다..."
 #. Description
 #: ../ubiquity.templates:113001
 msgid "Installing system"
-msgstr "설치 중"
+msgstr "설치하는 중"
 
 #. Type: text
 #. Description
@@ -773,13 +773,13 @@ msgstr "복사할 배포판 찾는 중..."
 #. Description
 #: ../ubiquity.templates:116001
 msgid "Copying files..."
-msgstr "파일 복사 중..."
+msgstr "파일을 복사하는 중..."
 
 #. Type: text
 #. Description
 #: ../ubiquity.templates:117001
 msgid "Almost finished copying files..."
-msgstr "파일 복사가 거의 끝났습니다."
+msgstr "파일 복사가 거의 끝났습니다..."
 
 #. Type: error
 #. Description
@@ -1120,13 +1120,13 @@ msgstr "복사하지 않을 파일 계산 중 ..."
 #. Description
 #: ../ubiquity.templates:155001
 msgid "Installing language packs"
-msgstr "언어 패키지 설치 중"
+msgstr "언어 팩 설치 중"
 
 #. Type: text
 #. Description
 #: ../ubiquity.templates:156001
 msgid "Downloading language packs (${TIME} remaining)..."
-msgstr "언어 패키지 다운로드 중(${TIME} 남음)..."
+msgstr "언어 팩 다운로드 중 (${TIME} 남음)..."
 
 #. Type: boolean
 #. Description
@@ -1219,15 +1219,13 @@ msgstr "언어"
 #. Description
 #: ../ubiquity.templates:178001 ../ubiquity.templates:202001
 msgid "Wireless"
-msgstr "무선 연결"
+msgstr "무선 네트워크"
 
 #. Type: text
 #. Description
 #: ../ubiquity.templates:179001
-#, fuzzy
-#| msgid "Software selection"
 msgid "Software"
-msgstr "소프트웨어 선택"
+msgstr "소프트웨어"
 
 #. Type: text
 #. Description
@@ -1370,7 +1368,7 @@ msgstr ""
 #. Description
 #: ../ubiquity.templates:201001
 msgid "Updates and other software"
-msgstr ""
+msgstr "업데이트 및 기타 소프트웨어"
 
 #. Type: text
 #. Description
@@ -1418,7 +1416,7 @@ msgstr "드라이브 선택:"
 #. Description
 #: ../ubiquity.templates:213001
 msgid "Allocate drive space by dragging the divider below:"
-msgstr "아래 칸막이를 끌어 드라이브 공간을 확보해주십시오:"
+msgstr "아래 칸을 드래그하여 드라이브 공간을 확보해주십시오:"
 
 #. Type: text
 #. Description
@@ -1478,7 +1476,7 @@ msgstr "가장 큰 파티션 나누기"
 #. Description
 #: ../ubiquity.templates:221001
 msgid "For best results, please ensure that this computer:"
-msgstr "최적의 결과를 얻으려면 이 컴퓨터의 다음 항목을 확인하십시오:"
+msgstr "최적의 결과를 얻으려면, 이 컴퓨터의 다음 항목을 확인하십시오:"
 
 #. Type: text
 #. Description
@@ -1499,7 +1497,7 @@ msgstr "${RELEASE}을(를) 설치하려면 최소 ${SIZE}의 디스크 공간이
 #. SIZE is a variable substituted into this string, and may be '3.7 GB'
 #: ../ubiquity.templates:224001
 msgid "This computer has only ${SIZE}."
-msgstr "이 컴퓨터에서 ${SIZE} 뿐입니다."
+msgstr "이 컴퓨터에서는 ${SIZE}만 있습니다."
 
 #. Type: text
 #. Description
@@ -1520,20 +1518,18 @@ msgid ""
 "This software is subject to license terms included with its documentation. "
 "Some is proprietary."
 msgstr ""
-"이 소프트웨어는 문서에 포함된 라이선스 계약에 적용을 받습니다. 일부는 비 공"
-"개 프로그램입니다."
+"이 소프트웨어는 문서에 포함된 라이선스 조항을 적용받습니다. 일부는 독점적입니"
+"다."
 
 #. Type: text
 #. Description
 #: ../ubiquity.templates:228001
-#, fuzzy
-#| msgid ""
-#| "Install third-party software for graphics and Wi-Fi hardware, Flash, MP3 "
-#| "and other media"
 msgid ""
 "Install third-party software for graphics and Wi-Fi hardware and additional "
 "media formats"
-msgstr "그래픽과 와이파이 하드웨어, 플래시, MP3 등의 추가 소프트웨어를 설치"
+msgstr ""
+"그래픽과 Wi-Fi 하드웨어 그리고 추가 미디어 포맷을 위한 서드파티 소프트웨어 설"
+"치"
 
 #. Type: text
 #. Description
@@ -1556,52 +1552,44 @@ msgstr "인터넷에 연결되지 않아 사용할 수 없습니다."
 #. Type: text
 #. Description
 #: ../ubiquity.templates:232001
-#, fuzzy
-#| msgid "Where would you like to install Kubuntu?"
 msgid "What apps would you like to install to start with?"
-msgstr "어느 곳에 쿠분투를 설치하시겠습니까?"
+msgstr "어떤 앱을 처음부터 설치 하시겠습니까?"
 
 #. Type: text
 #. Description
 #: ../ubiquity.templates:233001
-#, fuzzy
-#| msgid "Where would you like to install Kubuntu?"
 msgid "Which applications would you like to start with?"
-msgstr "어느 곳에 쿠분투를 설치하시겠습니까?"
+msgstr "어떤 응용 프로그램을 시작하고 싶습니까?"
 
 #. Type: text
 #. Description
 #: ../ubiquity.templates:234001
-#, fuzzy
-#| msgid "Cancel the installation."
 msgid "Minimal installation"
-msgstr "설치 작업을 취소합니다."
+msgstr "최소 설치"
 
 #. Type: text
 #. Description
 #: ../ubiquity.templates:235001
 msgid "Web browser and basic utilities."
-msgstr ""
+msgstr "웹 브라우저 및 기본 유틸리티."
 
 #. Type: text
 #. Description
 #: ../ubiquity.templates:236001
 msgid "Web browser plus basic utilities and applications."
-msgstr ""
+msgstr "웹 브라우저 플러스 기본 유틸리티 및 응용 프로그램."
 
 #. Type: text
 #. Description
 #: ../ubiquity.templates:237001
-#, fuzzy
-#| msgid "Cancel the installation."
 msgid "Normal installation"
-msgstr "설치 작업을 취소합니다."
+msgstr "일반 설치"
 
 #. Type: text
 #. Description
 #: ../ubiquity.templates:238001
 msgid "Web browser, utilities, office software, games, and media players."
-msgstr ""
+msgstr "웹 브라우저, 유틸리티, 오피스  소프트웨어, 게임 및 미디어 플레이어."
 
 #. Type: text
 #. Description
@@ -1610,12 +1598,14 @@ msgid ""
 "Web browser, utilities, office software, KDE PIM suite plus additional "
 "internet applications and media players."
 msgstr ""
+"웹 브라우저, 유틸리티, 오피스 소프트웨어, KDE PIM 제품군, 추가 인터넷 응용 프"
+"로그램 및 미디어 플레이어."
 
 #. Type: text
 #. Description
 #: ../ubiquity.templates:240001
 msgid "Other options"
-msgstr ""
+msgstr "기타 설정"
 
 #. Type: text
 #. Description
@@ -1631,7 +1621,7 @@ msgstr ""
 #. Description
 #: ../ubiquity.templates:245001
 msgid "Layout:"
-msgstr "배치:"
+msgstr "레이아웃:"
 
 #. Type: text
 #. Description
@@ -1643,7 +1633,7 @@ msgstr "변종:"
 #. Description
 #: ../ubiquity.templates:247001
 msgid "Below is an image of your current layout:"
-msgstr "아래의 그림은 사용자의 현재 배치입니다."
+msgstr "아래의 이미지는 사용자의 현재 레이아웃입니다."
 
 #. Type: text
 #. Description
@@ -1680,7 +1670,7 @@ msgstr "[바꿀 내용을 입력하십시오]"
 #. DISTRO is a variable substituted into this string, and may be 'Ubuntu'
 #: ../ubiquity.templates:254001
 msgid "Replace ${OS} with ${DISTRO}"
-msgstr "${OS}을(를) ${DISTRO}(으)로 바꾸기"
+msgstr "${OS}을(를) ${DISTRO}(으)로 변경"
 
 #. Type: text
 #. Description
@@ -1906,7 +1896,7 @@ msgstr "이후:"
 #. Description
 #: ../ubiquity.templates:272001
 msgid "Encrypt the new ${RELEASE} installation for security"
-msgstr "설치한 새 ${RELEASE}을(를 ) 암호화하여 보안을 높임"
+msgstr "보안을 위해 설치한 새로운 ${RELEASE}를 암호화"
 
 #. Type: text
 #. Description
@@ -2160,16 +2150,3 @@ msgstr ""
 #: ../oem-config.templates:2001
 msgid "Removing packages"
 msgstr "패키지 제거 중"
-
-#~ msgid "Prepare"
-#~ msgstr "준비"
-
-#~ msgid "Preparing to install ${RELEASE}"
-#~ msgstr "${RELEASE} 설치 준비 중"
-
-#~ msgid ""
-#~ "Fluendo MP3 plugin includes MPEG Layer-3 audio decoding technology "
-#~ "licensed from Fraunhofer IIS and Technicolor SA."
-#~ msgstr ""
-#~ "Fluendo MP3 플러그인은 Fraunhofer IIS와 Technicolor SA로부터 인증 받은 "
-#~ "MPEG 레이어-3 기술을 사용합니다."

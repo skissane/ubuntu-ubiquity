@@ -769,7 +769,7 @@ class Install(install_misc.InstallBase):
                         continue
                     if not os.path.exists(words[0]):
                         continue
-                    if words[0].startswith('/dev/ramzswap'):
+                    if words[0].startswith('/dev/zram'):
                         continue
                     size = int(words[2])
                     if size > biggest_size:
@@ -1224,6 +1224,16 @@ class Install(install_misc.InstallBase):
                                 '/home/oem/Desktop/%s' % desktop_base,
                                 'metadata::trusted', 'true')
                             break
+
+                    # Disable gnome-initial-setup for the OEM user
+                    install_misc.chrex(
+                        self.target, 'install', '-d',
+                        '-o', 'oem', '-g', 'oem',
+                        '/home/oem/.config')
+                    install_misc.chrex(
+                        self.target,
+                        'sudo', '-i', '-u', 'oem',
+                        'touch', '/home/oem/.config/gnome-initial-setup-done')
 
                 # Carry the locale setting over to the installed system.
                 # This mimics the behavior in 01oem-config-udeb.

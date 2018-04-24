@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: debian-installer\n"
 "Report-Msgid-Bugs-To: ubiquity@packages.debian.org\n"
 "POT-Creation-Date: 2018-03-28 08:52-0400\n"
-"PO-Revision-Date: 2017-09-29 16:05+0000\n"
+"PO-Revision-Date: 2018-04-17 11:32+0000\n"
 "Last-Translator: Vilson Gjeci <vilsongjeci@gmail.com>\n"
 "Language-Team: Debian L10n Albanian <debian-l10n-albanian@lists.debian.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2017-10-11 15:09+0000\n"
-"X-Generator: Launchpad (build 18474)\n"
+"X-Launchpad-Export-Date: 2018-04-22 09:53+0000\n"
+"X-Generator: Launchpad (build 18617)\n"
 
 #. Type: text
 #. Description
@@ -1240,10 +1240,8 @@ msgstr "Wireless (pa fije)"
 #. Type: text
 #. Description
 #: ../ubiquity.templates:179001
-#, fuzzy
-#| msgid "Software selection"
 msgid "Software"
-msgstr "Përzgjedhja e programeve"
+msgstr "Programe"
 
 #. Type: text
 #. Description
@@ -1390,7 +1388,7 @@ msgstr ""
 #. Description
 #: ../ubiquity.templates:201001
 msgid "Updates and other software"
-msgstr ""
+msgstr "Përditësime dhe programe të tjera"
 
 #. Type: text
 #. Description
@@ -1549,16 +1547,12 @@ msgstr ""
 #. Type: text
 #. Description
 #: ../ubiquity.templates:228001
-#, fuzzy
-#| msgid ""
-#| "Install third-party software for graphics and Wi-Fi hardware, Flash, MP3 "
-#| "and other media"
 msgid ""
 "Install third-party software for graphics and Wi-Fi hardware and additional "
 "media formats"
 msgstr ""
-"Instaloni programe të palëve të treta për harduer të Wi-Fi, Flash, MP3 dhe "
-"media të tjera"
+"Instalo programe të palëve të treta për hardware të grafikëve dhe Wi-Fi dhe "
+"formate shtesë për media"
 
 #. Type: text
 #. Description
@@ -1581,52 +1575,46 @@ msgstr "Nuk është e disponueshme sepse nuk ka lidhje me internetin."
 #. Type: text
 #. Description
 #: ../ubiquity.templates:232001
-#, fuzzy
-#| msgid "Where would you like to install Kubuntu?"
 msgid "What apps would you like to install to start with?"
-msgstr "Ku do të donit ta instalonit Kubuntu?"
+msgstr "Cilat programe dëshiron të instalosh si fillim?"
 
 #. Type: text
 #. Description
 #: ../ubiquity.templates:233001
-#, fuzzy
-#| msgid "Where would you like to install Kubuntu?"
 msgid "Which applications would you like to start with?"
-msgstr "Ku do të donit ta instalonit Kubuntu?"
+msgstr "Me cilat programe dëshiron të fillosh?"
 
 #. Type: text
 #. Description
 #: ../ubiquity.templates:234001
-#, fuzzy
-#| msgid "Cancel the installation."
 msgid "Minimal installation"
-msgstr "Anullo instalimin."
+msgstr "Instalim minimal"
 
 #. Type: text
 #. Description
 #: ../ubiquity.templates:235001
 msgid "Web browser and basic utilities."
-msgstr ""
+msgstr "Shfletues interneti dhe mjete bazë."
 
 #. Type: text
 #. Description
 #: ../ubiquity.templates:236001
 msgid "Web browser plus basic utilities and applications."
-msgstr ""
+msgstr "Shfletues interneti dhe mjete bazë si dhe programe."
 
 #. Type: text
 #. Description
 #: ../ubiquity.templates:237001
-#, fuzzy
-#| msgid "Cancel the installation."
 msgid "Normal installation"
-msgstr "Anullo instalimin."
+msgstr "Instalim normal"
 
 #. Type: text
 #. Description
 #: ../ubiquity.templates:238001
 msgid "Web browser, utilities, office software, games, and media players."
 msgstr ""
+"Shfletues interneti, mjete të dobishme, program zyre, lojëra dhe luajtës të "
+"mediave."
 
 #. Type: text
 #. Description
@@ -1635,12 +1623,14 @@ msgid ""
 "Web browser, utilities, office software, KDE PIM suite plus additional "
 "internet applications and media players."
 msgstr ""
+"Shfletues interneti, mjete, program zyre, grupin KDE PIM si dhe programe "
+"shtesë interneti dhe luajtës të mediave."
 
 #. Type: text
 #. Description
 #: ../ubiquity.templates:240001
 msgid "Other options"
-msgstr ""
+msgstr "Opsione të tjera"
 
 #. Type: text
 #. Description
@@ -2200,16 +2190,3 @@ msgstr ""
 #: ../oem-config.templates:2001
 msgid "Removing packages"
 msgstr "Duke hequr paketat"
-
-#~ msgid "Prepare"
-#~ msgstr "Përgatit"
-
-#~ msgid "Preparing to install ${RELEASE}"
-#~ msgstr "Duke u përgatitur për të instaluar ${RELEASE}"
-
-#~ msgid ""
-#~ "Fluendo MP3 plugin includes MPEG Layer-3 audio decoding technology "
-#~ "licensed from Fraunhofer IIS and Technicolor SA."
-#~ msgstr ""
-#~ "Fluendo MP3 plugin përfshin teknologjinë e dekodimittë audios MPEG "
-#~ "Layer-3 të liçensuar nga Fraunhofer IIS dhe Technicolor SA."
