@@ -158,11 +158,13 @@ class Controller(ubiquity.frontend.base.Controller):
     def switch_to_install_interface(self):
         self._wizard.switch_to_install_interface()
 
+
 def on_screen_reader_enabled_changed(gsettings, key):
     # handle starting orca only, it exits itself when the key is false
     if (key == "screen-reader-enabled" and gsettings.get_boolean(key) and
        osextras.find_on_path('orca')):
         subprocess.Popen(['orca'], preexec_fn=misc.drop_all_privileges)
+
 
 class Wizard(BaseFrontend):
     def __init__(self, distro):
@@ -721,11 +723,14 @@ class Wizard(BaseFrontend):
 
         if 'UBIQUITY_ONLY' in os.environ:
             # handle orca only in ubiquity-dm where there is no gnome-session
-            self.a11y_settings = Gio.Settings.new("org.gnome.desktop.a11y.applications")
-            self.a11y_settings.connect("changed::screen-reader-enabled", on_screen_reader_enabled_changed)
+            self.a11y_settings = Gio.Settings.new(
+                                     "org.gnome.desktop.a11y.applications")
+            self.a11y_settings.connect("changed::screen-reader-enabled",
+                                       on_screen_reader_enabled_changed)
             # enable if needed and a key read is needed to connect the signal
-            on_screen_reader_enabled_changed(self.a11y_settings, "screen-reader-enabled")
-            
+            on_screen_reader_enabled_changed(self.a11y_settings,
+                                             "screen-reader-enabled")
+
             self.disable_logout_indicator()
             if 'UBIQUITY_DEBUG' not in os.environ:
                 self.disable_terminal()
