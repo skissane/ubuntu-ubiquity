@@ -7,9 +7,6 @@ ubiquity (18.04.11) UNRELEASED; urgency=medium
     ubiquity-dm since gnome-session isn't there to do it.
     (lp: #1741690)
 
-  [ Didier Roche ]
-  * Record OEM installation mode in telemetry data. (LP: #1765693)
-
   [ Iain Lane ]
   * misc.py: Fall back to SUDO_UID if PKEXEC_UID is not set.
   * ubiquity.desktop.in, misc.py: Pass through the ubuntu user's D-Bus session

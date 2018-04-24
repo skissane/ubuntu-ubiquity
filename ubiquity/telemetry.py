@@ -84,8 +84,6 @@ class _Telemetry():
         self._metrics['Language'] = db.get('localechooser/languagelist')
         self._metrics['Minimal'] = self._db_get_bool(
             db.get('ubiquity/minimal_install'))
-        self._metrics['OEM'] = self._db_get_bool(
-            db.get('oem-config/enable'))
         self._metrics['RestrictedAddons'] = self._db_get_bool(
             db.get('ubiquity/use_nonfree'))
         self._metrics['Stages'] = self._stages_hist
