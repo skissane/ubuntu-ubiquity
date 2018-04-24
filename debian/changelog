@@ -1,4 +1,11 @@
-ubiquity (18.04.10ubuntu1) UNRELEASED; urgency=medium
+ubiquity (18.04.11) UNRELEASED; urgency=medium
+
+  [ Sebastien Bacher]
+  * Don't deactivate the screen-reader desktop keybinding, that was needed
+    when ubiquity was handling the key press events but now gsd-media-keys is
+    doing that. Listen to the corresponding key to start orca under
+    ubiquity-dm since gnome-session isn't there to do it.
+    (lp: #1741690)
 
   [ Didier Roche ]
   * Record OEM installation mode in telemetry data. (LP: #1765693)
