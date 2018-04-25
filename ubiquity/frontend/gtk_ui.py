@@ -1407,61 +1407,23 @@ class Wizard(BaseFrontend):
 
     def do_reboot(self):
         """Callback for main program to actually reboot the machine."""
-        try:
-            session = dbus.Bus.get_session()
-            gnome_session = session.name_has_owner('org.gnome.SessionManager')
-        except dbus.exceptions.DBusException:
-            gnome_session = False
-
-        # FIXME: the if gnome_session code path doesn't declare the GNOME
-        # session interface it's using, so don't work.
-        # Even fixing it, we notice that RequestReboot() isn't wired in GNOME
-        # session code. (LP: #1766811)
-        # Fallback thus for now to old code path which is executed at least
-        # since xenial (when DBUS address wasn't correct in ubiquity process)
-        gnome_session = False
-
-        if gnome_session:
-            manager = session.get_object('org.gnome.SessionManager',
-                                         '/org/gnome/SessionManager')
-            manager.RequestReboot()
-        else:
-            # don't let reboot race with the shutdown of X in ubiquity-dm;
-            # reboot might be too fast and X will stay around forever instead
-            # of moving to plymouth
-            misc.execute_root(
-                "sh", "-c",
-                "if ! service display-manager status; then killall Xorg; "
-                "while pidof X; do sleep 0.5; done; fi; reboot")
+        # don't let reboot race with the shutdown of X in ubiquity-dm;
+        # reboot might be too fast and X will stay around forever instead
+        # of moving to plymouth
+        misc.execute_root(
+            "sh", "-c",
+            "if ! service display-manager status; then killall Xorg; "
+            "while pidof X; do sleep 0.5; done; fi; reboot")
 
     def do_shutdown(self):
         """Callback for main program to actually shutdown the machine."""
-        try:
-            session = dbus.Bus.get_session()
-            gnome_session = session.name_has_owner('org.gnome.SessionManager')
-        except dbus.exceptions.DBusException:
-            gnome_session = False
-
-        # FIXME: the if gnome_session code path doesn't declare the GNOME
-        # session interface it's using, so don't work.
-        # Even fixing it, we notice that RequestShutdown() isn't wired in GNOME
-        # session code. (LP: #1766811)
-        # Fallback thus for now to old code path which is executed at least
-        # since xenial (when DBUS address wasn't correct in ubiquity process)
-        gnome_session = False
-
-        if gnome_session:
-            manager = session.get_object('org.gnome.SessionManager',
-                                         '/org/gnome/SessionManager')
-            manager.RequestShutdown()
-        else:
-            # don't let poweroff race with the shutdown of X in ubiquity-dm;
-            # poweroff might be too fast and X will stay around forever instead
-            # of moving to plymouth
-            misc.execute_root(
-                "sh", "-c",
-                "if ! service display-manager status; then killall Xorg; "
-                "while pidof X; do sleep 0.5; done; fi; poweroff")
+        # don't let poweroff race with the shutdown of X in ubiquity-dm;
+        # poweroff might be too fast and X will stay around forever instead
+        # of moving to plymouth
+        misc.execute_root(
+            "sh", "-c",
+            "if ! service display-manager status; then killall Xorg; "
+            "while pidof X; do sleep 0.5; done; fi; poweroff")
 
     def quit_installer(self, *args):
         """Quit installer cleanly."""
