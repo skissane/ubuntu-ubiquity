@@ -45,6 +45,7 @@ import syslog
 import traceback
 
 import dbus
+assert dbus  # silence, pyflakes!
 from dbus.mainloop.glib import DBusGMainLoop
 DBusGMainLoop(set_as_default=True)
 
