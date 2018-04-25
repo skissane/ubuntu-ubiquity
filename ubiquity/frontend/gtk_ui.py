@@ -1413,6 +1413,14 @@ class Wizard(BaseFrontend):
         except dbus.exceptions.DBusException:
             gnome_session = False
 
+        # FIXME: the if gnome_session code path doesn't declare the GNOME
+        # session interface it's using, so don't work.
+        # Even fixing it, we notice that RequestReboot() isn't wired in GNOME
+        # session code. (LP: #1766811)
+        # Fallback thus for now to old code path which is executed at least
+        # since xenial (when DBUS address wasn't correct in ubiquity process)
+        gnome_session = False
+
         if gnome_session:
             manager = session.get_object('org.gnome.SessionManager',
                                          '/org/gnome/SessionManager')
@@ -1433,6 +1441,14 @@ class Wizard(BaseFrontend):
             gnome_session = session.name_has_owner('org.gnome.SessionManager')
         except dbus.exceptions.DBusException:
             gnome_session = False
+
+        # FIXME: the if gnome_session code path doesn't declare the GNOME
+        # session interface it's using, so don't work.
+        # Even fixing it, we notice that RequestShutdown() isn't wired in GNOME
+        # session code. (LP: #1766811)
+        # Fallback thus for now to old code path which is executed at least
+        # since xenial (when DBUS address wasn't correct in ubiquity process)
+        gnome_session = False
 
         if gnome_session:
             manager = session.get_object('org.gnome.SessionManager',
