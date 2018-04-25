@@ -12,6 +12,8 @@ ubiquity (18.04.12) UNRELEASED; urgency=medium
   * The dbus import is now unused and is triggering a pyflakes error, but
     we're not sure it isn't initialising some state that's required. At this
     late stage, just silence the error.
+  * Automatic update of included source packages: flash-kernel
+    3.90ubuntu2.
 
  -- Didier Roche <didrocks@ubuntu.com>  Wed, 25 Apr 2018 10:14:19 +0200
 
