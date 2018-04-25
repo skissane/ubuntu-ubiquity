@@ -1,4 +1,4 @@
-ubiquity (18.04.12) UNRELEASED; urgency=medium
+ubiquity (18.04.12) bionic; urgency=medium
 
   [ Didier Roche ]
   * Request shutdown and reboot without using gnome-session (LP: #1766811)
@@ -15,7 +15,7 @@ ubiquity (18.04.12) UNRELEASED; urgency=medium
   * Automatic update of included source packages: flash-kernel
     3.90ubuntu2.
 
- -- Didier Roche <didrocks@ubuntu.com>  Wed, 25 Apr 2018 10:14:19 +0200
+ -- Didier Roche <didrocks@ubuntu.com>  Wed, 25 Apr 2018 10:33:57 +0100
 
 ubiquity (18.04.11) bionic; urgency=medium
 
