@@ -255,11 +255,10 @@ class Wizard(BaseFrontend):
                 self.screen_reader = True
 
         if 'UBIQUITY_ONLY' in os.environ:
-            # do not wrap this in drop / regain permissions. The API pretends to
-            # be synchronous but it is actually asynchronous. If you become root
-            # before it finishes then D-Bus will reject our connection due to a
-            # mismatched user between the requestor and the owner of the session
-            # bus.
+            # do not run this as root. The API pretends to be synchronous but it
+            # is actually asynchronous. If you become root before it finishes
+            # then D-Bus will reject our connection due to a mismatched user
+            # between the requestor and the owner of the session bus.
 
             # handle orca only in ubiquity-dm where there is no gnome-session
             self.a11y_settings = Gio.Settings.new(
