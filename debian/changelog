@@ -1,3 +1,11 @@
+ubiquity (18.04.14) UNRELEASED; urgency=medium
+
+  * Revert the previous upload. It didn't actually *fix* all cases, just
+    papered over them. If the race was lost, the screen reader still didn't
+    work in ubiquity-dm mode.
+
+ -- Iain Lane <iain.lane@canonical.com>  Thu, 26 Apr 2018 15:26:20 +0100
+
 ubiquity (18.04.13) bionic; urgency=medium
 
   [ Dimitri John Ledkov ]

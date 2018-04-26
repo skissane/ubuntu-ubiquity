@@ -27,7 +27,6 @@ import debconf
 
 from ubiquity import auto_update, i18n, misc, osextras, plugin
 
-import subprocess
 
 NAME = 'language'
 AFTER = None
@@ -136,20 +135,6 @@ class PageGtk(PageBase):
             # The button's already been clicked once, so stop reacting to it.
             # LP: #911907.
             return
-        # Sometimes dconf/user ends up being written by root, despite being
-        # written to some user's XDG_RUNTIME_DIRECTORY later breaking
-        # gnome session/shell/starting desktop
-        # Thus log the permission of the file, and purge it, to ensure the
-        # session reliably starts
-        uid = os.environ.get('PKEXEC_UID', os.environ.get('SUDO_UID'))
-        if uid:
-            dconf_user = '/run/user/%s/dconf/user' % uid
-            if os.path.exists(dconf_user):
-                subprocess.run(['systemd-run', 'ls', '-latr', dconf_user])
-                try:
-                    os.remove(dconf_user)
-                except OSError:
-                    pass
         # Spinning cursor.
         self.controller.allow_change_step(False)
         # Queue quit.
