@@ -1,4 +1,4 @@
-ubiquity (18.04.13) UNRELEASED; urgency=medium
+ubiquity (18.04.13) bionic; urgency=medium
 
   [ Dimitri John Ledkov ]
   * Remove dconf/user before Try Ubuntu. LP: #1767067
@@ -9,7 +9,7 @@ ubiquity (18.04.13) UNRELEASED; urgency=medium
   * Automatic update of included source packages: flash-kernel 3.90ubuntu3,
     netcfg 1.142ubuntu7.
 
- -- Dimitri John Ledkov <xnox@ubuntu.com>  Thu, 26 Apr 2018 06:58:02 -0700
+ -- Colin Watson <cjwatson@ubuntu.com>  Thu, 26 Apr 2018 15:06:50 +0100
 
 ubiquity (18.04.12) bionic; urgency=medium
 
