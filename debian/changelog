@@ -1,3 +1,11 @@
+ubiquity (18.04.13) UNRELEASED; urgency=medium
+
+  * Remove dconf/user before Try Ubuntu. LP: #1767067
+    Just, in case it has the wrong permissions, i.e. root and thus breaks
+    user running gnome session / shell / "Try Ubuntu".
+
+ -- Dimitri John Ledkov <xnox@ubuntu.com>  Thu, 26 Apr 2018 06:58:02 -0700
+
 ubiquity (18.04.12) bionic; urgency=medium
 
   [ Didier Roche ]
