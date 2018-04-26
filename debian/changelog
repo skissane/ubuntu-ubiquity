@@ -1,4 +1,4 @@
-ubiquity (18.04.14) UNRELEASED; urgency=medium
+ubiquity (18.04.14) bionic; urgency=medium
 
   * Revert the previous upload. It didn't actually *fix* all cases, just
     papered over them. If the race was lost, the screen reader still didn't
@@ -9,7 +9,7 @@ ubiquity (18.04.14) UNRELEASED; urgency=medium
     XDG_RUNTIME_DIR/dconf/user database as root. We need to ensure that it
     runs in a context with dropped privileges. (LP: #1767067)
 
- -- Iain Lane <iain.lane@canonical.com>  Thu, 26 Apr 2018 15:26:20 +0100
+ -- Iain Lane <iain.lane@canonical.com>  Thu, 26 Apr 2018 15:46:32 +0100
 
 ubiquity (18.04.13) bionic; urgency=medium
 
