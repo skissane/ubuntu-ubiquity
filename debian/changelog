@@ -1,5 +1,8 @@
 ubiquity (18.04.14.1) UNRELEASED; urgency=medium
 
+  [ Iain Lane ]
+  * Update Vcs-* for git migration
+
   [ Andrea Azzarone ]
   * misc.py: Restore the corrent euid in regain_privileges_save. Calling
     regain_privileges_save should restore the effective user-id to the one
