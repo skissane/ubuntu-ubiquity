@@ -1,6 +1,8 @@
 ubiquity (18.10.2) UNRELEASED; urgency=medium
 
   * Update Vcs-* for git migration
+  * Remove .gladep file which was resurrected by mistake in the git
+    conversion.
 
  -- Iain Lane <iain.lane@canonical.com>  Tue, 08 May 2018 13:26:31 +0100
 
