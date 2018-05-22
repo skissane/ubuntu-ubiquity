@@ -9,6 +9,8 @@ ubiquity (18.10.2) UNRELEASED; urgency=medium
 
   [ Dimitri John Ledkov ]
   * Recommend btrfs-progs, not tools.
+  * Automatic update of included source packages: apt-setup
+    1:0.141ubuntu1.
 
  -- Iain Lane <iain.lane@canonical.com>  Tue, 08 May 2018 13:26:31 +0100
 
