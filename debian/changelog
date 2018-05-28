@@ -1,3 +1,11 @@
+ubiquity (18.10.3) UNRELEASED; urgency=medium
+
+  * Switch to use uptime instead of time.time() which is sensitive to
+    BIOS time reset after NTP sync, leading to negative values.
+    (LP: #1771966)
+
+ -- Didier Roche <didrocks@ubuntu.com>  Mon, 28 May 2018 16:02:33 +0200
+
 ubiquity (18.10.2) cosmic; urgency=medium
 
   * Update Vcs-* for git migration
