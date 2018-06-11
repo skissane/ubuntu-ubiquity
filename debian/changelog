@@ -1,5 +1,12 @@
 ubiquity (18.10.3) UNRELEASED; urgency=medium
 
+  [ Didier Roche ]
+  * Only record OEM config when installing
+
+  * Don't record telemetry data when doing stage 2 (user mode) as it keeps an
+    unused /target directory (LP: #1773321) Also, record OEM types
+    (LP: #1765693)
+
   * Switch to use uptime instead of time.time() which is sensitive to
     BIOS time reset after NTP sync, leading to negative values.
     (LP: #1771966)
