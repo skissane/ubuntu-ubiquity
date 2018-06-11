@@ -8,6 +8,7 @@ ubiquity (18.10.3) UNRELEASED; urgency=medium
     BIOS time reset after NTP sync, leading to negative values.
     (LP: #1771966)
   * Ignore .git file from built package and remove .bzr artefacts
+  * update manifest
 
  -- Didier Roche <didrocks@ubuntu.com>  Mon, 28 May 2018 16:02:33 +0200
 
