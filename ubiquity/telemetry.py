@@ -75,6 +75,10 @@ class _Telemetry():
         """Record installer type"""
         self._metrics['Type'] = installer_type
 
+    def set_is_oem(self, is_oem):
+        """Record if OEM installation"""
+        self._metrics['OEM'] = is_oem
+
     def set_partition_method(self, method):
         """Record anynomized partition method"""
         self._metrics['PartitionMethod'] = method
@@ -100,6 +104,11 @@ class _Telemetry():
         self._metrics['RestrictedAddons'] = self._db_get_bool(
             db.get('ubiquity/use_nonfree'))
         self._metrics['Stages'] = self._stages_hist
+
+        # don't save oem user config for now. We may merge the 2 installation
+        # records in the future.
+        if 'UBIQUITY_OEM_USER_CONFIG' in os.environ:
+            return
 
         target_dir = os.path.dirname(self._dest_path)
         try:
