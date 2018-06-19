@@ -1420,7 +1420,7 @@ class Install(install_misc.InstallBase):
         arch, subarch = install_misc.archdetect()
 
         if arch in ('amd64', 'i386'):
-            for pkg in ('grub', 'grub-pc', 'grub-efi', 'grub-efi-amd64',
+            for pkg in ('grub', 'grub-efi', 'grub-efi-amd64',
                         'grub-efi-amd64-signed', 'shim-signed', 'mokutil',
                         'lilo'):
                 if pkg not in keep:
