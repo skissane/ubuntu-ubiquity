@@ -2,6 +2,7 @@ ubiquity (18.10.4) UNRELEASED; urgency=medium
 
   * Make sure that grub-pc is not removed after installation for both EFI and
     legacy BIOS cases as we now technically need it even for EFI installs.
+    (LP: #1775743)
 
  -- Łukasz 'sil2100' Zemczak <lukasz.zemczak@ubuntu.com>  Tue, 19 Jun 2018 10:11:00 +0200
 
