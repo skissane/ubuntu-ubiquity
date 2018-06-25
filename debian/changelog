@@ -16,7 +16,11 @@ ubiquity (18.10.4) UNRELEASED; urgency=medium
     legacy BIOS cases as we now technically need it even for EFI installs.
     (LP: #1775743)
 
- -- Łukasz 'sil2100' Zemczak <lukasz.zemczak@ubuntu.com>  Tue, 19 Jun 2018 10:11:00 +0200
+  [ Mathieu Trudel-Lapierre ]
+  * Automatic update of included source packages: grub-installer
+    1.128ubuntu9.
+
+ -- Mathieu Trudel-Lapierre <cyphermox@ubuntu.com>  Mon, 25 Jun 2018 12:16:50 -0400
 
 ubiquity (18.10.3) cosmic; urgency=medium
 
