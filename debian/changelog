@@ -11,7 +11,12 @@ ubiquity (18.10.4) UNRELEASED; urgency=medium
     initramfs generation time, so ubiquity's resume setting is redundant and
     possibly wrong.  LP: #1768230.
 
- -- Steve Langasek <steve.langasek@ubuntu.com>  Thu, 14 Jun 2018 23:01:01 -0700
+  [ Łukasz 'sil2100' Zemczak ]
+  * Make sure that grub-pc is not removed after installation for both EFI and
+    legacy BIOS cases as we now technically need it even for EFI installs.
+    (LP: #1775743)
+
+ -- Łukasz 'sil2100' Zemczak <lukasz.zemczak@ubuntu.com>  Tue, 19 Jun 2018 10:11:00 +0200
 
 ubiquity (18.10.3) cosmic; urgency=medium
 
