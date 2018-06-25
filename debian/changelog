@@ -4,7 +4,14 @@ ubiquity (18.10.4) UNRELEASED; urgency=medium
   * Add efivars to mountpoints loaded at bootloader install time.
     (LP: #1772374)
 
- -- Mathieu Trudel-Lapierre <cyphermox@ubuntu.com>  Mon, 25 Jun 2018 12:05:32 -0400
+  [ Steve Langasek ]
+  * scripts/plugininstall.py: don't hard-code a resume partition in
+    /etc/initramfs-tools/conf.d/resume at install time.  In bionic and later,
+    initramfs-tools will autodetect an appropriate resume partition at
+    initramfs generation time, so ubiquity's resume setting is redundant and
+    possibly wrong.  LP: #1768230.
+
+ -- Steve Langasek <steve.langasek@ubuntu.com>  Thu, 14 Jun 2018 23:01:01 -0700
 
 ubiquity (18.10.3) cosmic; urgency=medium
 
