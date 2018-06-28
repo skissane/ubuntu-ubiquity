@@ -1,7 +1,7 @@
 ubiquity (18.10.6) UNRELEASED; urgency=medium
 
   * Automatic update of included source packages: partman-auto
-    134ubuntu9, partman-efi 71ubuntu3.
+    134ubuntu9, partman-efi 71ubuntu3. (LP: #1766945)
 
  -- Łukasz 'sil2100' Zemczak <lukasz.zemczak@ubuntu.com>  Thu, 28 Jun 2018 12:57:53 +0200
 
