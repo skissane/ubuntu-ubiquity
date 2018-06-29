@@ -1,12 +1,13 @@
 ubiquity (18.04.14.2) UNRELEASED; urgency=medium
 
   [ Didier Roche ]
-  * Don't record telemetry data when doing stage 2 (user mode) as it keeps an
-    unused /target directory (LP: #1773321) Also, record OEM types
-    (LP: #1765693)
   * Switch to use uptime instead of time.time() which is sensitive to
     BIOS time reset after NTP sync, leading to negative values.
     (LP: #1771966)
+  * Don't record telemetry data when doing stage 2 (user mode) as it keeps an
+    unused /target directory (LP: #1773321) Also, record OEM types
+    (LP: #1765693)
+  * Ignore .git file from built package and remove .bzr artefacts
 
  -- Didier Roche <didrocks@ubuntu.com>  Mon, 28 May 2018 16:08:48 +0200
 
