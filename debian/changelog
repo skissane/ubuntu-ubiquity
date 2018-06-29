@@ -1,4 +1,4 @@
-ubiquity (18.04.14.2) UNRELEASED; urgency=medium
+ubiquity (18.04.14.2) bionic; urgency=medium
 
   [ Didier Roche ]
   * Switch to use uptime instead of time.time() which is sensitive to
