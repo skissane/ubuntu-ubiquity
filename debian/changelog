@@ -1,7 +1,12 @@
 ubiquity (18.10.6) UNRELEASED; urgency=medium
 
+  [ Łukasz 'sil2100' Zemczak ]
   * Automatic update of included source packages: partman-auto
     134ubuntu9, partman-efi 71ubuntu3. (LP: #1766945)
+
+  [ Adam Conrad ]
+  * d-i/sources.list: Always include *-updates, so it doesn't need to
+    be fixed on stable branches for the first SRU every single time.
 
  -- Łukasz 'sil2100' Zemczak <lukasz.zemczak@ubuntu.com>  Thu, 28 Jun 2018 12:57:53 +0200
 
