@@ -1,4 +1,4 @@
-ubiquity (18.04.14.4) UNRELEASED; urgency=medium
+ubiquity (18.04.14.4) bionic; urgency=medium
 
   * d-i/sources.list: add bionic-updates to make sure we include all necessary
     d-i component updates.
@@ -18,7 +18,7 @@ ubiquity (18.04.14.4) UNRELEASED; urgency=medium
     the option to configure SecureBoot was selected and a password entered.
   * scripts/plugininstall.py: copy generated MOK to the target.
 
- -- Mathieu Trudel-Lapierre <cyphermox@ubuntu.com>  Thu, 19 Jul 2018 11:56:43 -0400
+ -- Mathieu Trudel-Lapierre <cyphermox@ubuntu.com>  Mon, 23 Jul 2018 19:14:41 -0400
 
 ubiquity (18.04.14.3) bionic; urgency=medium
 
