@@ -1,3 +1,9 @@
+ubiquity (18.04.14.5) UNRELEASED; urgency=medium
+
+  * Drop .bzrignore, .bzr-builddeb now that we've got code in git.
+
+ -- Mathieu Trudel-Lapierre <cyphermox@ubuntu.com>  Mon, 23 Jul 2018 21:50:49 -0400
+
 ubiquity (18.04.14.4) bionic; urgency=medium
 
   * d-i/sources.list: add bionic-updates to make sure we include all necessary
