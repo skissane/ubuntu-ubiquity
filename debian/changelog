@@ -1,4 +1,4 @@
-ubiquity (18.04.14.5) UNRELEASED; urgency=medium
+ubiquity (18.04.14.5) bionic; urgency=medium
 
   * Drop .bzrignore, .bzr-builddeb now that we've got code in git.
   * scripts/plugininstall.py: check for existence of /var/lib/shim-signed/mok
