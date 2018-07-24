@@ -1024,7 +1024,7 @@ class Install(install_misc.InstallBase):
         source = "/var/lib/shim-signed/mok/"
         target = "/target/var/lib/shim-signed/mok/"
 
-        if os.path.exists(source):
+        if not os.path.exists(source):
             return
 
         os.makedirs(target, exist_ok=True)

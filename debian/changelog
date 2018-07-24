@@ -4,7 +4,7 @@ ubiquity (18.04.14.5) UNRELEASED; urgency=medium
   * scripts/plugininstall.py: check for existence of /var/lib/shim-signed/mok
     before attempting a copy.
 
- -- Mathieu Trudel-Lapierre <cyphermox@ubuntu.com>  Mon, 23 Jul 2018 22:39:32 -0400
+ -- Mathieu Trudel-Lapierre <cyphermox@ubuntu.com>  Mon, 23 Jul 2018 22:40:36 -0400
 
 ubiquity (18.04.14.4) bionic; urgency=medium
 
