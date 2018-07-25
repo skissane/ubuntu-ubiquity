@@ -981,6 +981,9 @@ class Install(install_misc.InstallBase):
         source = "/var/lib/shim-signed/mok/"
         target = "/target/var/lib/shim-signed/mok/"
 
+        if not os.path.exists(source):
+            return
+
         os.makedirs(target, exist_ok=True)
         for mok_file in os.listdir(source):
             source_file = os.path.join(source, mok_file)
