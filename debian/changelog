@@ -1,4 +1,4 @@
-ubiquity (18.10.6) UNRELEASED; urgency=medium
+ubiquity (18.10.6) cosmic; urgency=medium
 
   [ Łukasz 'sil2100' Zemczak ]
   * Automatic update of included source packages: partman-auto
@@ -28,7 +28,7 @@ ubiquity (18.10.6) UNRELEASED; urgency=medium
   * Automatic update of included source packages: console-setup
     1.178ubuntu5, localechooser 2.71ubuntu3.
 
- -- Mathieu Trudel-Lapierre <cyphermox@ubuntu.com>  Tue, 24 Jul 2018 11:16:13 -0400
+ -- Mathieu Trudel-Lapierre <cyphermox@ubuntu.com>  Tue, 24 Jul 2018 22:29:28 -0400
 
 ubiquity (18.10.5) cosmic; urgency=medium
 
