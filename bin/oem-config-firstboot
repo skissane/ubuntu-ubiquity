@@ -1,6 +1,5 @@
 #! /bin/bash
 # Run oem-config on the first boot after shipping to the end user.
-set -e
 
 DEBUG=
 AUTOMATIC=
