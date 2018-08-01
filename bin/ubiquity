@@ -122,6 +122,8 @@ def open_terminal():
         if tty >= 3:
             os.close(tty)
 
+        fcntl.ioctl(0, termios.TIOCSCTTY, 1)
+
     if 'UBIQUITY_BTERM' not in os.environ:
         os.environ['UBIQUITY_BTERM'] = '1'
 
@@ -266,9 +268,7 @@ def install(frontend=None, query=False):
     unmount_target()
     distro = distribution().lower()
     wizard = ui.Wizard(distro)
-    exit_on_failure = False
     if os.environ['UBIQUITY_FRONTEND'] == 'debconf_ui':
-        exit_on_failure = True
         open_terminal()
         start_debconf()
     ret = wizard.run()
@@ -281,12 +281,6 @@ def install(frontend=None, query=False):
             traceback.print_exc()
     copy_debconf()
     unmount_target()
-
-    # exit_on_failure means wizard does not implement all the actions,
-    # hence just exit to use the terminal single key action menu
-    # instead.
-    if ret != 0 and exit_on_failure:
-        sys.exit(ret)
     if ret == 10:
         wizard.do_reboot()
     if ret == 11:

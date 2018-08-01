@@ -8,10 +8,7 @@ ubiquity (18.10.6) UNRELEASED; urgency=medium
   * d-i/sources.list: Always include *-updates, so it doesn't need to
     be fixed on stable branches for the first SRU every single time.
 
-  [ Dariusz Gadomski ]
-  * Fixes a systemd freeze after cancelling debconf UI. (LP: #1749289)
-
- -- Dimitri John Ledkov <xnox@ubuntu.com>  Tue, 31 Jul 2018 13:16:03 +0100
+ -- Łukasz 'sil2100' Zemczak <lukasz.zemczak@ubuntu.com>  Thu, 28 Jun 2018 12:57:53 +0200
 
 ubiquity (18.10.5) cosmic; urgency=medium
 
