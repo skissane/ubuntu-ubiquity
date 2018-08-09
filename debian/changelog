@@ -3,6 +3,9 @@ ubiquity (18.04.14.7) UNRELEASED; urgency=medium
   [ Dariusz Gadomski ]
   * Implement missing reboot and shutdown methods in debconf_ui (LP: #1749289)
 
+  [ Michael Hudson-Doyle ]
+  * Add systemd-resolved to oem-config.target's Wants (LP: #1777900)
+
  -- Adam Conrad <adconrad@ubuntu.com>  Wed, 08 Aug 2018 19:53:55 -0600
 
 ubiquity (18.04.14.6) bionic; urgency=medium
