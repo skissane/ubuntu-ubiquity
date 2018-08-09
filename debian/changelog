@@ -1,3 +1,12 @@
+ubiquity (2.21.63.9) UNRELEASED; urgency=medium
+
+  * Revert the changes from 2.21.63.8 in favour of the following instead:
+
+  [ Dariusz Gadomski ]
+  * Implement missing reboot and shutdown methods in debconf_ui (LP: #1749289)
+
+ -- Adam Conrad <adconrad@ubuntu.com>  Wed, 08 Aug 2018 20:08:18 -0600
+
 ubiquity (2.21.63.8) xenial; urgency=medium
 
   [ Dariusz Gadomski ]
