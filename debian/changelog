@@ -5,6 +5,8 @@ ubiquity (18.10.7) UNRELEASED; urgency=medium
 
   [ Michael Hudson-Doyle ]
   * Add systemd-resolved to oem-config.target's Wants (LP: #1777900)
+  * Automatic update of included source packages: console-setup
+    1.178ubuntu8, partman-jfs 53, partman-lvm 124.
 
  -- Mathieu Trudel-Lapierre <cyphermox@ubuntu.com>  Tue, 14 Aug 2018 17:17:34 -0400
 
