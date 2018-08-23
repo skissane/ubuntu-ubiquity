@@ -1,3 +1,11 @@
+ubiquity (18.04.14.8) bionic; urgency=medium
+
+  * Revert inclusion of package updates from cosmic.
+  * Automatic update of included source packages: console-setup
+    1.178ubuntu2.7.
+
+ -- Michael Hudson-Doyle <michael.hudson@ubuntu.com>  Sun, 26 Aug 2018 19:53:26 +1200
+
 ubiquity (18.04.14.7) bionic; urgency=medium
 
   [ Dariusz Gadomski ]
