@@ -2,6 +2,9 @@ ubiquity (18.10.9) UNRELEASED; urgency=medium
 
   * Fix ubiquity's use of regexes with escaped characters to satisfy new
     PEP8 requirements (W605).
+  * tests/run-pep8: ignore W504 for now: line break rules have changed in PEP8
+    but we're not adapting the code right now (too many noop changes this late
+    in the release).
 
  -- Mathieu Trudel-Lapierre <cyphermox@ubuntu.com>  Mon, 24 Sep 2018 16:05:42 -0400
 
