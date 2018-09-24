@@ -1,4 +1,4 @@
-ubiquity (18.10.9) UNRELEASED; urgency=medium
+ubiquity (18.10.9) cosmic; urgency=medium
 
   * Fix ubiquity's use of regexes with escaped characters to satisfy new
     PEP8 requirements (W605).
@@ -6,7 +6,7 @@ ubiquity (18.10.9) UNRELEASED; urgency=medium
     but we're not adapting the code right now (too many noop changes this late
     in the release).
 
- -- Mathieu Trudel-Lapierre <cyphermox@ubuntu.com>  Mon, 24 Sep 2018 16:05:42 -0400
+ -- Mathieu Trudel-Lapierre <cyphermox@ubuntu.com>  Mon, 24 Sep 2018 16:10:40 -0400
 
 ubiquity (18.10.8) cosmic; urgency=medium
 
