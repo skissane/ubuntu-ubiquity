@@ -6,6 +6,8 @@ ubiquity (18.10.10) UNRELEASED; urgency=medium
 
   [ Łukasz 'sil2100' Zemczak ]
   * Update translations from Launchpad.
+  * Automatic update of included source packages: partman-partitioning
+    120ubuntu2, shim-signed 1.38.
 
   [ Iain Lane ]
   * gtk, kde: Start installing after ubi-timezone. (LP: #1797579)
