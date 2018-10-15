@@ -1,4 +1,4 @@
-ubiquity (18.10.10ubuntu1) UNRELEASED; urgency=medium
+ubiquity (18.10.10) UNRELEASED; urgency=medium
 
   [ Michael Hudson-Doyle ]
   * Mask ubiquity.service in a system installed with oem-config/enabled=true,
