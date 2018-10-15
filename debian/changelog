@@ -1,9 +1,13 @@
 ubiquity (18.10.10) UNRELEASED; urgency=medium
 
+  [ Michael Hudson-Doyle ]
   * Mask ubiquity.service in a system installed with oem-config/enabled=true,
     as this prevents getty@tty1.service from running. (LP: #1789920)
 
- -- Michael Hudson-Doyle <michael.hudson@ubuntu.com>  Mon, 01 Oct 2018 12:38:20 +1300
+  [ Łukasz 'sil2100' Zemczak ]
+  * Update translations from Launchpad.
+
+ -- Łukasz 'sil2100' Zemczak <lukasz.zemczak@ubuntu.com>  Mon, 15 Oct 2018 09:57:23 +0100
 
 ubiquity (18.10.9) cosmic; urgency=medium
 
