@@ -1723,12 +1723,14 @@ class Wizard(BaseFrontend):
             dbfilter.start(auto_process=True)
 
         elif finished_step == 'ubi-timezone':
-            self.timezone_set = True
-            # Flush changes to the database so that when the parallel db
-            # starts, it does so with the most recent changes.
-            self.stop_debconf()
-            self.start_debconf()
-            self.maybe_start_installing()
+            # Only do this once; restarting debconf under the installer is bad.
+            if not self.timezone_set:
+                # Flush changes to the database so that when the parallel db
+                # starts, it does so with the most recent changes.
+                self.stop_debconf()
+                self.start_debconf()
+                self.timezone_set = True
+                self.maybe_start_installing()
 
         elif finished_step == 'ubiquity.components.partman_commit':
             self.partitioned = True
