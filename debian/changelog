@@ -1,4 +1,4 @@
-ubiquity (18.04.14.9) UNRELEASED; urgency=medium
+ubiquity (18.04.14.9) bionic; urgency=medium
 
   * Mask ubiquity.service in a system installed with oem-config/enabled=true,
     as this prevents getty@tty1.service from running. (LP: #1789920)
