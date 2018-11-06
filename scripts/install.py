@@ -436,9 +436,30 @@ class Install(install_misc.InstallBase):
                 targetpath = os.path.join(self.target, relpath)
                 st = os.lstat(sourcepath)
 
+                def blacklisted(st, sourcepath, relpath):
+                    # Not blacklisted, we are done
+                    if '/%s' % relpath not in self.blacklist:
+                        return False
+                    # If a path is blacklisted, it gets tricky
+                    # Directories are not blacklistable
+                    if stat.S_ISDIR(st.st_mode):
+                        return False
+                    # Everything else is... but symlinks are special
+                    if not stat.S_ISLNK(st.st_mode):
+                        return True
+                    # Does it exist?!
+                    if not os.path.exists(os.path.realpath(sourcepath)):
+                        return True
+                    # mostly blacklistable, unless they point to a dir
+                    if not stat.S_ISDIR(os.stat(sourcepath).st_mode):
+                        return True
+                    # thus final condition
+                    # top-level symlink to a dir is not blacklistable
+                    # ie. /sbin -> /usr/sbin
+                    return '/' in relpath
+
                 # Is the path blacklisted?
-                if (not stat.S_ISDIR(st.st_mode) and
-                        '/%s' % relpath in self.blacklist):
+                if blacklisted(st, sourcepath, relpath):
                     if debug:
                         syslog.syslog('Not copying %s' % relpath)
                     continue
