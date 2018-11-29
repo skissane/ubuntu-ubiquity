@@ -1,3 +1,10 @@
+ubiquity (19.04.3) UNRELEASED; urgency=medium
+
+  * Cherry pick commit by Harald Sitter from KDE Neon's ubiquity fork.
+    Fixes ubiquity crash with new Kcrash. (LP: #1805685)
+
+ -- Rik Mills <rikmills@kubuntu.org>  Thu, 29 Nov 2018 14:10:49 +0000
+
 ubiquity (19.04.2) disco; urgency=medium
 
   [ Brian Murray ]
