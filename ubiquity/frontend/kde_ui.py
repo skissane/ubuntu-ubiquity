@@ -177,7 +177,7 @@ class Wizard(BaseFrontend):
         # Let's not do that here, we kind of really do need more privileges...
         QtCore.QCoreApplication.setSetuidAllowed(True)
 
-        # NB: This *must* have at least one string in argv. Quoting the Qt docs:
+        # NB: This *must* have at least one string in argv. Quoting the Qt docs
         #   > In addition, argc must be greater than zero and argv must contain
         #   > at least one valid character string.
         self.app = QtWidgets.QApplication(sys.argv)
