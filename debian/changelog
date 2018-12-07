@@ -1,4 +1,6 @@
-ubiquity (19.04.3) disco; urgency=medium
+ubiquity (19.04.3.1) disco; urgency=medium
+
+  * Automatic update of included source packages: shim-signed 1.39.
 
   [ Rik Mills ]
   * Cherry pick commit by Harald Sitter from KDE Neon's ubiquity fork.
