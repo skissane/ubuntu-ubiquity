@@ -1,3 +1,11 @@
+ubiquity (18.04.14.10) UNRELEASED; urgency=medium
+
+  * When installing non-free packages, also iterate and install any
+    apt-installed marked packages which may include non-free drivers
+    detected by ubuntu-drivers. LP: #1793671
+
+ -- Dimitri John Ledkov <xnox@ubuntu.com>  Tue, 15 Jan 2019 10:35:10 +0000
+
 ubiquity (18.04.14.9) bionic; urgency=medium
 
   * Mask ubiquity.service in a system installed with oem-config/enabled=true,
