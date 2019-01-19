@@ -1,4 +1,4 @@
-ubiquity (18.04.15) UNRELEASED; urgency=medium
+ubiquity (18.04.14.10) bionic; urgency=medium
 
   * scripts/plugininstall.py: don't hard-code a resume partition in
     /etc/initramfs-tools/conf.d/resume at install time.  In bionic and later,
@@ -8,7 +8,7 @@ ubiquity (18.04.15) UNRELEASED; urgency=medium
   * Automatic update of included source packages: flash-kernel
     3.90ubuntu3.18.04.1, shim-signed 1.37~18.04.3.
 
- -- Steve Langasek <steve.langasek@ubuntu.com>  Thu, 14 Jun 2018 23:01:01 -0700
+ -- Steve Langasek <steve.langasek@ubuntu.com>  Sat, 19 Jan 2019 15:24:56 +0000
 
 ubiquity (18.04.14.9) bionic; urgency=medium
 
