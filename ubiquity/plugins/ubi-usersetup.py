@@ -713,14 +713,15 @@ class Page(plugin.Plugin):
                 self.ui.set_auto_login(auto_login == 'true')
             except debconf.DebconfError:
                 pass
-            try:
-                encrypt_home = self.db.get('user-setup/force-encrypt-home')
-                if not encrypt_home:
-                    encrypt_home = self.db.get('user-setup/encrypt-home')
-                self.ui.set_encrypt_home(encrypt_home == 'true')
-                self.ui.set_force_encrypt_home(encrypt_home == 'true')
-            except debconf.DebconfError:
-                pass
+            # Ecryptfs is deprecated
+            # try:
+            #     encrypt_home = self.db.get('user-setup/force-encrypt-home')
+            #     if not encrypt_home:
+            #         encrypt_home = self.db.get('user-setup/encrypt-home')
+            #     self.ui.set_encrypt_home(encrypt_home == 'true')
+            #     self.ui.set_force_encrypt_home(encrypt_home == 'true')
+            # except debconf.DebconfError:
+            #     pass
         try:
             empty = self.db.get('user-setup/allow-password-empty') == 'true'
         except debconf.DebconfError:
