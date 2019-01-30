@@ -1,7 +1,7 @@
 ubiquity (19.04.5) UNRELEASED; urgency=medium
 
-  * Disable calls related to encrypting home so every debug log file doesn't
-    have messages regarding ecryptfs being deprecated.
+  * Remove code related to encrypting home since it is unused and so every
+    debug log file doesn't have messages regarding ecryptfs being deprecated.
 
  -- Brian Murray <brian@ubuntu.com>  Tue, 29 Jan 2019 07:30:53 -0800
 
