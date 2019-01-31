@@ -1,3 +1,11 @@
+ubiquity (18.04.14.12) UNRELEASED; urgency=medium
+
+  [ Chen-Han Hsiao (Stanley) ]
+  * scripts/plugininstall.py: Make sure efivars is bind-mounted when
+    installing the bootloader. (LP: #1772374)
+
+ -- Mathieu Trudel-Lapierre <cyphermox@ubuntu.com>  Thu, 31 Jan 2019 08:36:44 -0500
+
 ubiquity (18.04.14.11) bionic; urgency=medium
 
   [ Steve Langasek ]
