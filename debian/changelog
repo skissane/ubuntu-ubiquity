@@ -4,6 +4,10 @@ ubiquity (18.04.14.12) UNRELEASED; urgency=medium
   * scripts/plugininstall.py: Make sure efivars is bind-mounted when
     installing the bootloader. (LP: #1772374)
 
+  [ Mathieu Trudel-Lapierre ]
+  * Automatic update of included source packages: partman-efi
+    71ubuntu2.2. (LP: #1803031)
+
  -- Mathieu Trudel-Lapierre <cyphermox@ubuntu.com>  Thu, 31 Jan 2019 08:36:44 -0500
 
 ubiquity (18.04.14.11) bionic; urgency=medium
