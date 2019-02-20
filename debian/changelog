@@ -10,6 +10,13 @@ ubiquity (19.04.5) UNRELEASED; urgency=medium
     partman-crypto 101ubuntu1, partman-efi 71ubuntu5, partman-jfs 55,
     partman-lvm 127, partman-xfs 66.
 
+  * ubiquity-frontend-gtk: drop libindicator3-7 from depends to
+    suggests. ubiquity-dm supports multiple desktop environments some of
+    which use indicators, with libindicator and launch them into the
+    panel. However, none of these are in main nor on the gnome-shell based
+    images. And images that do use panel with indicators are shipping
+    libindicator3-7 anyway.
+
  -- Brian Murray <brian@ubuntu.com>  Tue, 29 Jan 2019 07:30:53 -0800
 
 ubiquity (19.04.4) disco; urgency=medium
