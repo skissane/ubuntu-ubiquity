@@ -1,4 +1,4 @@
-ubiquity (2.21.63.10) UNRELEASED; urgency=medium
+ubiquity (2.21.63.10) xenial; urgency=medium
 
   * Automatic update of included source packages: user-setup
     1.63ubuntu4.1. (LP: #1817689)
