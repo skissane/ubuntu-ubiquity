@@ -1,3 +1,14 @@
+ubiquity (19.10.1) UNRELEASED; urgency=medium
+
+  * Switch sources to eoan.
+  * Automatic update of included source packages: apt-setup
+    1:0.141ubuntu3, base-installer 1.158ubuntu5, choose-mirror
+    2.78ubuntu6, console-setup 1.191ubuntu3, flash-kernel 3.98ubuntu1,
+    partman-jfs 57, partman-lvm 130, preseed 1.71ubuntu10, tzsetup
+    1:0.94ubuntu2.
+
+ -- Dimitri John Ledkov <xnox@ubuntu.com>  Thu, 23 May 2019 12:14:53 +0100
+
 ubiquity (19.04.9) disco; urgency=medium
 
   * KDE front end: PartitionModel.py - Remove code depreciated in port from
