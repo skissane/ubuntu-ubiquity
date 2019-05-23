@@ -1,4 +1,4 @@
-ubiquity (19.10.1) UNRELEASED; urgency=medium
+ubiquity (19.10.1) eoan; urgency=medium
 
   * Switch sources to eoan.
   * Automatic update of included source packages: apt-setup
@@ -13,7 +13,7 @@ ubiquity (19.10.1) UNRELEASED; urgency=medium
     modes. Currently: budgie, mate, studio. These flavours must seed the
     new ubiquity-frontend-gtk-panel into live. LP: #1830201
 
- -- Dimitri John Ledkov <xnox@ubuntu.com>  Thu, 23 May 2019 12:14:53 +0100
+ -- Dimitri John Ledkov <xnox@ubuntu.com>  Thu, 23 May 2019 13:29:43 +0100
 
 ubiquity (19.04.9) disco; urgency=medium
 
