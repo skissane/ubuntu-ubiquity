@@ -296,13 +296,6 @@ class Install(install_misc.InstallBase):
                 keep.add('linux-signed-generic%s' % altmeta)
             else:
                 keep.add('grub')
-        elif (arch in ('armel', 'armhf') and
-              subarch in ('omap', 'omap4', 'mx5')):
-            keep.add('flash-kernel')
-            keep.add('u-boot-tools')
-        elif arch == 'powerpc':
-            keep.add('yaboot')
-            keep.add('hfsutils')
 
         # Even adding ubiquity as a depends to oem-config-{gtk,kde} doesn't
         # appear to force ubiquity and libdebian-installer4 to copy all of

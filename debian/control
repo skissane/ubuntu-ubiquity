@@ -13,9 +13,7 @@ Vcs-Browser: https://code.launchpad.net/~ubuntu-installer/ubiquity/+git/ubiquity
 Package: ubiquity
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, ${python3:Depends}, python3-debconf, ubiquity-frontend-${mangled-version}, ubiquity-artwork-${mangled-version}, laptop-detect, lsb-release, ubiquity-casper, python3-apt (>= 0.7.100.3~), ${console-setup-depends}, iso-codes, passwd, adduser, os-prober, rdate, ntfs-3g (>= 1:2011.1.15AR.4+2011.4.12-1) [any-alpha any-amd64 any-i386], cryptsetup, policykit-1, python3-icu (>= 1.0), python3-pam, language-selector-common (>= 0.4.16), archdetect-deb, dpkg-repack, apt-clone, wget, grub-common [any-amd64 any-i386], dbus-x11, sbsigntool [amd64]
-Recommends: grub-pc [any-amd64 any-i386] | grub [any-amd64 any-i386] | grub-efi [any-amd64 any-i386], flash-kernel [armel armhf], u-boot-tools [armel armhf], yaboot [powerpc], hfsutils [powerpc], dmraid, btrfs-progs, ubuntu-drivers-common (>= 0.6.3), lvm2
-Conflicts: ubuntu-express, espresso, espresso-utils, espresso-locale, espresso-keyboard-setup, espresso-kbd-chooser, espresso-timezone, user-setup (<< 0.05ubuntu6), partman, espresso-grub, espresso-yaboot
-Replaces: ubuntu-express, espresso, espresso-utils, espresso-locale, espresso-keyboard-setup, espresso-kbd-chooser, espresso-timezone, user-setup (<< 0.05ubuntu6), partman, espresso-grub, espresso-yaboot, ubiquity-frontend-gtk (<< 2.3.8)
+Recommends: grub-pc [any-amd64 any-i386] | grub [any-amd64 any-i386] | grub-efi [any-amd64 any-i386], dmraid, btrfs-progs, ubuntu-drivers-common (>= 0.6.3), lvm2
 Description: Ubuntu live CD installer
  This is a simple live CD installer designed to integrate well with Debian-
  and Ubuntu-based systems, and to reuse code from d-i for ease of
@@ -26,37 +24,23 @@ Description: Ubuntu live CD installer
 Package: ubiquity-ubuntu-artwork
 Architecture: all
 Depends: ${misc:Depends}
-Conflicts: ubuntu-express-ubuntu-artwork, ubuntu-express-ubuntu-doc, espresso-ubuntu-artwork, espresso-ubuntu-doc, ubiquity-ubuntu-doc
-Replaces: ubuntu-express-ubuntu-artwork, ubuntu-express-ubuntu-doc, espresso-ubuntu-artwork, espresso-ubuntu-doc, ubiquity-ubuntu-doc, ubiquity (<< 1.13.0)
 Provides: ubiquity-artwork-${mangled-version}
 Description: Ubuntu artwork for Ubiquity live installer
  This package provides Ubuntu-themed user interface artwork, help files, and
  user interface text for the Ubiquity live CD installer.
 
-#Package: ubiquity-guadalinex-artwork
-#Architecture: all
-#Depends: ${misc:Depends}
-#Conflicts: ubuntu-express-guadalinex-artwork, ubuntu-express-guadalinex-doc, espresso-guadalinex-artwork, espresso-guadalinex-doc, ubiquity-guadalinex-doc
-#Replaces: ubuntu-express-guadalinex-artwork, ubuntu-express-guadalinex-doc, espresso-guadalinex-artwork, espresso-guadalinex-doc, ubiquity-guadalinex-doc
-#Provides: ubiquity-artwork-${mangled-version}
-#Description: Guadalinex artwork for Ubiquity live installer
-# This package provides Guadalinex-themed user interface artwork, help
-# files, and user interface text for the Ubiquity live CD installer.
-
 Package: ubiquity-frontend-gtk
-Architecture: amd64 arm64 armhf i386 powerpc ppc64el
+Architecture: amd64 arm64 armhf i386 ppc64el
 Pre-Depends: ${misc:Pre-Depends}
 Depends: ${shlibs:Depends}, ${misc:Depends}, ${python3:Depends}, ubiquity (= ${binary:Version}), python3-dbus, gir1.2-gtk-3.0 (>= 3.20), gir1.2-nma-1.0, gir1.2-pango-1.0, gir1.2-soup-2.4, gir1.2-vte-2.91, gir1.2-webkit2-4.0, iso-codes, metacity | marco | xfwm4 | matchbox-window-manager | lubuntu-default-settings | openbox | gnome-shell | budgie-core, gir1.2-xkl-1.0, gir1.2-timezonemap-1.0, python3-gi, python3-cairo, python3-gi-cairo, busybox-static | busybox, sensible-utils
 Suggests: gnome-control-center | feh
-Conflicts: ubuntu-express-frontend-gtk, espresso-frontend-gtk, ubiquity (<< 2.4.3)
-Replaces: ubuntu-express-frontend-gtk, espresso-frontend-gtk, ubiquity (<< 2.4.3)
 Provides: ubiquity-frontend-${mangled-version}
 Description: GTK+ frontend for Ubiquity live installer
  This package provides a GTK+-based user interface frontend for the Ubiquity
  live CD installer.
 
 Package: ubiquity-frontend-gtk-panel
-Architecture: amd64 arm64 armhf i386 powerpc ppc64el
+Architecture: amd64 arm64 armhf i386 ppc64el
 Depends: ${shlibs:Depends}, ${misc:Depends}, ubiquity-frontend-gtk (= ${binary:Version})
 Breaks: ubiquity-frontend-gtk (<< 19.10.1~)
 Replaces: ubiquity-frontend-gtk (<< 19.10.1~)
@@ -84,8 +68,6 @@ Description: debconf frontend for the Ubiquity live installer
 Package: oem-config
 Architecture: all
 Depends: ${misc:Depends}, ubiquity (= ${binary:Version}), oem-config-frontend-${mangled-version}, procps
-Conflicts: oem-config-keyboard, oem-config-locale, oem-config-timezone
-Replaces: oem-config-keyboard, oem-config-locale, oem-config-timezone, oem-config-gtk (<< 1.54.13), oem-config-kde (<< 1.54.13)
 Description: Perform end-user configuration after initial OEM installation
  The oem-config script re-asks a number of questions that are normally asked
  during installation, and reconfigures the system accordingly. This allows a
@@ -96,7 +78,6 @@ Description: Perform end-user configuration after initial OEM installation
 Package: oem-config-gtk
 Architecture: all
 Depends: ${misc:Depends}, oem-config (= ${source:Version}), ubiquity-frontend-gtk (= ${source:Version}), python3-aptdaemon.gtk3widgets, aptdaemon
-Replaces: oem-config (<< 1.0)
 Provides: oem-config-frontend-${mangled-version}
 Description: GTK+ frontend for end-user post-OEM-install configuration
  The oem-config script re-asks a number of questions that are normally asked
@@ -110,7 +91,6 @@ Description: GTK+ frontend for end-user post-OEM-install configuration
 Package: oem-config-kde
 Architecture: all
 Depends: ${misc:Depends}, oem-config (= ${source:Version}), ubiquity-frontend-kde (= ${source:Version})
-Replaces: oem-config (<< 1.0)
 Provides: oem-config-frontend-${mangled-version}
 Description: KDE frontend for end-user post-OEM-install configuration
  The oem-config script re-asks a number of questions that are normally asked
