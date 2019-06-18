@@ -1,3 +1,10 @@
+ubiquity (19.10.5) UNRELEASED; urgency=medium
+
+  * Automatic update of included source packages: apt-setup
+    1:0.141ubuntu4, partman-base 206ubuntu2.
+
+ -- Steve Langasek <steve.langasek@ubuntu.com>  Tue, 18 Jun 2019 14:57:36 -0700
+
 ubiquity (19.10.4) eoan; urgency=medium
 
   * Drop support for obsolete arches. powerpc arch is dead and current
