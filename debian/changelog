@@ -1,4 +1,4 @@
-ubiquity (19.10.4) UNRELEASED; urgency=medium
+ubiquity (19.10.4) eoan; urgency=medium
 
   * Drop support for obsolete arches. powerpc arch is dead and current
     armhf boards use pre-installed images:
@@ -7,8 +7,10 @@ ubiquity (19.10.4) UNRELEASED; urgency=medium
     - drop flash-kernel support
     - drop long obsolete conflicts/replaces
     - drop related d-i lists & install directories
+  * Add basic support for arm64 with grub and EFI
+  * Automatic update of included source packages.
 
- -- Dimitri John Ledkov <xnox@ubuntu.com>  Wed, 12 Jun 2019 18:57:41 +0100
+ -- Dimitri John Ledkov <xnox@ubuntu.com>  Wed, 12 Jun 2019 19:41:25 +0100
 
 ubiquity (19.10.3) eoan; urgency=medium
 

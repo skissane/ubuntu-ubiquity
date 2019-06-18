@@ -915,7 +915,7 @@ class Install(install_misc.InstallBase):
             arch, subarch = install_misc.archdetect()
 
             try:
-                if arch in ('amd64', 'i386'):
+                if arch in ('amd64', 'arm64', 'i386'):
                     from ubiquity.components import grubinstaller
                     while 1:
                         dbfilter = grubinstaller.GrubInstaller(None, self.db)
@@ -1387,8 +1387,9 @@ class Install(install_misc.InstallBase):
 
         arch, subarch = install_misc.archdetect()
 
-        if arch in ('amd64', 'i386'):
+        if arch in ('amd64', 'arm64', 'i386'):
             for pkg in ('grub', 'grub-efi', 'grub-efi-amd64',
+                        'grub-efi-arm64',
                         'grub-efi-amd64-signed', 'shim-signed', 'mokutil',
                         'lilo'):
                 if pkg not in keep:
