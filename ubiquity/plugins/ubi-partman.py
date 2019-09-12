@@ -200,6 +200,12 @@ class PageGtk(PageBase):
             self.partition_toolbar.child_set_property(wdg, 'homogeneous',
                                                       False)
 
+        if os.path.exists('/sbin/zpool'):
+            self.use_zfs.set_visible(True)
+            self.use_zfs_desc.set_visible(True)
+            self.use_zfs.set_sensitive(True)
+            self.use_zfs_desc.set_sensitive(True)
+
         # GtkBuilder signal mapping is broken (LP: # 852054).
         self.part_auto_hidden_label.connect(
             'activate-link', self.part_auto_hidden_label_activate_link)
@@ -399,11 +405,33 @@ class PageGtk(PageBase):
         self.disk_layout = layout
 
     def on_crypto_lvm_toggled(self, w):
+        if self.use_crypto.get_active() or self.use_lvm.get_active():
+            self.use_zfs.set_active(False)
+            self.use_zfs.set_sensitive(False)
+            self.use_zfs_desc.set_sensitive(False)
+        else:
+            self.use_zfs.set_sensitive(True)
+            self.use_zfs_desc.set_sensitive(True)
+
         if self.use_crypto.get_active():
             if w == self.use_crypto:
                 self.use_lvm.set_active(True)
             if w == self.use_lvm and not w.get_active():
                 self.use_crypto.set_active(False)
+
+    def on_zfs_toggled(self, w):
+        if self.use_zfs.get_active():
+            self.use_crypto.set_active(False)
+            self.use_lvm.set_active(False)
+            self.use_crypto.set_sensitive(False)
+            self.use_lvm.set_sensitive(False)
+            self.use_crypto_desc.set_sensitive(False)
+            self.use_lvm_desc.set_sensitive(False)
+        else:
+            self.use_crypto.set_sensitive(True)
+            self.use_lvm.set_sensitive(True)
+            self.use_crypto_desc.set_sensitive(True)
+            self.use_lvm_desc.set_sensitive(True)
 
     # Automatic partitioning page
 
@@ -467,12 +495,21 @@ class PageGtk(PageBase):
                 self.controller.toggle_next_button()
             self.plugin_is_install = about_to_install
 
-        # Supporting crypto and lvm in new installs only for now
+        # Supporting crypto, lvm and zfs in new installs only for now
         use_device = self.use_device.get_active()
         self.use_lvm.set_sensitive(use_device)
         self.use_crypto.set_sensitive(use_device)
         self.use_lvm_desc.set_sensitive(use_device)
         self.use_crypto_desc.set_sensitive(use_device)
+
+        # disabled when LVM or Crypto are enabled
+        if use_device and not (self.use_lvm.get_active() or
+                               self.use_crypto.get_active()):
+            self.use_zfs.set_sensitive(True)
+            self.use_zfs_desc.set_sensitive(True)
+        else:
+            self.use_zfs.set_sensitive(False)
+            self.use_zfs_desc.set_sensitive(False)
 
     def initialize_resize_mode(self):
         disk_id = self.get_current_disk_partman_id()
@@ -667,6 +704,8 @@ class PageGtk(PageBase):
             else:
                 opt_widget.hide()
                 opt_desc.hide()
+
+        self.use_zfs_desc.set_markup(fmt % self.use_zfs_desc.get_label())
 
         # Process the default selection
         self.part_ask_option_changed(None)
@@ -3246,7 +3285,13 @@ class Page(plugin.Plugin):
                 self.ui.get_autopartition_choice()
             self.preseed_as_c(self.current_question, autopartition_choice,
                               seen=False)
-            telemetry.get().set_partition_method(method)
+            telemetry_method = method
+            if self.ui.use_zfs.get_active() and method == 'use_device':
+                self.db.set('ubiquity/use_zfs', 'true')
+                telemetry_method = "use_zfs"
+            else:
+                self.db.set('ubiquity/use_zfs', 'false')
+            telemetry.get().set_partition_method(telemetry_method)
             # Don't exit partman yet.
         else:
             self.finish_partitioning = True
