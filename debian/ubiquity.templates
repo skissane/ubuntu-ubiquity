@@ -1435,13 +1435,13 @@ _Description:
 Template: ubiquity/text/use_zfs
 Type: text
 _Description:
- EXPERIMENTAL: Use ZFS with the new installation
+ EXPERIMENTAL: Erase disk and use ZFS with the new installation
 
 Template: ubiquity/text/use_zfs_desc
 Type: text
 _Description:
- <span foreground="darkred">Warning:</span> This is experimental and may cause
- data loss. Do not use on production systems.
+ <span foreground="darkred">Warning:</span> This will delete all your files on all operating systems.
+ This is experimental and may cause data loss. Do not use on production systems.
 
 Template: ubiquity/use_zfs
 Type: boolean

@@ -203,8 +203,6 @@ class PageGtk(PageBase):
         if os.path.exists('/sbin/zpool'):
             self.use_zfs.set_visible(True)
             self.use_zfs_desc.set_visible(True)
-            self.use_zfs.set_sensitive(True)
-            self.use_zfs_desc.set_sensitive(True)
 
         # GtkBuilder signal mapping is broken (LP: # 852054).
         self.part_auto_hidden_label.connect(
@@ -296,7 +294,9 @@ class PageGtk(PageBase):
         replace = self.replace_partition.get_active()
         resize = self.resize_use_free.get_active()
         custom = self.custom_partitioning.get_active()
-        use_device = self.use_device.get_active()
+        use_zfs = self.use_zfs.get_active()
+        # ZFS is installed on entire drive.
+        use_device = self.use_device.get_active() or use_zfs
         biggest_free = 'biggest_free' in self.extra_options
         crypto = self.use_crypto.get_active()
         disks = self.extra_options.get('use_device', [])
@@ -327,7 +327,9 @@ class PageGtk(PageBase):
         # Currently we support crypto only in use_disk
         # TODO dmitrij.ledkov 2012-07-25 no way to go back and return
         # to here? This needs to be addressed in the design document.
-        if crypto and use_device and self.current_page == self.page_ask:
+        if (crypto and use_device and
+                self.current_page == self.page_ask and
+                not use_zfs):
             self.show_crypto_page()
             self.plugin_is_install = one_disk
             return True
@@ -405,33 +407,11 @@ class PageGtk(PageBase):
         self.disk_layout = layout
 
     def on_crypto_lvm_toggled(self, w):
-        if self.use_crypto.get_active() or self.use_lvm.get_active():
-            self.use_zfs.set_active(False)
-            self.use_zfs.set_sensitive(False)
-            self.use_zfs_desc.set_sensitive(False)
-        else:
-            self.use_zfs.set_sensitive(True)
-            self.use_zfs_desc.set_sensitive(True)
-
         if self.use_crypto.get_active():
             if w == self.use_crypto:
                 self.use_lvm.set_active(True)
             if w == self.use_lvm and not w.get_active():
                 self.use_crypto.set_active(False)
-
-    def on_zfs_toggled(self, w):
-        if self.use_zfs.get_active():
-            self.use_crypto.set_active(False)
-            self.use_lvm.set_active(False)
-            self.use_crypto.set_sensitive(False)
-            self.use_lvm.set_sensitive(False)
-            self.use_crypto_desc.set_sensitive(False)
-            self.use_lvm_desc.set_sensitive(False)
-        else:
-            self.use_crypto.set_sensitive(True)
-            self.use_lvm.set_sensitive(True)
-            self.use_crypto_desc.set_sensitive(True)
-            self.use_lvm_desc.set_sensitive(True)
 
     # Automatic partitioning page
 
@@ -495,21 +475,12 @@ class PageGtk(PageBase):
                 self.controller.toggle_next_button()
             self.plugin_is_install = about_to_install
 
-        # Supporting crypto, lvm and zfs in new installs only for now
+        # Supporting crypto and lvm in new installs only for now
         use_device = self.use_device.get_active()
         self.use_lvm.set_sensitive(use_device)
         self.use_crypto.set_sensitive(use_device)
         self.use_lvm_desc.set_sensitive(use_device)
         self.use_crypto_desc.set_sensitive(use_device)
-
-        # disabled when LVM or Crypto are enabled
-        if use_device and not (self.use_lvm.get_active() or
-                               self.use_crypto.get_active()):
-            self.use_zfs.set_sensitive(True)
-            self.use_zfs_desc.set_sensitive(True)
-        else:
-            self.use_zfs.set_sensitive(False)
-            self.use_zfs_desc.set_sensitive(False)
 
     def initialize_resize_mode(self):
         disk_id = self.get_current_disk_partman_id()
@@ -734,15 +705,17 @@ class PageGtk(PageBase):
                 return (choice, '%s B' % self.resizewidget.get_size(),
                         'resize_use_free')
 
-        elif self.use_device.get_active():
+        elif self.use_device.get_active() or self.use_zfs.get_active():
             def choose_recipe():
                 # TODO dmitrij.ledkov 2012-07-23: RAID recipe?
 
                 have_lvm = 'some_device_lvm' in self.extra_options
-                want_lvm = self.use_lvm.get_active()
+                want_lvm = (self.use_lvm.get_active() and
+                            not self.use_zfs.get_active())
 
                 have_crypto = 'some_device_crypto' in self.extra_options
-                want_crypto = self.use_crypto.get_active()
+                want_crypto = (self.use_crypto.get_active() and
+                               not self.use_zfs.get_active())
 
                 if not ((want_crypto and have_crypto) or
                         (want_lvm and have_lvm)):
