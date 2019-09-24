@@ -211,6 +211,8 @@ init_zfs() {
 	# Set zsys properties
 	zfs set  org.zsys:bootfs='yes' rpool/ROOT/ubuntu_${UUID_ORIG}
 	zfs set  org.zsys:last-used=$(date +%s) rpool/ROOT/ubuntu_${UUID_ORIG}
+	zfs set  org.zsys:bootfs='no'  rpool/ROOT/ubuntu_${UUID_ORIG}/srv
+	zfs set  org.zsys:bootfs='no'  rpool/ROOT/ubuntu_${UUID_ORIG}/usr
 	zfs set  org.zsys:bootfs='no'  rpool/ROOT/ubuntu_${UUID_ORIG}/var
 }
 
