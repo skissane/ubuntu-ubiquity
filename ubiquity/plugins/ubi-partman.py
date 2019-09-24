@@ -200,9 +200,11 @@ class PageGtk(PageBase):
             self.partition_toolbar.child_set_property(wdg, 'homogeneous',
                                                       False)
 
-        if os.path.exists('/sbin/zpool'):
-            self.use_zfs.set_visible(True)
-            self.use_zfs_desc.set_visible(True)
+        zpool_exists = os.path.exists('/sbin/zpool')
+        self.use_zfs.set_visible(zpool_exists)
+        self.use_zfs_desc.set_visible(zpool_exists)
+        self.alignment3.set_visible(zpool_exists)
+        self.hseparator2.set_visible(zpool_exists)
 
         # GtkBuilder signal mapping is broken (LP: # 852054).
         self.part_auto_hidden_label.connect(
@@ -456,7 +458,7 @@ class PageGtk(PageBase):
         elif (self.resize_use_free.get_active() and
                 'biggest_free' in self.extra_options):
             return True
-        elif (self.use_device.get_active() and
+        elif ((self.use_device.get_active() or self.use_zfs.get_active()) and
               len(self.extra_options['use_device'][1]) == 1):
             return True
         else:
