@@ -307,13 +307,16 @@ elif [ "$COMMAND" = "finalize" ]; then
 	# The code below can be removed once zfs is seeded on desktop images
 	#
 	# We need network up at this point and resolv.conf
+	mount -o bind /dev $TARGET/dev
+	mount -o bind /proc $TARGET/proc
 	mount -o bind /run $TARGET/run
+	mount -o bind /sys $TARGET/sys
 	echo "I: Installing missing packages in $TARGET"
 	chroot $TARGET apt -qy install zfsutils-linux zfs-initramfs
-	# Make sure zsys-commit service is enabled
-	mkdir -p $TARGET/etc/systemd/system/default.target.wants/
-	ln -s /usr/lib/systemd/system/zsys-commit.service $TARGET/etc/systemd/system/default.target.wants/
+	umount $TARGET/dev || true
+	umount $TARGET/proc || true
 	umount $TARGET/run || true
+	umount $TARGET/sys || true
 
 	# Activate zfs generator.
 	# After enabling the generator we should run zfs set canmount=on DATASET
