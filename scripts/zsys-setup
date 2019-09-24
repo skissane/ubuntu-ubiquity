@@ -186,24 +186,23 @@ init_zfs() {
 	zfs create bpool/BOOT/ubuntu_${UUID_ORIG} -o mountpoint=/boot
 
 	# System dataset
-	zfs create rpool/ROOT/ubuntu_${UUID_ORIG}/var -o canmount=on
-	zfs create rpool/ROOT/ubuntu_${UUID_ORIG}/var/lib -o canmount=on
+	zfs create rpool/ROOT/ubuntu_${UUID_ORIG}/var -o canmount=off
+	zfs create rpool/ROOT/ubuntu_${UUID_ORIG}/var/lib
 	zfs create rpool/ROOT/ubuntu_${UUID_ORIG}/var/lib/AccountServices
 	zfs create rpool/ROOT/ubuntu_${UUID_ORIG}/var/lib/apt
 	zfs create rpool/ROOT/ubuntu_${UUID_ORIG}/var/lib/dpkg
 	zfs create rpool/ROOT/ubuntu_${UUID_ORIG}/var/lib/NetworkManager
 
-    # Desktop specific system dataset
-    zfs create rpool/ROOT/ubuntu_${UUID_ORIG}/srv
-    zfs create rpool/ROOT/ubuntu_${UUID_ORIG}/usr -o canmount=off
-    zfs create rpool/ROOT/ubuntu_${UUID_ORIG}/usr/local
-    zfs create rpool/ROOT/ubuntu_${UUID_ORIG}/var/games
-    zfs create rpool/ROOT/ubuntu_${UUID_ORIG}/var/lib
-    zfs create rpool/ROOT/ubuntu_${UUID_ORIG}/var/log
-    zfs create rpool/ROOT/ubuntu_${UUID_ORIG}/var/mail
-    zfs create rpool/ROOT/ubuntu_${UUID_ORIG}/var/snap
-    zfs create rpool/ROOT/ubuntu_${UUID_ORIG}/var/spool
-    zfs create rpool/ROOT/ubuntu_${UUID_ORIG}/var/www
+	# Desktop specific system dataset
+	zfs create rpool/ROOT/ubuntu_${UUID_ORIG}/srv
+	zfs create rpool/ROOT/ubuntu_${UUID_ORIG}/usr -o canmount=off
+	zfs create rpool/ROOT/ubuntu_${UUID_ORIG}/usr/local
+	zfs create rpool/ROOT/ubuntu_${UUID_ORIG}/var/games
+	zfs create rpool/ROOT/ubuntu_${UUID_ORIG}/var/log
+	zfs create rpool/ROOT/ubuntu_${UUID_ORIG}/var/mail
+	zfs create rpool/ROOT/ubuntu_${UUID_ORIG}/var/snap
+	zfs create rpool/ROOT/ubuntu_${UUID_ORIG}/var/spool
+	zfs create rpool/ROOT/ubuntu_${UUID_ORIG}/var/www
 
 	# USERDATA datasets
 	# Dataset associated to the user are created by the installer.
@@ -301,9 +300,9 @@ elif [ "$COMMAND" = "init" ]; then
 	fi
 
 elif [ "$COMMAND" = "finalize" ]; then
-	# Install zsys in target (and zfs)
+	# Install zfs in target
 	# NOTE:
-	# The code below can be removed once zsys and zfs are seeded on desktop images
+	# The code below can be removed once zfs is seeded on desktop images
 	#
 	# We need network up at this point and resolv.conf
 	mount -o bind /run $TARGET/run
@@ -314,10 +313,9 @@ elif [ "$COMMAND" = "finalize" ]; then
 	ln -s /usr/lib/systemd/system/zsys-commit.service $TARGET/etc/systemd/system/default.target.wants/
 	umount $TARGET/run || true
 
-	# Activate zfs generator and install zsys into chroot if not seeded
+	# Activate zfs generator.
 	# After enabling the generator we should run zfs set canmount=on DATASET
 	# in the chroot for one dataset of each pool to refresh the zfs cache.
-	# It is not required at the moment until zsys call on boot is optimized.
 	echo "I: Activating zfs generator"
 	mkdir -p $TARGET/etc/zfs/zfs-list.cache
 	touch $TARGET/etc/zfs/zfs-list.cache/bpool $TARGET/etc/zfs/zfs-list.cache/rpool
