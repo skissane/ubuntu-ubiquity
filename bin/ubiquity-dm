@@ -663,7 +663,8 @@ EndSection
                     stdin=null, stdout=logfile, stderr=logfile,
                     preexec_fn=self.drop_privileges))
 
-            if osextras.find_on_path('ibus-daemon'):
+            if (osextras.find_on_path('ibus-daemon') and
+                    "gnome-shell" not in wm_cmd):
                 extras.append(subprocess.Popen(
                     ['ibus-daemon'],
                     stdin=null, stdout=logfile, stderr=logfile,
