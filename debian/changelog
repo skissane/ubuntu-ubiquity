@@ -1,4 +1,4 @@
-ubiquity (19.10.11) UNRELEASED; urgency=medium
+ubiquity (19.10.11) eoan; urgency=medium
 
   * ubiquity-dm: Adjust to GNOME Shell's gsd-xsettings related changes. GNOME
     Shell now launches gsd-xsettings itself, via the systemd units provided in
@@ -14,7 +14,7 @@ ubiquity (19.10.11) UNRELEASED; urgency=medium
   * ubiquity-dm: Don't launch ibus when we're running gnome-shell. These days
     gnome-shell takes care of running it itself.
 
- -- Iain Lane <iain.lane@canonical.com>  Wed, 25 Sep 2019 17:55:27 +0100
+ -- Iain Lane <iain.lane@canonical.com>  Wed, 25 Sep 2019 17:55:44 +0100
 
 ubiquity (19.10.10) eoan; urgency=medium
 
