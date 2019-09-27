@@ -203,8 +203,6 @@ class PageGtk(PageBase):
         zpool_exists = os.path.exists('/sbin/zpool')
         self.use_zfs.set_visible(zpool_exists)
         self.use_zfs_desc.set_visible(zpool_exists)
-        self.alignment3.set_visible(zpool_exists)
-        self.hseparator2.set_visible(zpool_exists)
 
         # GtkBuilder signal mapping is broken (LP: # 852054).
         self.part_auto_hidden_label.connect(

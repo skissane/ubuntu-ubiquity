@@ -1435,7 +1435,7 @@ _Description:
 Template: ubiquity/text/use_zfs
 Type: text
 _Description:
- EXPERIMENTAL: Erase disk and use ZFS with the new installation
+ EXPERIMENTAL: Erase disk and use ZFS
 
 Template: ubiquity/text/use_zfs_desc
 Type: text
