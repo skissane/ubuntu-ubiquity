@@ -152,11 +152,6 @@ prepare_target() {
 			break
 		fi
 	done
-
-	if grep -qw "${target}" /proc/mounts; then
-		echo "E: Failed to unmount ${target}. Exiting!"
-		exit 1
-	fi
 }
 
 format_disk() {
