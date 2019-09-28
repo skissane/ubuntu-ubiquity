@@ -131,7 +131,27 @@ prepare_target() {
 		echo "W: ${target}/etc/fstab doesn't exist"
 	fi
 
-	umount "${target}" || true
+	# umount /target
+	# It may fail to umount because the swap is being created by partman and not finished when we reach this point.
+	# Give it some time and retry with a sleep between tries.
+	iter=0
+	maxiter=10
+	echo "I: umounting ${target}"
+
+	while :; do
+		# Do not make is quiet. We want to know why it failed.
+		if ! sudo umount "${target}"; then
+			iter=$(( iter + 1 ))
+			echo "W: Try ${iter}. Failed to umount ${target}."
+			if [ ${iter} -eq ${maxiter} ]; then
+				echo "E: Failed to umount ${target}. Exiting!"
+				exit 1
+			fi
+			sleep 3
+		else
+			break
+		fi
+	done
 
 	if grep -qw "${target}" /proc/mounts; then
 		echo "E: Failed to unmount ${target}. Exiting!"
