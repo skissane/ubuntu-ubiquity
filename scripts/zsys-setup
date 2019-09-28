@@ -42,6 +42,7 @@ set -eu
 
 REQUIREDPKGS="zfsutils-linux"
 TARGET="/target"
+INIT_FLAG="/tmp/.zsys-init.done"
 
 usage() {
     # Display script usage
@@ -315,12 +316,18 @@ elif [ "${COMMAND}" = "init" ]; then
 		swapon -av
 	fi
 
+	touch "$INIT_FLAG"
 elif [ "${COMMAND}" = "finalize" ]; then
 	# Install zfs in target
 	# NOTE:
 	# The code below can be removed once zfs is seeded on desktop images
 	#
 	# We need network up at this point and resolv.conf
+
+	if [ ! -f "$INIT_FLAG" ]; then
+		echo "W: zsys init didn't succeed. Not proceeding with command: ${COMMAND}. Aborting!"
+		exit 1
+	fi
 	mount -o bind /run "${TARGET}/run"
 	echo "I: Installing missing packages in $TARGET"
 	apt-install zfsutils-linux zfs-initramfs
