@@ -107,7 +107,7 @@ check_prerequisites() {
 	fi
 
     for pkg in $@; do
-        if ! dpkg-query -W -f'${Status}' ${pkg}|grep -q "install ok installed" 2>/dev/null; then
+        if ! dpkg-query -W -f'${Status}' "${pkg}"|grep -q "install ok installed" 2>/dev/null; then
             echo "E: $pkg is required and not installed on this system. Exiting!"
             exit 1
         fi
@@ -259,7 +259,7 @@ move_user () {
 
 	echo "I: Creating user $user with home $userhome"
 	mv "${target}/${userhome}" "${target}/tmp/home/${user}"
-	zfs create rpool/USERDATA/${user}_${uuid} -o canmount=on -o mountpoint=${userhome}
+	zfs create "rpool/USERDATA/${user}_${uuid}" -o canmount=on -o mountpoint=${userhome}
 	chown $(chroot "${target}" id -u ${user}):$(chroot ${target} id -g ${user}) "${target}/${userhome}"
 	rsync -a "${target}/tmp/home/${user}/" "${target}/${userhome}"
 	bootfsdataset=$(grep "\s${target}\s" /proc/mounts | awk '{ print $1 }')
@@ -297,7 +297,7 @@ elif [ "${COMMAND}" = "init" ]; then
 	if [ -n "${SWAPFILE}" ]; then
 		SWAPSIZE=$(stat -c%s "${SWAPFILE}")
 		echo "I: Found swapfile with size ${SWAPSIZE}. Disabling"
-		swapoff ${SWAPFILE}
+		swapoff "${SWAPFILE}"
 	fi
 
 	prepare_target "${TARGET}"
