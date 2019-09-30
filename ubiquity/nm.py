@@ -34,20 +34,19 @@ def get_prop(obj, iface, prop):
 
 
 def get_vendor_and_model(udi):
-    vendor = ''
-    model = ''
-    cmd = ['/sbin/udevadm', 'info', '--path=%s' % udi, '--query=property']
-    with open('/dev/null', 'w') as devnull:
-        out = subprocess.Popen(
-            cmd, stdout=subprocess.PIPE, stderr=devnull,
-            universal_newlines=True)
-        out = out.communicate()
-    if not out[1]:
-        for prop in out[0].split('\n'):
-            if prop.startswith('ID_VENDOR_FROM_DATABASE'):
-                vendor = prop.split('ID_VENDOR_FROM_DATABASE=')[1]
-            elif prop.startswith('ID_MODEL_FROM_DATABASE'):
-                model = prop.split('ID_MODEL_FROM_DATABASE=')[1]
+    import gi
+    gi.require_version('GUdev', '1.0')
+    from gi.repository import GUdev
+
+    client = GUdev.Client()
+    device = client.query_by_sysfs_path(udi)
+
+    if not device:
+        return ('', '')
+
+    vendor = device.get_property('ID_VENDOR_FROM_DATABASE')
+    model = device.get_property('ID_MODEL_FROM_DATABASE')
+
     return (vendor, model)
 
 
