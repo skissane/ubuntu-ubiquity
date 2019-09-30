@@ -359,7 +359,8 @@ elif [ "${COMMAND}" = "finalize" ]; then
 	# Handle userdata
 	UUID_ORIG=$(head -100 /dev/urandom | tr -dc 'a-z0-9' |head -c6)
 	mkdir -p "${TARGET}/tmp/home"
-	for user in $(ls ${TARGET}/home); do
+	for user in ${TARGET}/home/*; do
+		user="$(basename $user)"
 		move_user "${TARGET}" "${user}" "/home/${user}" "${UUID_ORIG}"
 	done
 
