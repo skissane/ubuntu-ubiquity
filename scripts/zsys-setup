@@ -190,7 +190,6 @@ EOF
 	fi
 
 	cat /tmp/sfdisk.cfg | sfdisk ${sfdiskopts} "${disk}"
-	partprobe "${disk}"
 }
 
 init_zfs() {
@@ -290,7 +289,7 @@ init_system_partitions() {
 
 	echo "I: Creating grub partition $partgrub"
 	# Finalize grub directory
-	mkdir -p "${target}/boot/grub"ls 
+	mkdir -p "${target}/boot/grub"
 	mke2fs -F -t ext4 "${partgrub}"
 	mount -t ext4 "${partgrub}" "${target}/boot/grub"
 
