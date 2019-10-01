@@ -85,7 +85,13 @@ COMMAND=$( echo $1| tr '[:upper:]' '[:lower:]' )
 
 # The entire disk has been formatted with use_device
 # There is either one ext4 partition or one ext4 and one ESP
-PART="$(grep -w ${TARGET} /proc/mounts | awk '{print $1}')"
+PART=$(grep -E "\s${TARGET}\s" /proc/mounts | awk '{print $1}')
+
+if [ -z "${PART}" ]; then
+	echo "E: Couldn't identify partition matching ${TARGET}. Exiting!"
+	exit 1
+fi
+
 DISK="$(lsblk -lns -o TYPE,PATH ${PART}| grep disk| awk '{print $2}')"
 
 check_prerequisites() {
@@ -119,7 +125,7 @@ prepare_target() {
 	target="$1"
 	esp="${target}/boot/efi"
 
-	if ! grep -qw "$target" /proc/mounts; then
+	if ! grep -qE "\s${target}\s" /proc/mounts; then
 		echo "E: $target is not mounted. Exiting!"
 		exit 1
 	fi
@@ -297,7 +303,7 @@ elif [ "${COMMAND}" = "init" ]; then
 	PARTRPOOL=6
 
 	# Swap files are not supported on ZFS, we use a ZFS volume instead
-	SWAPFILE="$(grep -w ${TARGET} /proc/swaps |awk '{print $1}')"
+	SWAPFILE="$(grep "^${TARGET}" /proc/swaps |awk '{print $1}')"
 	SWAPSIZE=0
 
 	# Disable swap
