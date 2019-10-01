@@ -42,6 +42,7 @@ set -eu
 
 REQUIREDPKGS="zfsutils-linux"
 TARGET="/target"
+ESP="${TARGET}/boot/efi"
 INIT_FLAG="/tmp/.zsys-init.done"
 
 usage() {
@@ -83,17 +84,6 @@ done
 
 COMMAND=$( echo $1| tr '[:upper:]' '[:lower:]' )
 
-# The entire disk has been formatted with use_device
-# There is either one ext4 partition or one ext4 and one ESP
-PART=$(grep -E "\s${TARGET}\s" /proc/mounts | awk '{print $1}')
-
-if [ -z "${PART}" ]; then
-	echo "E: Couldn't identify partition matching ${TARGET}. Exiting!"
-	exit 1
-fi
-
-DISK="$(lsblk -lns -o TYPE,PATH ${PART}| grep disk| awk '{print $2}')"
-
 check_prerequisites() {
     # Check and set requirements to run this script
     #
@@ -123,7 +113,6 @@ check_prerequisites() {
 
 prepare_target() {
 	target="$1"
-	esp="${target}/boot/efi"
 
 	if ! grep -qE "\s${target}\s" /proc/mounts; then
 		echo "E: $target is not mounted. Exiting!"
@@ -144,7 +133,7 @@ prepare_target() {
 	iter=0
 	maxiter=10
 
-	for mountpoint in "${esp}" "${target}"; do
+	for mountpoint in "${ESP}" "${target}"; do
 		if [ ! -d "${mountpoint}" ]; then
 			continue
 		fi
@@ -173,19 +162,34 @@ format_disk() {
 	partbpool="$3"
 	partrpool="$4"
 	partext=$(( partgrub + 1 ))
+	sfdiskopts=""
+	partprefix="${disk}${PARTBASE}"
 
 	echo "I: Formatting disk $disk with partitions grub:${partgrub} ext:${partext} bpool:${partbpool} rpool:${partrpool}"
 
-	start=$(sfdisk -l "${disk}"|grep "^${disk}${partgrub}"|awk '{print $2}')
-	# Partition hard drive
-	# TODO: retrieve start of sda1 or 2 and reuse it instead of 2048
-	sfdisk "${disk}"<<EOF
-${disk}${partgrub}  : start=        $start, size=    50M, type=83, bootable
-${disk}${partext}   :                                   type=5
-${disk}${partbpool} :                     size=     2G, type=a5
-${disk}${partrpool} :                                   type=a5
+	if [ "${IS_EFI}" = "true" ]; then
+
+		# FIXME: Delete all the partitions but the ESP
+		sfdisk --delete "${disk}" ${partgrub}
+		cat > /tmp/sfdisk.cfg <<EOF
+${partprefix}${partgrub}  :   size=    50M, type=0FC63DAF-8483-4772-8E79-3D69D8477DE4
+${partprefix}${partbpool} :   size=     2G, type=516E7CBA-6ECF-11D6-8FF8-00022D09712B
+${partprefix}${partrpool} :                 type=516E7CBA-6ECF-11D6-8FF8-00022D09712B
+EOF
+		sfdiskopts="--append"
+	else
+		start=$(sfdisk -l "${disk}"|grep "^${partprefix}${partgrub}"|awk '{print $2}')
+
+		cat > /tmp/sfdisk.cfg <<EOF
+${partprefix}${partgrub}  : start=        $start, size=    50M, type=83, bootable
+${partprefix}${partext}   :                                   type=5
+${partprefix}${partbpool} :                     size=     2G, type=a5
+${partprefix}${partrpool} :                                   type=a5
 EOF
 
+	fi
+
+	cat /tmp/sfdisk.cfg | sfdisk ${sfdiskopts} "${disk}"
 	partprobe "${disk}"
 }
 
@@ -279,15 +283,22 @@ move_user () {
 	zfs set org.zsys:bootfs-datasets="${bootfsdataset}" rpool/USERDATA/${user}_${UUID_ORIG}
 }
 
-init_grub() {
+init_system_partitions() {
 	target="$1"
-	partgrub="$2"
+	partefi="$2"
+	partgrub="$3"
 
 	echo "I: Creating grub partition $partgrub"
 	# Finalize grub directory
-	mkdir -p "${target}/boot/grub"
+	mkdir -p "${target}/boot/grub"ls 
 	mke2fs -F -t ext4 "${partgrub}"
 	mount -t ext4 "${partgrub}" "${target}/boot/grub"
+
+	# ESP
+	mkdir -p "${target}/boot/efi"
+	# No need to reformat the partition has been prepared by partman-efi
+	mount -t vfat "${partefi}" "${target}/boot/efi"
+
 }
 
 check_prerequisites ${REQUIREDPKGS}
@@ -298,9 +309,48 @@ if [ -z "${COMMAND}" ]; then
 	echo "E: ${COMMAND} is mandatory. Exiting!"
 	exit 1
 elif [ "${COMMAND}" = "init" ]; then
+	# The entire disk has been formatted with use_device
+	# There is either one ext4 partition or one ext4 and one ESP
+	PART=$(grep -E "\s${TARGET}\s" /proc/mounts | awk '{print $1}')
+
+	if [ -z "${PART}" ]; then
+		echo "E: Couldn't identify partition matching ${TARGET}. Exiting!"
+		exit 1
+	fi
+
+	DISK="$(lsblk -lns -o TYPE,PATH ${PART}| grep disk| awk '{print $2}')"
+
+	# Some disks have letters in the partion number like /dev/nvme0n1p1
+	# In this case we want to retrieve 'p' so we deal only with partition number
+	# in the rest of the script and prepend the base.
+	PARTBASE="$(echo ${PART} | sed -e 's/[0-9]*$//' | sed -e "s#${DISK}##")"
+
+	# Better check if the ESP has been created than if it's a EFI system
+	IS_EFI="false"
+	if grep -q "\s${ESP}\s" /proc/mounts; then
+		IS_EFI="true"
+	fi
+
 	PARTGRUB=$(lsblk -n -o TYPE ${DISK}|grep ^part| wc -l)
-	PARTBPOOL=5
-	PARTRPOOL=6
+	if [ "$IS_EFI" = "true" ]; then
+		# No extended partition on EFI + GPT
+		# The layout is
+		# 1: ESP
+		# 2: grub
+		# 3: bpool
+		# 4: rpool
+		PARTBPOOL=3
+		PARTRPOOL=4
+	else
+		# MBR pools are on extended partition
+		# The layout is:
+		# 1: grub
+		# 2: Extended
+		# 5: bpool
+		# 6: rpool
+		PARTBPOOL=5
+		PARTRPOOL=6
+	fi
 
 	# Swap files are not supported on ZFS, we use a ZFS volume instead
 	SWAPFILE="$(grep "^${TARGET}" /proc/swaps |awk '{print $1}')"
@@ -315,8 +365,8 @@ elif [ "${COMMAND}" = "init" ]; then
 
 	prepare_target "${TARGET}"
 	format_disk "${DISK}" "${PARTGRUB}" "${PARTBPOOL}" "${PARTRPOOL}"
-	init_zfs "${TARGET}" "${DISK}${PARTBPOOL}" "${DISK}${PARTRPOOL}"
-	init_grub "${TARGET}" "${DISK}${PARTGRUB}"
+	init_zfs "${TARGET}" "${DISK}${PARTBASE}${PARTBPOOL}" "${DISK}${PARTBASE}${PARTRPOOL}"
+	init_system_partitions "${TARGET}" "${DISK}${PARTBASE}1" "${DISK}${PARTBASE}${PARTGRUB}"
 
 	# Generate fstab
 	# $TARGET/etc has been destroyed by the creation of the zfs partitition
@@ -326,7 +376,7 @@ elif [ "${COMMAND}" = "init" ]; then
 		echo "I: Creating fstab"
 		grep -Ev '\s/\s|/swapfile' /tmp/fstab.partman > "${TARGET}/etc/fstab"
 	fi
-	grubuuid=$(blkid -s UUID -o value "${DISK}${PARTGRUB}")
+	grubuuid=$(blkid -s UUID -o value "${DISK}${PARTBASE}${PARTGRUB}")
 	echo "UUID=${grubuuid}\t/boot/grub\text4\terrors=remount-ro\t0\t1" >> "${TARGET}/etc/fstab"
 
 	# Recreate swap file if there was one
