@@ -471,6 +471,8 @@ class PageGtk(PageBase):
         use_device = self.use_device.get_active()
         self.use_lvm.set_sensitive(use_device)
         self.use_crypto.set_sensitive(use_device)
+        self.use_lvm_desc.set_sensitive(use_device)
+        self.use_crypto_desc.set_sensitive(use_device)
 
     def initialize_resize_mode(self):
         disk_id = self.get_current_disk_partman_id()

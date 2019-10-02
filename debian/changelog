@@ -1,3 +1,11 @@
+ubiquity (19.10.14) eoan; urgency=medium
+
+  [ Jean-Baptiste Lallement ]
+  * ubi-partman.py: Match the enable state of lvm and crypto labels with the
+    corresponding checkbox.
+
+ -- Jean-Baptiste Lallement <jean-baptiste.lallement@ubuntu.com>  Wed, 02 Oct 2019 06:21:36 +0200
+
 ubiquity (19.10.13) eoan; urgency=medium
 
   [ Jean-Baptiste Lallement ]
