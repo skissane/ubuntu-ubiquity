@@ -169,8 +169,10 @@ format_disk() {
 
 	if [ "${IS_EFI}" = "true" ]; then
 
-		# FIXME: Delete all the partitions but the ESP
+		# Improvement: Delete all the partitions but the ESP
+		# We should be only 1 or 2 partittion but well it can be made generic
 		sfdisk --delete "${disk}" ${partgrub}
+
 		cat > /tmp/sfdisk.cfg <<EOF
 ${partprefix}${partgrub}  :   size=    50M, type=0FC63DAF-8483-4772-8E79-3D69D8477DE4
 ${partprefix}${partbpool} :   size=     2G, type=516E7CBA-6ECF-11D6-8FF8-00022D09712B
@@ -293,11 +295,12 @@ init_system_partitions() {
 	mke2fs -F -t ext4 "${partgrub}"
 	mount -t ext4 "${partgrub}" "${target}/boot/grub"
 
-	# ESP
-	mkdir -p "${target}/boot/efi"
-	# No need to reformat the partition has been prepared by partman-efi
-	mount -t vfat "${partefi}" "${target}/boot/efi"
-
+	if [ "${IS_EFI}" = "true" ]; then
+		# ESP
+		mkdir -p "${target}/boot/efi"
+		# No need to reformat the partition has been prepared by partman-efi
+		mount -t vfat "${partefi}" "${target}/boot/efi"
+	fi
 }
 
 check_prerequisites ${REQUIREDPKGS}
