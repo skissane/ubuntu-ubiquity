@@ -425,8 +425,10 @@ elif [ "${COMMAND}" = "finalize" ]; then
 	UUID_ORIG=$(head -100 /dev/urandom | tr -dc 'a-z0-9' |head -c6)
 	mkdir -p "${TARGET}/tmp/home"
 	for user in ${TARGET}/home/*; do
-		user="$(basename $user)"
-		move_user "${TARGET}" "${user}" "/home/${user}" "${UUID_ORIG}"
+        if [ -d "${user}" ]; then
+            user="$(basename $user)"
+            move_user "${TARGET}" "${user}" "/home/${user}" "${UUID_ORIG}"
+        fi
 	done
 
 	move_user "${TARGET}" root /root "${UUID_ORIG}"
