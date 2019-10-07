@@ -1,3 +1,11 @@
+ubiquity (19.10.15) UNRELEASED; urgency=medium
+
+  [ Jean-Baptiste Lallement ]
+  * debian/rules: grub-installer doesn't exist on some archs. Do not patch it
+    in this cases.
+
+ -- Jean-Baptiste Lallement <jean-baptiste.lallement@canonical.com>  Mon, 07 Oct 2019 12:49:35 +0200
+
 ubiquity (19.10.14) eoan; urgency=medium
 
   [ Jean-Baptiste Lallement ]
