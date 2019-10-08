@@ -5,6 +5,8 @@ ubiquity (19.10.16) UNRELEASED; urgency=medium
     grub-installer package in the archive instead.
   * ubi-partman.py: Handle ZFS option not being implemented on KDE frontend
     (LP: #1847228)
+  * Automatic update of included source packages: grub-installer
+    1.128ubuntu14. (LP: #1847211)
 
   [ Michael Hudson-Doyle ]
   * ubiquity/install_misc.py:do_install: mark any already-installed packages
