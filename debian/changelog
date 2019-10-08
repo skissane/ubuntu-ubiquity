@@ -1,3 +1,10 @@
+ubiquity (19.10.16) UNRELEASED; urgency=medium
+
+  * ubiquity/install_misc.py:do_install: mark any already-installed packages
+    as manually installed. (LP: #1841672)
+
+ -- Michael Hudson-Doyle <michael.hudson@ubuntu.com>  Tue, 08 Oct 2019 16:04:00 +1300
+
 ubiquity (19.10.15) eoan; urgency=medium
 
   [ Jean-Baptiste Lallement ]
