@@ -5,6 +5,9 @@ ubiquity (19.10.19) UNRELEASED; urgency=medium
     ubiquity.ui some years ago. The template needs to be manual updated which
     wasn't done at the time, should make it translatable again (LP: #1731070)
 
+  [ Mathieu Trudel-Lapierre ]
+  * Update translations from Launchpad.
+
  -- Steve Langasek <steve.langasek@ubuntu.com>  Thu, 10 Oct 2019 10:15:46 -0700
 
 ubiquity (19.10.18) eoan; urgency=medium
