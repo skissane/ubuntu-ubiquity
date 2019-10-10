@@ -7,6 +7,7 @@ ubiquity (19.10.19) UNRELEASED; urgency=medium
 
   [ Mathieu Trudel-Lapierre ]
   * Update translations from Launchpad.
+  * debian/real-po/templates.pot: update template using debconf-updatepo.
 
  -- Steve Langasek <steve.langasek@ubuntu.com>  Thu, 10 Oct 2019 10:15:46 -0700
 
