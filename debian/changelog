@@ -1,3 +1,12 @@
+ubiquity (19.10.19) UNRELEASED; urgency=medium
+
+  [ Sebastien Bacher ]
+  * Update the 'Skip' string to '_Skip', matching  the change done to
+    ubiquity.ui some years ago. The template needs to be manual updated which
+    wasn't done at the time, should make it translatable again (LP: #1731070)
+
+ -- Steve Langasek <steve.langasek@ubuntu.com>  Thu, 10 Oct 2019 10:15:46 -0700
+
 ubiquity (19.10.18) eoan; urgency=medium
 
   * Automatic update of included source packages: partman-auto
