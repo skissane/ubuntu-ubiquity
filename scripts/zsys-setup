@@ -262,11 +262,11 @@ init_zfs() {
 	zfs create rpool/USERDATA -o canmount=off -o mountpoint=/
 
 	# Set zsys properties
-	zfs set org.zsys:bootfs='yes' "rpool/ROOT/ubuntu_${UUID_ORIG}"
-	zfs set org.zsys:last-used=$(date +%s) "rpool/ROOT/ubuntu_${UUID_ORIG}"
-	zfs set org.zsys:bootfs='no' "rpool/ROOT/ubuntu_${UUID_ORIG}/srv"
-	zfs set org.zsys:bootfs='no' "rpool/ROOT/ubuntu_${UUID_ORIG}/usr"
-	zfs set org.zsys:bootfs='no' "rpool/ROOT/ubuntu_${UUID_ORIG}/var"
+	zfs set com.ubuntu.zsys:bootfs='yes' "rpool/ROOT/ubuntu_${UUID_ORIG}"
+	zfs set com.ubuntu.zsys:last-used=$(date +%s) "rpool/ROOT/ubuntu_${UUID_ORIG}"
+	zfs set com.ubuntu.zsys:bootfs='no' "rpool/ROOT/ubuntu_${UUID_ORIG}/srv"
+	zfs set com.ubuntu.zsys:bootfs='no' "rpool/ROOT/ubuntu_${UUID_ORIG}/usr"
+	zfs set com.ubuntu.zsys:bootfs='no' "rpool/ROOT/ubuntu_${UUID_ORIG}/var"
 }
 
 move_user () {
