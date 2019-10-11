@@ -175,8 +175,8 @@ format_disk() {
 
 		cat > /tmp/sfdisk.cfg <<EOF
 ${partprefix}${partgrub}  :   size=    50M, type=0FC63DAF-8483-4772-8E79-3D69D8477DE4
-${partprefix}${partbpool} :   size=     2G, type=516E7CBA-6ECF-11D6-8FF8-00022D09712B
-${partprefix}${partrpool} :                 type=516E7CBA-6ECF-11D6-8FF8-00022D09712B
+${partprefix}${partbpool} :   size=     2G, type=6A82CB45-1DD2-11B2-99A6-080020736631
+${partprefix}${partrpool} :                 type=6A85CF4D-1DD2-11B2-99A6-080020736631
 EOF
 		sfdiskopts="--append"
 	else
