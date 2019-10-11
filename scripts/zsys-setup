@@ -431,6 +431,11 @@ elif [ "${COMMAND}" = "finalize" ]; then
 	done
 
 	move_user "${TARGET}" root /root "${UUID_ORIG}"
+
+    echo "I: Changing sync mode of rpool to standard"
+    zfs set sync=standard rpool
+
+    echo "I: ZFS setup complete"
 else
 	echo "E: Unknown command: $COMMAND"
 	exit 1
