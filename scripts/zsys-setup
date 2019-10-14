@@ -403,17 +403,12 @@ elif [ "${COMMAND}" = "init" ]; then
 		swapon -av
 	fi
 
-	touch "$INIT_FLAG"
-elif [ "${COMMAND}" = "finalize" ]; then
-	# Install zfs in target
-	# NOTE:
-	# The code below can be removed once zfs is seeded on desktop images
-	#
-	# We need network up at this point and resolv.conf
-	echo "I: Installing ZFS utils into ${TARGET}"
+	echo "I: Marking ZFS utilities to be kept in the target system"
 	apt-install zfsutils-linux 2>/dev/null
 	apt-install zfs-initramfs 2>/dev/null
 
+	touch "$INIT_FLAG"
+elif [ "${COMMAND}" = "finalize" ]; then
 	if [ ! -f "$INIT_FLAG" ]; then
 		echo "W: zsys init didn't succeed. Not proceeding with command: ${COMMAND}. Aborting!"
 		exit 1
