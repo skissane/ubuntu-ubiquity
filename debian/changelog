@@ -10,6 +10,10 @@ ubiquity (19.10.20) UNRELEASED; urgency=medium
     decided the target system isn't going to need. It's too late for us to try
     to save things then. (LP: #1847898)
 
+  [ Dimitri John Ledkov ]
+  * Automatic update of included source packages: partman-auto
+    134ubuntu12, partman-base 206ubuntu6 (LP: #1847944)
+
  -- Iain Lane <iain.lane@canonical.com>  Mon, 14 Oct 2019 11:57:31 +0100
 
 ubiquity (19.10.19) eoan; urgency=medium
