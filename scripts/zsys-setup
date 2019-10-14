@@ -192,6 +192,10 @@ EOF
 	fi
 
 	cat /tmp/sfdisk.cfg | sfdisk ${sfdiskopts} "${disk}"
+
+	# Force a re-read of the partition table
+	echo "I: Re-reading partition table"
+	partx --show "${disk}"
 }
 
 init_zfs() {
@@ -321,6 +325,9 @@ elif [ "${COMMAND}" = "init" ]; then
 	fi
 
 	DISK="$(lsblk -lns -o TYPE,PATH ${PART}| grep disk| awk '{print $2}')"
+
+	echo "I: Partition table before init of ZFS"
+	partx --show "${DISK}"
 
 	# Some disks have letters in the partion number like /dev/nvme0n1p1
 	# In this case we want to retrieve 'p' so we deal only with partition number
