@@ -1,4 +1,4 @@
-ubiquity (19.10.21) UNRELEASED; urgency=medium
+ubiquity (19.10.21) eoan; urgency=medium
 
   [ Dimitri John Ledkov ]
   * scripts/plugininstall.py: skip installing extras with multiarch
@@ -7,7 +7,7 @@ ubiquity (19.10.21) UNRELEASED; urgency=medium
   [ Mathieu Trudel-Lapierre ]
   * Updated translations from Launchpad.
 
- -- Dimitri John Ledkov <xnox@ubuntu.com>  Wed, 16 Oct 2019 14:32:08 +0100
+ -- Mathieu Trudel-Lapierre <cyphermox@ubuntu.com>  Wed, 16 Oct 2019 10:01:56 -0400
 
 ubiquity (19.10.20) eoan; urgency=medium
 
