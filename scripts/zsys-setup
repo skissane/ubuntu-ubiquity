@@ -290,7 +290,7 @@ move_user () {
 	chown $(chroot "${target}" id -u ${user}):$(chroot ${target} id -g ${user}) "${target}/${userhome}"
 	rsync -a "${target}/tmp/home/${user}/" "${target}/${userhome}"
 	bootfsdataset=$(grep "\s${target}\s" /proc/mounts | awk '{ print $1 }')
-	zfs set org.zsys:bootfs-datasets="${bootfsdataset}" rpool/USERDATA/${user}_${UUID_ORIG}
+	zfs set com.ubuntu.zsys:bootfs-datasets="${bootfsdataset}" rpool/USERDATA/${user}_${UUID_ORIG}
 }
 
 init_system_partitions() {

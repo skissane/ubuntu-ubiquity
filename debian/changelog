@@ -1,3 +1,9 @@
+ubiquity (20.04.1) UNRELEASED; urgency=medium
+
+  * script/zsys-setup: fix tag name from org.zsys to com.ubuntu.zsys.
+
+ -- Jean-Baptiste Lallement <jean-baptiste.lallement@ubuntu.com>  Mon, 28 Oct 2019 09:07:57 +0100
+
 ubiquity (19.10.21) eoan; urgency=medium
 
   [ Dimitri John Ledkov ]
