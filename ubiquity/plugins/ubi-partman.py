@@ -200,10 +200,6 @@ class PageGtk(PageBase):
             self.partition_toolbar.child_set_property(wdg, 'homogeneous',
                                                       False)
 
-        zpool_exists = os.path.exists('/sbin/zpool')
-        self.use_zfs.set_visible(zpool_exists)
-        self.use_zfs_desc.set_visible(zpool_exists)
-
         # GtkBuilder signal mapping is broken (LP: # 852054).
         self.part_auto_hidden_label.connect(
             'activate-link', self.part_auto_hidden_label_activate_link)
@@ -288,6 +284,44 @@ class PageGtk(PageBase):
             new_parent.attach_next_to(widget, sibling, direction,
                                       width, height)
             widget.show()
+
+    def on_advanced_features_clicked(self, widget):
+        from gi.repository import Gtk
+
+        # Save current state of advanced features
+        selected = None
+        crypto_selected = self.use_crypto.get_active()
+        for w in (self.advanced_features_radio_none,
+                  self.use_lvm, self.use_zfs):
+            if w.get_active():
+                selected = w
+                break
+
+        # Only show zfs when available
+        zpool_exists = os.path.exists('/sbin/zpool')
+        self.use_zfs.set_visible(zpool_exists)
+
+        dlg = self.advanced_features_dialog
+        dlg.show()
+        response = dlg.run()
+        dlg.hide()
+
+        if response == Gtk.ResponseType.OK:
+            label = ""
+            if self.advanced_features_radio_none.get_active():
+                label = self.controller.get_string('advanced_features_none_selected')
+            elif self.use_lvm.get_active():
+                label = self.controller.get_string('advanced_features_lvm_selected')
+                if self.use_crypto.get_active():
+                    label = self.controller.get_string('advanced_features_crypto_selected')
+            elif self.use_zfs.get_active():
+                label = self.controller.get_string('advanced_features_zfs_selected')
+            self.advanced_features_desc.set_text(label)
+        else:
+            # Restore previous selection
+            if selected:
+                selected.set_active(True)
+            self.use_crypto.set_active(crypto_selected)
 
     def plugin_on_next_clicked(self):
         reuse = self.reuse_partition.get_active()
@@ -475,12 +509,20 @@ class PageGtk(PageBase):
                 self.controller.toggle_next_button()
             self.plugin_is_install = about_to_install
 
-        # Supporting crypto and lvm in new installs only for now
+        # Advanced features in new installs only for now
         use_device = self.use_device.get_active()
-        self.use_lvm.set_sensitive(use_device)
-        self.use_crypto.set_sensitive(use_device)
-        self.use_lvm_desc.set_sensitive(use_device)
-        self.use_crypto_desc.set_sensitive(use_device)
+        self.advanced_features_button.set_sensitive(use_device)
+        self.advanced_features_selected.set_sensitive(use_device)
+
+    def advanced_features_option_changed(self, widget):
+        if not widget.get_active():
+            return
+
+        use_lvm = self.use_lvm.get_active()
+        if not use_lvm:
+            self.use_crypto.set_active(False)
+        self.use_crypto.set_sensitive(use_lvm)
+        self.use_crypto_desc.set_sensitive(use_lvm)
 
     def initialize_resize_mode(self):
         disk_id = self.get_current_disk_partman_id()
@@ -662,21 +704,23 @@ class PageGtk(PageBase):
         ticked = False
         for option, name in option_to_widget:
             opt_widget = getattr(self, name)
-            opt_desc = getattr(self, name + '_desc')
+            opt_desc = getattr(self, name + '_desc', None)
 
             if option in options:
                 opt_widget.show()
-                opt_desc.show()
                 opt_widget.set_label(options[option].title)
-                opt_desc.set_markup(fmt % options[option].desc)
+
+                if opt_desc:
+                    opt_desc.show()
+                    opt_desc.set_markup(fmt % options[option].desc)
+
                 if not ticked and opt_widget.get_sensitive():
                     opt_widget.set_active(True)
                     ticked = True
             else:
                 opt_widget.hide()
-                opt_desc.hide()
-
-        self.use_zfs_desc.set_markup(fmt % self.use_zfs_desc.get_label())
+                if opt_desc:
+                    opt_desc.hide()
 
         # Process the default selection
         self.part_ask_option_changed(None)
