@@ -1475,7 +1475,7 @@ _Description: LVM selected
 
 Template: ubiquity/text/advanced_features_crypto_selected
 Type: text
-_Description: LVM with encryption
+_Description: LVM and encryption selected
 
 Template: ubiquity/text/advanced_features_zfs_selected
 Type: text
