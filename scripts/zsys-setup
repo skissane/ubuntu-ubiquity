@@ -236,7 +236,6 @@ init_zfs() {
 		-O acltype=posixacl \
 		-O relatime=on \
 		-O normalization=formD \
-		-O mountpoint=/ \
 		-O canmount=off \
 		-O devices=off \
 		-O mountpoint=/boot -R "${target}" bpool "${partbpool}"
