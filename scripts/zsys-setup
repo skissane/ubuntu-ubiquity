@@ -178,22 +178,21 @@ get_layout() {
 		partbase="$(echo ${part} | sed -e 's/[0-9]*$//' | sed -e "s#${disk}##")"
 	fi
 
-	partgrub=$(lsblk -n -o TYPE ${disk}|grep ^part| wc -l)
+	partesp=1
 	if [ "$IS_EFI" = "true" ]; then
 		# No extended partition on EFI + GPT
 		# The layout is
 		# 1: ESP
-		# 2: grub
-		# 3: swap
-		# 4: bpool
-		# 5: rpool
-		partswap=3
-		partbpool=4
-		partrpool=5
+		# 2: swap
+		# 3: bpool
+		# 4: rpool
+		partswap=2
+		partbpool=3
+		partrpool=4
 	else
 		# MBR pools are on extended partition
 		# The layout is:
-		# 1: grub
+		# 1: ESP
 		# 2: Extended
 		# 5: swap
 		# 6: bpool
@@ -203,47 +202,51 @@ get_layout() {
 		partrpool=7
 	fi
 
-	echo "OK|${disk}|${partbase}|${partgrub}|${partswap}|${partbpool}|${partrpool}"
+	echo "OK|${disk}|${partbase}|${partesp}|${partswap}|${partbpool}|${partrpool}"
 }
 
 format_disk() {
 	disk="$1"
 	partbase="$2"
-	partgrub="$3"
+	partesp="$3"
 	partbpool="$4"
 	partrpool="$5"
 	ss="$6"
 	partswap=$(( partbpool - 1 ))
-	partext=$(( partgrub + 1 ))
+	partext=$(( partesp + 1 ))
 	sfdiskopts=""
-	partprefix="${disk}${PARTBASE}"
+	partprefix="${disk}${partbase}"
 
-	echo "I: Formatting disk $disk with partitions grub:${partgrub} ext:${partext} swap:${partswap} bpool:${partbpool} rpool:${partrpool}"
+	echo "I: Formatting disk $disk with partitions ESP:${partesp} ext:${partext} swap:${partswap} bpool:${partbpool} rpool:${partrpool}"
 
 	# bpool size: 500M < 5% of ZFS allocated space < 2G
-	size_percent=$(expr \( $(blockdev --getsize64 ${disk}${partgrub}) / 1024 / 1024 \) \* 5 / 100)
+	# The id for the ext4 partition created by partman is 2 or 1 depending on being on and EFI system of not.
+	partext4=1
+	if [ "${IS_EFI}" = "true" ]; then
+		partext4=$(( partesp + 1 ))
+	fi
+
+	size_percent=$(expr \( $(blockdev --getsize64 ${disk}${partext4}) / 1024 / 1024 \) \* 5 / 100)
 	bpool_size=500
 	[ ${size_percent} -gt ${bpool_size} ] && bpool_size=${size_percent}
 	[ ${bpool_size} -gt 2048 ] && bpool_size=2048
 
 	if [ "${IS_EFI}" = "true" ]; then
-
 		# Improvement: Delete all the partitions but the ESP
 		# There should be only 1 or 2 partittions but it can be made generic
-		sfdisk --delete "${disk}" ${partgrub}
+		sfdisk --delete "${disk}" ${partswap}
 
 		cat > /tmp/sfdisk.cfg <<EOF
-${partprefix}${partgrub} :   size=    50M, type=0FC63DAF-8483-4772-8E79-3D69D8477DE4
 ${partprefix}${partswap} :   size= ${ss}M, type=0657FD6D-A4AB-43C4-84E5-0933C84B4F4F
 ${partprefix}${partbpool} :   size= ${bpool_size}M, type=6A82CB45-1DD2-11B2-99A6-080020736631
 ${partprefix}${partrpool} :                 type=6A85CF4D-1DD2-11B2-99A6-080020736631
 EOF
 		sfdiskopts="--append"
 	else
-		start=$(sfdisk -l "${disk}"|grep "^${partprefix}${partgrub}"|awk '{print $2}')
+		start=$(sfdisk -l "${disk}"|grep "^${partprefix}${partesp}"|awk '{print $2}')
 
 		cat > /tmp/sfdisk.cfg <<EOF
-${partprefix}${partgrub} : start=        $start, size=    50M, type=83, bootable
+${partprefix}${partesp} : start=        $start, size=    512M, type=ef, bootable
 ${partprefix}${partext} :                                   type=5
 ${partprefix}${partswap} :                     size= ${ss}M, type=82
 ${partprefix}${partbpool} :                     size= ${bpool_size}M, type=a5
@@ -366,18 +369,19 @@ init_system_partitions() {
 	partefi="$2"
 	partgrub="$3"
 
-	echo "I: Creating grub partition $partgrub"
+	# ESP
+	mkdir -p "${target}/boot/efi"
+	if [ "${IS_EFI}" = "false" ]; then
+		echo "I: Creating ESP"
+		mkfs.vfat "${partefi}"
+	fi
+	mount -t vfat "${partefi}" "${target}/boot/efi"
+	mkdir -p "${target}/boot/efi/grub"
+
+	echo "I: Mount grub directory"
 	# Finalize grub directory
 	mkdir -p "${target}/boot/grub"
-	mke2fs -F -t ext4 "${partgrub}"
-	mount -t ext4 "${partgrub}" "${target}/boot/grub"
-
-	if [ "${IS_EFI}" = "true" ]; then
-		# ESP
-		mkdir -p "${target}/boot/efi"
-		# No need to reformat the partition has been prepared by partman-efi
-		mount -t vfat "${partefi}" "${target}/boot/efi"
-	fi
+	mount -o bind "${target}/boot/efi/grub" "${target}/boot/grub"
 }
 
 check_prerequisites ${REQUIREDPKGS}
@@ -396,7 +400,7 @@ elif [ "${COMMAND}" = "layout" ]; then
 
 	# Just displays de layout that will be created without any change to the disk.
 	# At this stage we don't now yet the size of the partition that will be created.
-	IFS="|" read ERR DISK PARTBASE PARTGRUB PARTSWAP PARTBPOOL PARTRPOOL<<EOF
+	IFS="|" read ERR DISK PARTBASE PARTESP PARTSWAP PARTBPOOL PARTRPOOL<<EOF
 $(get_layout ${TARGET})
 EOF
 
@@ -407,7 +411,7 @@ EOF
 
 	cat > /tmp/$(basename $0).layout <<EOF
 disk:${DISK}
-part:ext4:grub:${DISK}${PARTBASE}${PARTGRUB}
+part:vfat:ESP:${DISK}${PARTBASE}${PARTESP}
 part:swap:swap:${DISK}${PARTBASE}${PARTSWAP}
 part:zfs:bpool:${DISK}${PARTBASE}${PARTBPOOL}
 part:zfs:rpool:${DISK}${PARTBASE}${PARTRPOOL}
@@ -420,7 +424,7 @@ elif [ "${COMMAND}" = "init" ]; then
 		IS_EFI="true"
 	fi
 
-	IFS="|" read ERR DISK PARTBASE PARTGRUB PARTSWAP PARTBPOOL PARTRPOOL<<EOF
+	IFS="|" read ERR DISK PARTBASE PARTESP PARTSWAP PARTBPOOL PARTRPOOL<<EOF
 $(get_layout ${TARGET})
 EOF
 
@@ -448,9 +452,9 @@ EOF
 	SWAPVOLSIZE=$(( SWAPSIZE / 1024 / 1024 ))
 
 	prepare_target "${TARGET}"
-	format_disk "${DISK}" "${PARTBASE}" "${PARTGRUB}" "${PARTBPOOL}" "${PARTRPOOL}" "${SWAPVOLSIZE}"
+	format_disk "${DISK}" "${PARTBASE}" "${PARTESP}" "${PARTBPOOL}" "${PARTRPOOL}" "${SWAPVOLSIZE}"
 	init_zfs "${TARGET}" "${DISK}${PARTBASE}${PARTBPOOL}" "${DISK}${PARTBASE}${PARTRPOOL}"
-	init_system_partitions "${TARGET}" "${DISK}${PARTBASE}1" "${DISK}${PARTBASE}${PARTGRUB}"
+	init_system_partitions "${TARGET}" "${DISK}${PARTBASE}1" "${DISK}${PARTBASE}${PARTESP}"
 
 	# Generate fstab
 	# $TARGET/etc has been destroyed by the creation of the zfs partitition
@@ -460,8 +464,14 @@ EOF
 		echo "I: Creating fstab"
 		grep -Ev '\s/\s|/swapfile' /tmp/fstab.partman > "${TARGET}/etc/fstab"
 	fi
-	grubuuid=$(blkid -s UUID -o value "${DISK}${PARTBASE}${PARTGRUB}")
-	echo "UUID=${grubuuid}\t/boot/grub\text4\terrors=remount-ro\t0\t1" >> "${TARGET}/etc/fstab"
+
+	if ! grep -q "boot/efi" "${TARGET}/etc/fstab"; then
+		espuuid=$(blkid -s UUID -o value "${DISK}${PARTBASE}${PARTESP}")
+		echo "UUID=${espuuid}\t/boot/efi\tvfat\tumask=0077\t0\t1" >> "${TARGET}/etc/fstab"
+	fi
+
+	# Bind mount grub from ESP to the expected location
+	echo "/boot/efi/grub\t/boot/grub\tnone\tdefaults,bind\t0\t0" >> "${TARGET}/etc/fstab"
 
 	if [ -n "${SWAPFILE}" ]; then
 		SWAPDEVICE="${DISK}${PARTBASE}${PARTSWAP}"
