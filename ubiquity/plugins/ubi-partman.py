@@ -3217,7 +3217,8 @@ class Page(plugin.Plugin):
         elif question.startswith('partman/confirm'):
             response = self.frontend.question_dialog(
                 self.description(question),
-                self.update_extended_description(self.extended_description(question)),
+                self.update_extended_description(
+                    self.extended_description(question)),
                 ('ubiquity/text/go_back', 'ubiquity/text/continue'))
             if response == 'ubiquity/text/continue':
                 self.db.set('ubiquity/partman-confirm', question[8:])
@@ -3294,10 +3295,13 @@ class Page(plugin.Plugin):
         return plugin.Plugin.run(self, priority, question)
 
     def update_extended_description(self, description):
-        """ Update the description in the partman dialog to display custom messages"""
+        """ Update the description in the partman dialog to display custom
+            messages"""
 
         if not self.ui.use_zfs.get_active():
             return description
+
+        misc.execute_root('/usr/share/ubiquity/zsys-setup', 'layout')
 
         zsys_layout = '/tmp/zsys-setup.layout'
         lines = description.splitlines()
@@ -3307,10 +3311,10 @@ class Page(plugin.Plugin):
         with open(zsys_layout, 'r') as f:
             layout = f.readlines()
 
-        parts=[]
+        parts = []
         for line in layout:
             if line.startswith("part:"):
-                line=line.strip()
+                line = line.strip()
                 (t, f, u, p) = line.split(':')
                 parts.append("  %s: %s (%s)" % (os.path.basename(p), f, u))
 

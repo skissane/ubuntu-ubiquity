@@ -163,22 +163,20 @@ get_layout() {
 	# The entire disk has been formatted with use_device
 	# There is either one ext4 partition or one ext4 and one ESP
 	part="$(grep -E "\s${target}\s" /proc/mounts | awk '{print $1}')"
+	disk=""
+	partbase=""
 
-	if [ -z "${part}" ]; then
-		echo "E: Couldn't identify partition matching ${target}. Exiting!"
-		exit 1
+	if [ -n "${part}" ]; then
+		disk="$(lsblk -lns -o TYPE,PATH ${part}| grep disk| awk '{print $2}')"
+		if [ -z "${disk}" ]; then
+			echo "E: Couldn't identify disk for partition ${part}. Exiting!"
+			exit 1
+		fi
+		# Some disks have letters in the partition number like /dev/nvme0n1p1
+		# In this case we want to retrieve 'p' so we deal only with partition number
+		# in the rest of the script and prepend the base.
+		partbase="$(echo ${part} | sed -e 's/[0-9]*$//' | sed -e "s#${disk}##")"
 	fi
-
-	disk="$(lsblk -lns -o TYPE,PATH ${part}| grep disk| awk '{print $2}')"
-
-	if [ -z "${disk}" ]; then
-		echo "E: Couldn't identify disk for partition ${part}. Exiting!"
-		exit 1
-	fi
-	# Some disks have letters in the partion number like /dev/nvme0n1p1
-	# In this case we want to retrieve 'p' so we deal only with partition number
-	# in the rest of the script and prepend the base.
-	partbase="$(echo ${part} | sed -e 's/[0-9]*$//' | sed -e "s#${disk}##")"
 
 	partgrub=$(lsblk -n -o TYPE ${disk}|grep ^part| wc -l)
 	if [ "$IS_EFI" = "true" ]; then
