@@ -167,18 +167,24 @@ format_disk() {
 	sfdiskopts=""
 	partprefix="${disk}${PARTBASE}"
 
-	echo "I: Formatting disk $disk with partitions grub:${partgrub} ext:${partext} bpool:${partbpool} rpool:${partrpool}"
+	echo "I: Formatting disk $disk with partitions grub:${partgrub} ext:${partext} swap:${partswap} bpool:${partbpool} rpool:${partrpool}"
+
+	# bpool size: 500M < 5% of ZFS allocated space < 2G
+	size_percent=$(expr \( $(blockdev --getsize64 ${disk}${partgrub}) / 1024 / 1024 \) \* 5 / 100)
+	bpool_size=500
+	[ ${size_percent} -gt ${bpool_size} ] && bpool_size=${size_percent}
+	[ ${bpool_size} -gt 2048 ] && bpool_size=2048
 
 	if [ "${IS_EFI}" = "true" ]; then
 
 		# Improvement: Delete all the partitions but the ESP
-		# We should be only 1 or 2 partittion but well it can be made generic
+		# There should be only 1 or 2 partittions but it can be made generic
 		sfdisk --delete "${disk}" ${partgrub}
 
 		cat > /tmp/sfdisk.cfg <<EOF
-${partprefix}${partgrub}  :   size=    50M, type=0FC63DAF-8483-4772-8E79-3D69D8477DE4
-${partprefix}${partswap}  :   size= ${ss}M, type=0657FD6D-A4AB-43C4-84E5-0933C84B4F4F
-${partprefix}${partbpool} :   size=     2G, type=6A82CB45-1DD2-11B2-99A6-080020736631
+${partprefix}${partgrub} :   size=    50M, type=0FC63DAF-8483-4772-8E79-3D69D8477DE4
+${partprefix}${partswap} :   size= ${ss}M, type=0657FD6D-A4AB-43C4-84E5-0933C84B4F4F
+${partprefix}${partbpool} :   size= ${bpool_size}M, type=6A82CB45-1DD2-11B2-99A6-080020736631
 ${partprefix}${partrpool} :                 type=6A85CF4D-1DD2-11B2-99A6-080020736631
 EOF
 		sfdiskopts="--append"
@@ -186,10 +192,10 @@ EOF
 		start=$(sfdisk -l "${disk}"|grep "^${partprefix}${partgrub}"|awk '{print $2}')
 
 		cat > /tmp/sfdisk.cfg <<EOF
-${partprefix}${partgrub}  : start=        $start, size=    50M, type=83, bootable
-${partprefix}${partext}   :                                   type=5
-${partprefix}${partswap}  :                     size= ${ss}M, type=82
-${partprefix}${partbpool} :                     size=     2G, type=a5
+${partprefix}${partgrub} : start=        $start, size=    50M, type=83, bootable
+${partprefix}${partext} :                                   type=5
+${partprefix}${partswap} :                     size= ${ss}M, type=82
+${partprefix}${partbpool} :                     size= ${bpool_size}M, type=a5
 ${partprefix}${partrpool} :                                   type=a5
 EOF
 
