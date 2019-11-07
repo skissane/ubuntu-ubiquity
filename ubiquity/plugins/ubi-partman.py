@@ -3215,10 +3215,16 @@ class Page(plugin.Plugin):
                 raise AssertionError("Arrived at %s unexpectedly" % question)
 
         elif question.startswith('partman/confirm'):
+            description = self.extended_description(question)
+
+            if hasattr(self.ui, "use_zfs"):
+                if (self.ui.use_zfs.get_active() and self.ui.use_device.get_active()):
+                    description = self.update_zfs_description(self.extended_description(question))
+
+
             response = self.frontend.question_dialog(
                 self.description(question),
-                self.update_extended_description(
-                    self.extended_description(question)),
+                description,
                 ('ubiquity/text/go_back', 'ubiquity/text/continue'))
             if response == 'ubiquity/text/continue':
                 self.db.set('ubiquity/partman-confirm', question[8:])
@@ -3294,21 +3300,18 @@ class Page(plugin.Plugin):
 
         return plugin.Plugin.run(self, priority, question)
 
-    def update_extended_description(self, description):
-        """ Update the description in the partman dialog to display custom
-            messages"""
-
-        if not hasattr(self.ui, "use_zfs"):
-            return description
-
-        if not (self.ui.use_zfs.get_active() and
-                self.ui.use_device.get_active()):
-            return description
+    def update_zfs_description(self, description):
+        """Update the description in the partman dialog to display custom
+           messages"""
 
         misc.execute_root('/usr/share/ubiquity/zsys-setup', 'layout')
 
         zsys_layout = '/tmp/zsys-setup/layout'
         lines = description.splitlines()
+        # Remove the last line of the output from partman which corresponds to
+        # the ext4 partition
+        del(lines[-1])
+
         if not os.path.exists(zsys_layout):
             return description
 
@@ -3317,12 +3320,13 @@ class Page(plugin.Plugin):
 
         parts = []
         for line in layout:
-            if line.startswith("part:"):
-                line = line.strip()
-                (t, f, u, p) = line.split(':')
-                parts.append("  %s: %s (%s)" % (os.path.basename(p), f, u))
+            if not line.startswith("part:"):
+                continue
 
-        del(lines[-1])
+            line = line.strip()
+            (t, f, u, p) = line.split(':')
+            parts.append("  %s: %s (%s)" % (os.path.basename(p), f, u))
+
         lines.extend(parts)
 
         return "\n".join(lines)
