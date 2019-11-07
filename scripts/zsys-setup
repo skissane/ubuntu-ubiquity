@@ -184,7 +184,7 @@ get_layout() {
 	fi
 
 	partesp=1
-	if [ "$IS_EFI" = "true" ]; then
+	if in_efi_mode; then
 		# No extended partition on EFI + GPT
 		# The layout is
 		# 1: ESP
@@ -223,13 +223,15 @@ format_disk() {
 	partprefix="${disk}${partbase}"
 
 	sfdisktmp="${ZSYSTMP}/sfdisk.cfg"
+	rm -f "${sfdisktmp}"
 
 	echo "I: Formatting disk $disk with partitions ESP:${partesp} ext:${partext} swap:${partswap} bpool:${partbpool} rpool:${partrpool}"
 
 	# bpool size: 500M < 5% of ZFS allocated space < 2G
-	# The id for the ext4 partition created by partman is 2 or 1 depending on being on and EFI system of not.
+	# partext4 is the ext4 partition created by partman.
+	# Its id is 2 or 1 depending on being on and EFI system of not.
 	partext4=1
-	if [ "${IS_EFI}" = "true" ]; then
+	if in_efi_mode; then
 		partext4=$(( partesp + 1 ))
 	fi
 
@@ -238,7 +240,7 @@ format_disk() {
 	[ ${size_percent} -gt ${bpool_size} ] && bpool_size=${size_percent}
 	[ ${bpool_size} -gt 2048 ] && bpool_size=2048
 
-	if [ "${IS_EFI}" = "true" ]; then
+	if in_efi_mode; then
 		# Improvement: Delete all the partitions but the ESP
 		# There should be only 1 or 2 partitions but it can be made generic
 		sfdisk --delete "${disk}" ${partswap}
@@ -250,10 +252,16 @@ ${partprefix}${partrpool} :                         type=6A85CF4D-1DD2-11B2-99A6
 EOF
 		sfdiskopts="--append"
 	else
-		start=$(sfdisk -l "${disk}"|grep "^${partprefix}${partesp}"|awk '{print $2}')
-
-		cat > "${sfdisktmp}" <<EOF
+		if ! esp_exists; then
+			start=$(sfdisk -l "${disk}"|grep "^${partprefix}${partesp}"|awk '{print $2}')
+			cat > "${sfdisktmp}" <<EOF
 ${partprefix}${partesp}   : start= $start, size=    512M,        type=ef, bootable
+EOF
+		else
+			sfdisk --delete "${disk}" ${partswap}
+		fi
+
+		cat >> "${sfdisktmp}" <<EOF
 ${partprefix}${partext}   :                                      type=5
 ${partprefix}${partswap}  :                size= ${ss}M,         type=82
 ${partprefix}${partbpool} :                size= ${bpool_size}M, type=a5
@@ -380,7 +388,7 @@ init_system_partitions() {
 
 	# ESP
 	mkdir -p "${target}/boot/efi"
-	if [ "${IS_EFI}" = "false" ]; then
+	if ! in_efi_mode; then
 		echo "I: Creating ESP"
 		mkfs.vfat "${partefi}"
 	fi
@@ -393,6 +401,14 @@ init_system_partitions() {
 	mount -o bind "${target}/boot/efi/grub" "${target}/boot/grub"
 }
 
+in_efi_mode() {
+    [ -d /proc/efi ] || [ -d /sys/firmware/efi ]
+}
+
+esp_exists() {
+    grep -q "\s${ESP}\s" /proc/mounts
+}
+
 check_prerequisites ${REQUIREDPKGS}
 
 echo "I: Running $(basename "$0") ${COMMAND}"
@@ -401,12 +417,6 @@ if [ -z "${COMMAND}" ]; then
 	echo "E: ${COMMAND} is mandatory. Exiting!"
 	exit 1
 elif [ "${COMMAND}" = "layout" ]; then
-	# At this stage we don't know what partman will do so just detect if it's an UEFI system
-	IS_EFI="false"
-	if [ -d "/sys/firmware/efi" ]; then
-		IS_EFI="true"
-	fi
-
 	# Just displays de layout that will be created without any change to the disk.
 	# At this stage we don't now yet the size of the partition that will be created.
 	IFS="|" read ERR DISK PARTBASE PARTESP PARTSWAP PARTBPOOL PARTRPOOL<<EOF
@@ -428,11 +438,6 @@ EOF
 
 elif [ "${COMMAND}" = "init" ]; then
 	rm -f "${INIT_FLAG}"
-	# Better check if the ESP has been created than if it's a EFI system
-	IS_EFI="false"
-	if grep -q "\s${ESP}\s" /proc/mounts; then
-		IS_EFI="true"
-	fi
 
 	IFS="|" read ERR DISK PARTBASE PARTESP PARTSWAP PARTBPOOL PARTRPOOL<<EOF
 $(get_layout ${TARGET})
