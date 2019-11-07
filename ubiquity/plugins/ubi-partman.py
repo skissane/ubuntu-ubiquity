@@ -3307,7 +3307,7 @@ class Page(plugin.Plugin):
 
         misc.execute_root('/usr/share/ubiquity/zsys-setup', 'layout')
 
-        zsys_layout = '/tmp/zsys-setup.layout'
+        zsys_layout = '/tmp/zsys-setup/layout'
         lines = description.splitlines()
         if not os.path.exists(zsys_layout):
             return description
