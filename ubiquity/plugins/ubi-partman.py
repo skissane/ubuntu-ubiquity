@@ -3298,7 +3298,11 @@ class Page(plugin.Plugin):
         """ Update the description in the partman dialog to display custom
             messages"""
 
-        if not self.ui.use_zfs.get_active():
+        if not hasattr(self.ui, "use_zfs"):
+            return description
+
+        if not (self.ui.use_zfs.get_active() and
+                self.ui.use_device.get_active()):
             return description
 
         misc.execute_root('/usr/share/ubiquity/zsys-setup', 'layout')
