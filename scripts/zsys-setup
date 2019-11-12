@@ -430,7 +430,14 @@ EOF
 
 	cat > "${PARTITION_LAYOUT}" <<EOF
 disk:${DISK}
+EOF
+	if ! in_efi_mode || ! esp_exists; then
+		cat >> "${PARTITION_LAYOUT}" <<EOF
 part:vfat:ESP:${DISK}${PARTBASE}${PARTESP}
+EOF
+	fi
+
+	cat >> "${PARTITION_LAYOUT}" <<EOF
 part:swap:swap:${DISK}${PARTBASE}${PARTSWAP}
 part:zfs:bpool:${DISK}${PARTBASE}${PARTBPOOL}
 part:zfs:rpool:${DISK}${PARTBASE}${PARTRPOOL}
