@@ -3221,7 +3221,6 @@ class Page(plugin.Plugin):
                 if (self.ui.use_zfs.get_active() and self.ui.use_device.get_active()):
                     description = self.update_zfs_description(self.extended_description(question))
 
-
             response = self.frontend.question_dialog(
                 self.description(question),
                 description,
@@ -3318,16 +3317,19 @@ class Page(plugin.Plugin):
         with open(zsys_layout, 'r') as f:
             layout = f.readlines()
 
-        parts = []
+        partlabel = misc.utf8(self.db.metaget('ubiquity/text/partman_confirm_zfs', 'extended_description'),
+                              errors='replace')
         for line in layout:
             if not line.startswith("part:"):
                 continue
 
             line = line.strip()
             (t, f, u, p) = line.split(':')
-            parts.append("  %s: %s (%s)" % (os.path.basename(p), f, u))
 
-        lines.extend(parts)
+            lines.append("    " + partlabel % {
+                'partid': os.path.basename(p),
+                'parttype': f,
+                'partusage': u})
 
         return "\n".join(lines)
 

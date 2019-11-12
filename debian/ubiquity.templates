@@ -1597,3 +1597,8 @@ _Description:
 Template: ubiquity/secureboot_key
 Type: password
 _Description: SecureBoot key for MokPW
+
+Template: ubiquity/text/partman_confirm_zfs
+Type: text
+_Description:
+ partition #%(partid)s as %(parttype)s used for %(partusage)s
