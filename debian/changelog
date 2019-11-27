@@ -1,3 +1,10 @@
+ubiquity (20.04.2) UNRELEASED; urgency=medium
+
+  * d/control: Recommend grub-efi-amd64 or grub-efi-ia32, not the transitional
+    grub-efi which is no longer installed by default. (LP: #1848880)
+
+ -- Michael Hudson-Doyle <michael.hudson@ubuntu.com>  Wed, 27 Nov 2019 13:19:45 +1300
+
 ubiquity (20.04.1) focal; urgency=medium
 
   * zfs:
