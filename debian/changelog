@@ -1,4 +1,4 @@
-ubiquity (20.04.2) UNRELEASED; urgency=medium
+ubiquity (20.04.2) focal; urgency=medium
 
   * Make sure the screen-reader-enabled setting gets passed to the target
     system (LP: #1848144).
