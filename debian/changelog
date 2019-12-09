@@ -1,3 +1,10 @@
+ubiquity (20.04.4) UNRELEASED; urgency=medium
+
+  * When removing packages, also remove automatically installed packages that
+    are no longer required (LP: #1798992)
+
+ -- Julian Andres Klode <juliank@ubuntu.com>  Mon, 09 Dec 2019 10:43:45 +0100
+
 ubiquity (20.04.3) focal; urgency=medium
 
   [ Michael Hudson-Doyle ]
