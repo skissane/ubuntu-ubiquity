@@ -238,7 +238,6 @@ class Wizard(BaseFrontend):
         self.progress_cancelled = False
         self.installing = False
         self.installing_no_return = False
-        self.partitioned = False
         self.timezone_set = False
         self.returncode = 0
         self.history = []

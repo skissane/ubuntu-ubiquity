@@ -305,7 +305,6 @@ class Wizard(BaseFrontend):
         self.previous_partitioning_page = self.step_index("stepPartAuto")
         self.installing = False
         self.installing_no_return = False
-        self.partitioned = False
         self.timezone_set = False
         self.returncode = 0
         self.backup = False

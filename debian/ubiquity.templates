@@ -1602,3 +1602,9 @@ Template: ubiquity/text/partman_confirm_zfs
 Type: text
 _Description:
  partition #%(partid)s as %(parttype)s used for %(partusage)s
+
+Template: ubiquity/skip_partitioning
+Type: boolean
+Default: false
+Description: for internal use; can be preseeded
+ Skip the partitioning step for the installer

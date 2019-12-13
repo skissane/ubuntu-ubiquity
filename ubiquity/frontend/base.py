@@ -162,11 +162,22 @@ class BaseFrontend:
         except debconf.DebconfError:
             pass
 
+        self.partitioned = False
+        try:
+            if self.db.get('ubiquity/skip_partitioning') == 'true':
+                self.partitioned = True
+        except debconf.DebconfError:
+            pass
+
         # Load plugins
         plugins = plugin_manager.load_plugins()
         modules = plugin_manager.order_plugins(plugins)
         self.modules = []
         for mod in modules:
+            if self.partitioned:
+                name = plugin_manager.get_mod_string(mod, 'NAME')
+                if name == 'partman':
+                    continue
             comp = Component()
             comp.module = mod
             if hasattr(mod, 'Page'):
