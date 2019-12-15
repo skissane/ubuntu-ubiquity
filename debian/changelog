@@ -1,3 +1,10 @@
+ubiquity (18.04.14.14) UNRELEASED; urgency=medium
+
+  * Always invoke mokutil with --timeout -1 so that users don't miss the key
+    enrollment on reboot and end up with broken dkms modules.  LP: #1856422.
+
+ -- Steve Langasek <steve.langasek@ubuntu.com>  Sat, 14 Dec 2019 17:13:53 -0800
+
 ubiquity (18.04.14.13) bionic; urgency=medium
 
   * d/control: Recommend grub-efi-amd64 or grub-efi-ia32, not the transitional
