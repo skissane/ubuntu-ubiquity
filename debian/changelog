@@ -1,7 +1,12 @@
 ubiquity (20.04.4) UNRELEASED; urgency=medium
 
+  [ Julian Andres Klode ]
   * When removing packages, also remove automatically installed packages that
     are no longer required (LP: #1798992)
+
+  [ Steve Langasek ]
+  * Always invoke mokutil with --timeout -1 so that users don't miss the key
+    enrollment on reboot and end up with broken dkms modules.  LP: #1856422.
 
  -- Julian Andres Klode <juliank@ubuntu.com>  Mon, 09 Dec 2019 10:43:45 +0100
 

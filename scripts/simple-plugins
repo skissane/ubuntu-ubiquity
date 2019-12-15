@@ -19,7 +19,7 @@ if [ "$1" = "prepare" ]; then
     if [ -n "$RET" ]; then
         mkdir -p /var/lib/shim-signed/mok
         /usr/lib/ubiquity/shim-signed/update-secureboot-policy --new-key
-        printf '%s\n%s\n' "$RET" "$RET" | mokutil --import /var/lib/shim-signed/mok/MOK.der >/dev/null || true
+        printf '%s\n%s\n' "$RET" "$RET" | mokutil --timeout -1 --import /var/lib/shim-signed/mok/MOK.der >/dev/null || true
     fi
     # Always clear secureboot key.
     db_set ubiquity/secureboot_key ''
