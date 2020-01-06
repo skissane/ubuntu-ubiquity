@@ -1,3 +1,12 @@
+ubiquity (20.04.5) UNRELEASED; urgency=medium
+
+  * zsys-setup: Drives bigger than 2TB use GPT but if the machine has been
+    booted in legacy mode the ESP is not created. Rely on the label type
+    instead of the firmware to know how to partition the disk (LP: #1856863).
+    Thanks to Pablo Mendez Hernandez for the investigation.
+
+ -- Jean-Baptiste Lallement <jean-baptiste.lallement@ubuntu.com>  Mon, 06 Jan 2020 14:34:31 +0100
+
 ubiquity (20.04.4) focal; urgency=medium
 
   * When removing packages, also remove automatically installed packages that
