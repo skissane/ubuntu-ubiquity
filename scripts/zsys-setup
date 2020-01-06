@@ -246,7 +246,7 @@ format_disk() {
 		if ! esp_exists "${disk}"; then
 			start=$(sfdisk -l "${disk}"|grep "^${partprefix}${partesp}"|awk '{print $2}')
 			cat > "${sfdisktmp}" <<EOF
-${partprefix}${partesp}   : start= $start, size=    512M,        type=C12A7328-F81F-11D2-BA4B-00A0C93EC93B, bootable
+${partprefix}${partesp}   : start= ${start}, size=    512M,        type=C12A7328-F81F-11D2-BA4B-00A0C93EC93B, bootable
 EOF
 		else
 			sfdisk --delete "${disk}" ${partswap}
@@ -262,7 +262,7 @@ EOF
 		if ! esp_exists "${disk}"; then
 			start=$(sfdisk -l "${disk}"|grep "^${partprefix}${partesp}"|awk '{print $2}')
 			cat > "${sfdisktmp}" <<EOF
-${partprefix}${partesp}   : start= $start, size=    512M,        type=ef, bootable
+${partprefix}${partesp}   : start= ${start}, size=    512M,        type=ef, bootable
 EOF
 		else
 			sfdisk --delete "${disk}" ${partswap}
